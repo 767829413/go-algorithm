@@ -139,6 +139,22 @@ func (sl *SingleList) Print() {
 	fmt.Println(nil)
 }
 
+//是否有环
+func (sl *SingleList) HasLoop() bool {
+	if sl.Head != nil && sl.Head.Next != nil {
+		low := sl.Head
+		fast := sl.Head.Next
+		for ; fast == nil || fast.Next != nil; {
+			low = low.Next
+			fast = fast.Next.Next
+			if low.Item.(int) == fast.Item.(int) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 //反转
 func (sl *SingleList) Reverse(option int) {
 	switch option {
@@ -171,7 +187,7 @@ func (sl *SingleList) ReverseByNotRecursive() {
 			preNode := sl.Head
 			curNode := sl.Head.Next
 			tempNode := sl.Head.Next.Next
-			for ; curNode != nil; {
+			for curNode != nil {
 				tempNode = curNode.Next
 				curNode.Next = preNode
 				preNode = curNode

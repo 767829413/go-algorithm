@@ -30,3 +30,20 @@ func TestReverse(t *testing.T) {
 	sl.Print()
 	fmt.Println(sl)
 }
+
+func TestHasLoop(t *testing.T) {
+	//构建有环链表
+	sl := &SingleList{}
+	sl.Init()
+	//全环
+	for i := 0; i < 5; i++ {
+		node := &Node{
+			Item: i,
+		}
+		if !sl.Append(node) {
+			t.Error("插入出错")
+		}
+	}
+	//sl.Tail.Next = sl.Head
+	t.Log(sl.HasLoop())
+}
