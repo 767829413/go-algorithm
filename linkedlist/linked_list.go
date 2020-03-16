@@ -131,12 +131,11 @@ func (sl *SingleList) Find(index int) (node *Node) {
 func (sl *SingleList) Print() {
 	if sl.Head != nil {
 		pre := sl.Head
-		for i := 0; i < sl.Size; i++ {
+		for i := 0; i < sl.Size && pre != nil; i++ {
 			fmt.Println(pre)
 			pre = pre.Next
 		}
 	}
-	fmt.Println(nil)
 }
 
 //是否有环
@@ -144,9 +143,15 @@ func (sl *SingleList) HasLoop() bool {
 	if sl.Head != nil && sl.Head.Next != nil {
 		low := sl.Head
 		fast := sl.Head.Next
-		for ; fast == nil || fast.Next != nil; {
+		for {
 			low = low.Next
+			if fast.Next == nil {
+				break
+			}
 			fast = fast.Next.Next
+			if fast == nil {
+				break
+			}
 			if low.Item.(int) == fast.Item.(int) {
 				return true
 			}
@@ -198,5 +203,91 @@ func (sl *SingleList) ReverseByNotRecursive() {
 		sl.Head.Next = nil
 		sl.Tail = sl.Head
 		sl.Head = tail
+	}
+}
+
+//单链表合并
+func (sl *SingleList) Merge(s *SingleList, option int) {
+	if sl.Head == nil {
+		sl.Init()
+		sl = s
+		return
+	}
+	if s.Head == nil {
+		return
+	}
+	if sl.Tail.Item.(int) < s.Tail.Item.(int) {
+		sl.Tail = s.Tail
+	}
+	sl.Size = sl.Size + s.Size
+	switch option {
+	case IsRecursive:
+		sl.Head = sl.MergeRecursive(sl.Head, s.Head)
+	default:
+		sl.MergeNotRecursive(sl.Head, s.Head)
+	}
+	s.Init()
+}
+
+//有序单链表合并 - 递归
+func (sl *SingleList) MergeRecursive(headBe *Node, headAf *Node) (newHead *Node) {
+	if headBe == nil {
+		return headAf
+	}
+	if headAf == nil {
+		return headBe
+	}
+	if headAf.Item.(int) > headBe.Item.(int) {
+		newHead = headBe
+		newHead.Next = sl.MergeRecursive(headBe.Next, headAf)
+	} else {
+		newHead = headAf
+		newHead.Next = sl.MergeRecursive(headBe, headAf.Next)
+	}
+	return newHead
+}
+
+//有序单链表合并 - 非递归
+func (sl *SingleList) MergeNotRecursive(headBe *Node, headAf *Node) {
+	var head *Node
+	if headBe == nil {
+		return
+	}
+	if headAf == nil {
+		return
+	}
+	if headBe.Item.(int) > headAf.Item.(int) {
+		head = headAf
+		headAf = headAf.Next
+	} else {
+		head = headBe
+		headBe = headBe.Next
+	}
+	sl.Head = head
+	for {
+		if headAf == nil {
+			if head.Next == nil {
+				head.Next = headBe
+			} else {
+				head.Next.Next = headBe
+			}
+			break
+		}
+		if headBe == nil {
+			if head.Next == nil {
+				head.Next = headAf
+			} else {
+				head.Next.Next = headAf
+			}
+			break
+		}
+		if headBe.Item.(int) > headAf.Item.(int) {
+			head.Next = headAf
+			headAf = headAf.Next
+		} else {
+			head.Next = headBe
+			headBe = headBe.Next
+		}
+		head = head.Next
 	}
 }
