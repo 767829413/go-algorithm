@@ -97,3 +97,19 @@ func TestDelByReciprocal(t *testing.T) {
 	fmt.Println(sl.DelByReciprocal(1))
 	sl.Print()
 }
+
+func TestFindMiddle(t *testing.T) {
+	sl := &SingleList{}
+	sl.Init()
+	for i := 0; i < 3; i++ {
+		node := &Node{
+			Item: i,
+		}
+		if !sl.Append(node) {
+			t.Error("插入出错")
+		}
+	}
+	sl.Print()
+	fmt.Println("------")
+	fmt.Println(sl.FindMiddle())
+}

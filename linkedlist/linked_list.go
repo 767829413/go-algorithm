@@ -295,6 +295,7 @@ func (sl *SingleList) MergeNotRecursive(headBe *Node, headAf *Node) {
 	}
 }
 
+//删除链表倒数第 index 节点
 func (sl *SingleList) DelByReciprocal(index int) bool {
 	if sl.Size-index < 0 {
 		return false
@@ -321,4 +322,18 @@ func (sl *SingleList) DelByReciprocal(index int) bool {
 	low.Next = low.Next.Next
 	sl.Size--
 	return true
+}
+
+//求链表中间节点
+func (sl *SingleList) FindMiddle() *Node {
+	fast := sl.Head
+	low := sl.Head
+	for ; fast != nil; {
+		if fast.Next == nil {
+			break
+		}
+		low = low.Next
+		fast = fast.Next.Next
+	}
+	return low
 }
