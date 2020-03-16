@@ -129,6 +129,9 @@ func (sl *SingleList) Find(index int) (node *Node) {
 
 //打印链表
 func (sl *SingleList) Print() {
+	if sl.Size == 0 {
+		fmt.Println(nil)
+	}
 	if sl.Head != nil {
 		pre := sl.Head
 		for i := 0; i < sl.Size && pre != nil; i++ {
@@ -290,4 +293,32 @@ func (sl *SingleList) MergeNotRecursive(headBe *Node, headAf *Node) {
 		}
 		head = head.Next
 	}
+}
+
+func (sl *SingleList) DelByReciprocal(index int) bool {
+	if sl.Size-index < 0 {
+		return false
+	}
+	if sl.Size-index == 0 {
+		sl.Head = sl.Head.Next
+		sl.Size--
+		return true
+	}
+	fast := sl.Head
+	low := sl.Head
+	for i := 0; i < index; i++ {
+		fast = fast.Next
+	}
+	if fast == nil {
+		low.Next = fast
+		sl.Size--
+		return true
+	}
+	for ; fast.Next != nil; {
+		fast = fast.Next
+		low = low.Next
+	}
+	low.Next = low.Next.Next
+	sl.Size--
+	return true
 }
