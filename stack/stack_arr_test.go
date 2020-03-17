@@ -8,8 +8,8 @@ import (
 
 func TestPushPop(t *testing.T) {
 	s := &StackArr{}
-	s.Init()
-	for i := 0; i < 22; i++ {
+	s.Init(10)
+	for i := 0; i < s.Count; i++ {
 		if !s.Push(randomstring.RandStringBytesMaskImprSrc(3)) {
 			t.Error("push err")
 		}

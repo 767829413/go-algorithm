@@ -6,17 +6,22 @@ import (
 
 type StackArr struct {
 	Items []string
+	Count int
 	mutx  *sync.RWMutex
 }
 
 //初始化操作
-func (s *StackArr) Init() {
+func (s *StackArr) Init(n int) {
 	s.Items = []string{}
+	s.Count = n
 	s.mutx = &sync.RWMutex{}
 }
 
 //入栈
 func (s *StackArr) Push(item string) bool {
+	if s.Count == len(s.Items) {
+		return false
+	}
 	s.mutx.Lock()
 	defer s.mutx.Unlock()
 	s.Items = append(s.Items, item)

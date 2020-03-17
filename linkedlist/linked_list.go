@@ -93,8 +93,8 @@ func (sl *SingleList) Delete(index int) bool {
 		sl.Size -= 1
 		return true
 	}
-	pre := sl.Head.Next
-	for i := 1; i < index; i++ {
+	pre := sl.Head
+	for i := 0; i < index-1; i++ {
 		pre = pre.Next
 	}
 	next := pre.Next
