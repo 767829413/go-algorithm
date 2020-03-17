@@ -2,20 +2,21 @@ package stack
 
 import (
 	"fmt"
-	"go-algorithm/utilcom"
+	"go-algorithm/utilcom/randomstring"
 	"testing"
 )
 
 func TestPushPop(t *testing.T) {
-	s := &Stack{}
-	s.Init(10)
-	for i := 0; i < 100; i++ {
-		if !s.Push(utilcom.RandStringBytesMaskImprSrc(3)) {
+	s := &StackArr{}
+	s.Init()
+	for i := 0; i < 22; i++ {
+		if !s.Push(randomstring.RandStringBytesMaskImprSrc(3)) {
 			t.Error("push err")
 		}
+		fmt.Println(s)
 	}
-	fmt.Println(s)
-	for ; s.Count != 0; {
+	for len(s.Items) != 0 {
 		fmt.Println(s.Pop())
 	}
+
 }
