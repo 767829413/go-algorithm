@@ -17,7 +17,6 @@ type Source interface {
 	Seed(seed int64)
 }
 
-
 var src = rand.NewSource(time.Now().UnixNano())
 
 func RandStringBytesMaskImprSrc(n int) string {
