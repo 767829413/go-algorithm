@@ -1,6 +1,7 @@
 package sort
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -14,4 +15,13 @@ func BuildTestArr(num, max, min int) []int {
 		arr[i] = randNum
 	}
 	return arr
+}
+
+func PrintSortComparison(arr []int, f func(arr []int)) {
+	//排序前
+	fmt.Println(arr)
+	//排序
+	f(arr)
+	//排序后
+	fmt.Println(arr)
 }
