@@ -20,8 +20,10 @@ func BuildTestArr(num, max, min int) []int {
 func PrintSortComparison(arr []int, f func(arr []int)) {
 	//排序前
 	fmt.Println(arr)
+	fmt.Println(len(arr))
 	//排序
 	f(arr)
 	//排序后
 	fmt.Println(arr)
+	fmt.Println(len(arr))
 }

@@ -6,18 +6,18 @@ func MergeSort(arr []int) {
 	}
 	left := 0
 	right := len(arr) - 1
-	divide(arr, left, right)
+	divideMS(arr, left, right)
 }
 
-func divide(arr []int, left, right int) {
+func divideMS(arr []int, left, right int) {
 	if left >= right {
 		return
 	}
 	//取left right 中间位置
 	middle := (left + right) / 2
 	//分治递归
-	divide(arr, left, middle)
-	divide(arr, middle+1, right)
+	divideMS(arr, left, middle)
+	divideMS(arr, middle+1, right)
 	//合并
 	conquer(arr, left, middle, right)
 }
