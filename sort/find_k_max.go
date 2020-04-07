@@ -12,6 +12,9 @@ func FindKMax(arr []int, k int) int {
 	left := 0
 	right := len(arr) - 1
 	findK(arr, left, right, k, &find)
+	if find == 0 {
+		return arr[k-1]
+	}
 	return find
 }
 
@@ -28,7 +31,8 @@ func findK(arr []int, left int, right int, k int, find *int) {
 func partitionFind(arr []int, left, right int, k int, find *int) int {
 	pivot := arr[right]
 	i := left
-	for j := left; j < right; j = j + 1 {
+	j := left
+	for ; j < right; j = j + 1 {
 		if arr[j] > pivot {
 			swap(arr, i, j);
 			i++

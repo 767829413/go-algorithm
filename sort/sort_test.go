@@ -33,5 +33,5 @@ func TestQuicksort(t *testing.T) {
 func TestFindKMax(t *testing.T) {
 	arr := BuildTestArr(5, 1000, 0)
 	fmt.Println(arr)
-	fmt.Println(FindKMax(arr, 3))
+	fmt.Println(FindKMax(arr, 5))
 }
