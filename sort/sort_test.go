@@ -2,6 +2,7 @@ package sort
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 )
 
@@ -21,13 +22,15 @@ func TestSelectSort(t *testing.T) {
 }
 
 func TestMergeSort(t *testing.T) {
-	arr := BuildTestArr(5, 50, 0)
-	PrintSortComparison(arr, MergeSort)
+	arr := BuildTestArr(50000000, 80000000, 0)
+	//PrintSortComparison(arr, MergeSort)
+	MergeSort(arr)
 }
 
 func TestQuicksort(t *testing.T) {
-	arr := BuildTestArr(5, 50, 0)
-	PrintSortComparison(arr, Quicksort)
+	arr := BuildTestArr(50000000, 80000000, 0)
+	//PrintSortComparison(arr, Quicksort)
+	Quicksort(arr);
 }
 
 func TestFindKMax(t *testing.T) {
@@ -39,4 +42,9 @@ func TestFindKMax(t *testing.T) {
 func TestCountSort(t *testing.T) {
 	arr := BuildTestArr(5, 50, 0)
 	PrintSortComparison(arr, CountSort)
+}
+
+func TestInnerSort(t *testing.T) {
+	arr := BuildTestArr(50000000, 80000000, 0)
+	sort.Ints(arr)
 }

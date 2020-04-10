@@ -1,7 +1,7 @@
 package stack
 
 import (
-	"go-algorithm/linkedlist"
+	"algorithm/linkedlist"
 )
 
 type StackChain struct {

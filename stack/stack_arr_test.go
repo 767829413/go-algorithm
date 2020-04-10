@@ -2,7 +2,7 @@ package stack
 
 import (
 	"fmt"
-	"go-algorithm/utilcom/randomstring"
+	"algorithm/utilcom/randomstring"
 	"testing"
 )
 

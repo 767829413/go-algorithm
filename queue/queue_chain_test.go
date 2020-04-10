@@ -2,8 +2,8 @@ package queue
 
 import (
 	"fmt"
-	"go-algorithm/linkedlist"
-	"go-algorithm/utilcom/randomstring"
+	"algorithm/linkedlist"
+	"algorithm/utilcom/randomstring"
 	"testing"
 )
 

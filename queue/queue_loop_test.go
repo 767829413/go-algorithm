@@ -2,7 +2,7 @@ package queue
 
 import (
 	"fmt"
-	"go-algorithm/utilcom/randomstring"
+	"algorithm/utilcom/randomstring"
 	"testing"
 )
 
