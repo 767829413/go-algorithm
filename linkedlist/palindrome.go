@@ -95,24 +95,3 @@ func IsPalindromeByFastLowPoint(l *LinkedList) bool {
 	return isPalindrome
 }
 
-//反转链表
-func ReverseLinkedList(l *LinkedList) bool {
-	if l.length == 1 || l.length == 0 {
-		return false
-	}
-	pre := l.head
-	cur := l.head.next
-	l.head.next = nil
-	var tail *ListNode
-	for cur != nil {
-		temp := cur.next
-		if temp == nil {
-			tail = cur
-		}
-		cur.next = pre
-		pre = cur
-		cur = temp
-	}
-	l.head = tail
-	return true
-}

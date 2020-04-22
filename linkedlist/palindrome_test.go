@@ -1,7 +1,6 @@
 package linkedlist
 
 import (
-	"algorithm/utilcom/randomstring"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -65,15 +64,5 @@ func TestDFDF(t *testing.T) {
 	}
 	t.Log(l.Print())
 	t.Log(IsPalindromeByFastLowPoint(l))
-	t.Log(l.Print())
-}
-
-func TestReverseLinkedList(t *testing.T) {
-	l := NewLinkedList()
-	for i := 0; i < 5; i++ {
-		l.InsertToTail(randomstring.RandStringBytesMaskImprSrc(1))
-	}
-	t.Log(l.Print())
-	ReverseLinkedList(l)
 	t.Log(l.Print())
 }
