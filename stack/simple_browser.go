@@ -15,43 +15,43 @@ func NewBrowser() *Browser {
 	}
 }
 
-func (this *Browser) CanForward() bool {
-	if this.forwardStack.IsEmpty() {
+func (b *Browser) CanForward() bool {
+	if b.forwardStack.IsEmpty() {
 		return false
 	}
 	return true
 }
 
-func (this *Browser) CanBack() bool {
-	if this.backStack.IsEmpty() {
+func (b *Browser) CanBack() bool {
+	if b.backStack.IsEmpty() {
 		return false
 	}
 	return true
 }
 
-func (this *Browser) Open(addr string) {
+func (b *Browser) Open(addr string) {
 	fmt.Printf("Open new addr %+v\n", addr)
-	this.forwardStack.Flush()
+	b.forwardStack.Flush()
 }
 
-func (this *Browser) PushBack(addr string) {
-	this.backStack.Push(addr)
+func (b *Browser) PushBack(addr string) {
+	b.backStack.Push(addr)
 }
 
-func (this *Browser) Forward() {
-	if this.forwardStack.IsEmpty() {
+func (b *Browser) Forward() {
+	if b.forwardStack.IsEmpty() {
 		return
 	}
-	top := this.forwardStack.Pop()
-	this.backStack.Push(top)
+	top := b.forwardStack.Pop()
+	b.backStack.Push(top)
 	fmt.Printf("forward to %+v\n", top)
 }
 
-func (this *Browser) Back() {
-	if this.backStack.IsEmpty() {
+func (b *Browser) Back() {
+	if b.backStack.IsEmpty() {
 		return
 	}
-	top := this.backStack.Pop()
-	this.forwardStack.Push(top)
+	top := b.backStack.Pop()
+	b.forwardStack.Push(top)
 	fmt.Printf("back to %+v\n", top)
 }

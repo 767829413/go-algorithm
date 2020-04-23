@@ -20,58 +20,58 @@ func NewArrayStack() *ArrayStack {
 }
 
 //是否为空栈
-func (this *ArrayStack) IsEmpty() bool {
-	if this.top < 0 {
+func (as *ArrayStack) IsEmpty() bool {
+	if as.top < 0 {
 		return true
 	}
 	return false
 }
 
 //压栈
-func (this *ArrayStack) Push(v interface{}) {
-	if this.top < 0 {
-		this.top = 0
+func (as *ArrayStack) Push(v interface{}) {
+	if as.top < 0 {
+		as.top = 0
 	} else {
-		this.top++
+		as.top++
 	}
-	if this.top > len(this.data)-1 {
-		this.data = append(this.data, v)
+	if as.top > len(as.data)-1 {
+		as.data = append(as.data, v)
 	} else {
-		this.data[this.top] = v
+		as.data[as.top] = v
 	}
 }
 
 //出栈
-func (this *ArrayStack) Pop() interface{} {
-	if this.IsEmpty() {
+func (as *ArrayStack) Pop() interface{} {
+	if as.IsEmpty() {
 		return nil
 	}
-	v := this.data[this.top]
-	this.top--
+	v := as.data[as.top]
+	as.top--
 	return v
 }
 
 //获取栈顶数据
-func (this *ArrayStack) Top() interface{} {
-	if this.IsEmpty() {
+func (as *ArrayStack) Top() interface{} {
+	if as.IsEmpty() {
 		return nil
 	}
-	return this.data[this.top]
+	return as.data[as.top]
 }
 
 //清空栈
-func (this *ArrayStack) Flush() {
-	this.top = -1
+func (as *ArrayStack) Flush() {
+	as.top = -1
 }
 
 //打印栈
-func (this *ArrayStack) Print() (format string) {
-	if this.IsEmpty() {
+func (as *ArrayStack) Print() (format string) {
+	if as.IsEmpty() {
 		format = "empty"
 	} else {
 		format = ""
-		for i := this.top; i >= 0; i-- {
-			format += fmt.Sprintf("%+v", this.data[i])
+		for i := as.top; i >= 0; i-- {
+			format += fmt.Sprintf("%+v", as.data[i])
 			format += "->"
 		}
 		format += "end"

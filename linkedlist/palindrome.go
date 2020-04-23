@@ -3,7 +3,7 @@ package linkedlist
 /**
 判断是否是回文
 思路1  : 通过一个栈来存放链表前半段
-思路2 : 通过快慢指针来判断
+思路2 : 通过翻转前半部分对比来判断
  */
 
 func IsPalindromeByStack(l *LinkedList) bool {
@@ -94,4 +94,3 @@ func IsPalindromeByFastLowPoint(l *LinkedList) bool {
 	}
 	return isPalindrome
 }
-

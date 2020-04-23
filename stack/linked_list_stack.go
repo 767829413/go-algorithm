@@ -18,36 +18,36 @@ func NewLinkedListStack() *LinkedListStack {
 	return &LinkedListStack{TopNode: nil}
 }
 
-func (this *LinkedListStack) IsEmpty() bool {
-	return this.TopNode == nil
+func (lls *LinkedListStack) IsEmpty() bool {
+	return lls.TopNode == nil
 }
 
-func (this *LinkedListStack) Push(v interface{}) {
-	this.TopNode = &node{next: this.TopNode, val: v}
+func (lls *LinkedListStack) Push(v interface{}) {
+	lls.TopNode = &node{next: lls.TopNode, val: v}
 }
 
-func (this *LinkedListStack) Pop() interface{} {
-	if this.IsEmpty() {
+func (lls *LinkedListStack) Pop() interface{} {
+	if lls.IsEmpty() {
 		return nil
 	}
-	v := this.TopNode
-	this.TopNode = this.TopNode.next
+	v := lls.TopNode
+	lls.TopNode = lls.TopNode.next
 	return v
 }
 
-func (this *LinkedListStack) Top() interface{} {
-	return this.TopNode.val
+func (lls *LinkedListStack) Top() interface{} {
+	return lls.TopNode.val
 }
 
-func (this *LinkedListStack) Flush() {
-	this.TopNode = nil
+func (lls *LinkedListStack) Flush() {
+	lls.TopNode = nil
 }
 
-func (this *LinkedListStack) Print() (format string) {
-	if this.IsEmpty() {
+func (lls *LinkedListStack) Print() (format string) {
+	if lls.IsEmpty() {
 		format = "empty"
 	} else {
-		cur := this.TopNode
+		cur := lls.TopNode
 		format = ""
 		for cur != nil {
 			format += fmt.Sprintf("%+v", cur.val)

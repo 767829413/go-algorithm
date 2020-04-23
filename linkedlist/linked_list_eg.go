@@ -18,12 +18,12 @@ func NewListNode(v interface{}) *ListNode {
 	}
 }
 
-func (this *ListNode) Next() *ListNode {
-	return this.next
+func (ln *ListNode) Next() *ListNode {
+	return ln.next
 }
 
-func (this *ListNode) Value() interface{} {
-	return this.value
+func (ln *ListNode) Value() interface{} {
+	return ln.value
 }
 
 func NewLinkedList() *LinkedList {
@@ -32,7 +32,7 @@ func NewLinkedList() *LinkedList {
 }
 
 //在某个节点后面插入
-func (this *LinkedList) InsertAfter(p *ListNode, v interface{}) bool {
+func (ls *LinkedList) InsertAfter(p *ListNode, v interface{}) bool {
 	if p == nil {
 		return false
 	}
@@ -40,16 +40,16 @@ func (this *LinkedList) InsertAfter(p *ListNode, v interface{}) bool {
 	oldNext := p.next
 	p.next = newNode
 	newNode.next = oldNext
-	this.length++
+	ls.length++
 	return true
 }
 
 //在某个节点前面插入
-func (this *LinkedList) InsertBefore(p *ListNode, v interface{}) bool {
+func (ls *LinkedList) InsertBefore(p *ListNode, v interface{}) bool {
 	if p == nil {
 		return false
 	}
-	pre := this.head
+	pre := ls.head
 	for {
 		if pre.next == p {
 			break
@@ -62,45 +62,45 @@ func (this *LinkedList) InsertBefore(p *ListNode, v interface{}) bool {
 	newNode := NewListNode(v)
 	pre.next = newNode
 	newNode.next = p
-	this.length++
+	ls.length++
 	return true
 }
 
 //在链表头部插入
-func (this *LinkedList) InsertToHead(v interface{}) bool {
-	if this.length == 0 {
-		this.head = NewListNode(v)
+func (ls *LinkedList) InsertToHead(v interface{}) bool {
+	if ls.length == 0 {
+		ls.head = NewListNode(v)
 	} else {
 		newNode := NewListNode(v)
-		newNode.next = this.head
-		this.head = newNode
+		newNode.next = ls.head
+		ls.head = newNode
 	}
-	this.length++
+	ls.length++
 	return true
 }
 
 //在链表尾部插入
-func (this *LinkedList) InsertToTail(v interface{}) bool {
-	if this.length == 0 {
-		this.head = NewListNode(v)
-		this.length++
+func (ls *LinkedList) InsertToTail(v interface{}) bool {
+	if ls.length == 0 {
+		ls.head = NewListNode(v)
+		ls.length++
 		return true
 	} else {
-		cur := this.head
+		cur := ls.head
 		for cur.next != nil {
 			cur = cur.next
 		}
-		return this.InsertAfter(cur, v)
+		return ls.InsertAfter(cur, v)
 	}
 
 }
 
 //通过索引查找节点
-func (this *LinkedList) FindByIndex(index uint) *ListNode {
-	if index >= this.length {
+func (ls *LinkedList) FindByIndex(index uint) *ListNode {
+	if index >= ls.length {
 		return nil
 	}
-	cur := this.head
+	cur := ls.head
 	i := uint(0)
 	for ; i < index; i++ {
 		cur = cur.next
@@ -109,11 +109,11 @@ func (this *LinkedList) FindByIndex(index uint) *ListNode {
 }
 
 //删除传入的节点
-func (this *LinkedList) DeleteNode(p *ListNode) bool {
+func (ls *LinkedList) DeleteNode(p *ListNode) bool {
 	if p == nil {
 		return false
 	}
-	pre := this.head
+	pre := ls.head
 	for {
 		if pre.next == p {
 			break
@@ -124,13 +124,13 @@ func (this *LinkedList) DeleteNode(p *ListNode) bool {
 		}
 	}
 	pre.next = p.next
-	this.length--
+	ls.length--
 	return true
 }
 
 //打印链表
-func (this *LinkedList) Print() string {
-	cur := this.head
+func (ls *LinkedList) Print() string {
+	cur := ls.head
 	format := ""
 	for nil != cur {
 		format += fmt.Sprintf("%+v", cur.Value())

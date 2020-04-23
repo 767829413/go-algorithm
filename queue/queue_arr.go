@@ -4,14 +4,14 @@ import (
 	"sync"
 )
 
-type QueueArr struct {
+type Arr struct {
 	Mutx  *sync.RWMutex
 	Count int
 	Items []string
 }
 
-func NewQueueArr(n int) *QueueArr {
-	return &QueueArr{
+func NewQueueArr(n int) *Arr {
+	return &Arr{
 		Mutx:  &sync.RWMutex{},
 		Count: n,
 		Items: []string{},
@@ -19,7 +19,7 @@ func NewQueueArr(n int) *QueueArr {
 }
 
 //入队
-func (q *QueueArr) EnQueue(item string) bool {
+func (q *Arr) EnQueue(item string) bool {
 	if q.Count == len(q.Items) {
 		return false
 	}
@@ -28,7 +28,7 @@ func (q *QueueArr) EnQueue(item string) bool {
 }
 
 //出队
-func (q *QueueArr) DeQueue() (item string) {
+func (q *Arr) DeQueue() (item string) {
 	if len(q.Items) == 0 {
 		return ""
 	}

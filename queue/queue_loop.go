@@ -1,18 +1,18 @@
 package queue
 
-type QueueLoop struct {
+type Loop struct {
 	Items []string
 	Count int
 	Head  int
 	Tail  int
 }
 
-func NewQueueLoop(n int) *QueueLoop {
-	items := []string{}
+func NewQueueLoop(n int) *Loop {
+	var items []string
 	for i := 0; i < n; i++ {
 		items = append(items, "")
 	}
-	return &QueueLoop{
+	return &Loop{
 		Items: items,
 		Count: n,
 		Head:  0,
@@ -21,7 +21,7 @@ func NewQueueLoop(n int) *QueueLoop {
 }
 
 //入队
-func (q *QueueLoop) EnQueue(item string) bool {
+func (q *Loop) EnQueue(item string) bool {
 	if (q.Tail+1)%q.Count == q.Head {
 		return false
 	}
@@ -31,7 +31,7 @@ func (q *QueueLoop) EnQueue(item string) bool {
 }
 
 //出队
-func (q *QueueLoop) DeQueue() (item string) {
+func (q *Loop) DeQueue() (item string) {
 	if q.Head == q.Tail {
 		return
 	}
