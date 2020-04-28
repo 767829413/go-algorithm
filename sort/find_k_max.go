@@ -34,13 +34,13 @@ func partitionFind(arr []int, left, right int, k int, find *int) int {
 	j := left
 	for ; j < right; j = j + 1 {
 		if arr[j] > pivot {
-			swap(arr, i, j);
+			swap(arr, i, j)
 			i++
 		}
 	}
 	if i+1 == k {
 		*find = pivot
 	}
-	swap(arr, i, right);
+	swap(arr, i, right)
 	return i
 }

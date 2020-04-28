@@ -25,11 +25,11 @@ func partition(arr []int, left, right int) int {
 	i := left
 	for j := left; j < right; j = j + 1 {
 		if arr[j] < pivot {
-			swap(arr, i, j);
+			swap(arr, i, j)
 			i++
 		}
 	}
-	swap(arr, i, right);
+	swap(arr, i, right)
 	return i
 }
 

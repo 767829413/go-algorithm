@@ -17,16 +17,14 @@ func CountSort(arr []int) {
 	}
 
 	for i := 1; i <= max; i++ {
-		bucket[i] = bucket[i-1] + bucket[i]
+		bucket[i] += bucket[i-1]
 	}
 
 	tmp := make([]int, count, count)
-	for i := count - 1; i >= 0; i-- {
+	for i := range arr {
 		index := bucket[arr[i]] - 1
 		tmp[index] = arr[i]
 		bucket[arr[i]]--
 	}
-	for i := 0; i < count; i++ {
-		arr[i] = tmp[i]
-	}
+	copy(arr, tmp)
 }

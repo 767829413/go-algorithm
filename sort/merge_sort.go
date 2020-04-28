@@ -14,7 +14,7 @@ func divideMS(arr []int, left, right int) {
 		return
 	}
 	//取left right 中间位置
-	middle := (left + right) / 2
+	middle := (left + right) >> 1
 	//分治递归
 	divideMS(arr, left, middle)
 	divideMS(arr, middle+1, right)
@@ -23,10 +23,10 @@ func divideMS(arr []int, left, right int) {
 }
 
 func conquer(arr []int, left, middle, right int) {
-	tempArr := []int{}
+	var tempArr []int
 	pl := left
 	pr := middle + 1
-	for {
+	for pl <= middle && pr <= right {
 		if arr[pl] <= arr[pr] {
 			tempArr = append(tempArr, arr[pl])
 			pl++
@@ -34,23 +34,15 @@ func conquer(arr []int, left, middle, right int) {
 			tempArr = append(tempArr, arr[pr])
 			pr++
 		}
-		if pl > middle {
-			for pr <= right {
-				tempArr = append(tempArr, arr[pr])
-				pr++
-			}
-			break
-		}
-		if pr > right {
-			for pl <= middle {
-				tempArr = append(tempArr, arr[pl])
-				pl++
-			}
-			break
-		}
+	}
+	for pr <= right {
+		tempArr = append(tempArr, arr[pr])
+		pr++
+	}
+	for pl <= middle {
+		tempArr = append(tempArr, arr[pl])
+		pl++
 	}
 	//复制数据
-	for i := 0; left <= right; i, left = i+1, left+1 {
-		arr[left] = tempArr[i]
-	}
+	copy(arr[left:right+1], tempArr)
 }

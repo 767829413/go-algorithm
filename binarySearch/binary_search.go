@@ -1,4 +1,4 @@
-package search
+package binarySearch
 
 func EasyLoopBinarySearch(arr []int, find int, index *int) {
 	count := len(arr)
@@ -66,6 +66,7 @@ func FindFirstEqual(arr []int, find int, index *int) {
 		*index = lo
 	}
 }
+
 //查找指定值
 func FindEndEqual(arr []int, find int, index *int) {
 	count := len(arr)
