@@ -1,19 +1,49 @@
 package main
 
-import "fmt"
+import (
+	"context"
+	"fmt"
+	"strconv"
+	"sync"
+	"time"
+)
+
+type demo struct {
+	name string
+	age  int
+}
 
 func main() {
-	//print(3 % 2)
-	//print("\n")
-	//print(3 & (2 - 1))
+	data := make(map[interface{}]interface{})
+	k1 := "sdsds"
+	k2 := demo{"sdsd", 45,}
+	k3 := &demo{"wqeqwr", 36,}
+	data[k1] = 1111
+	data[k2] = 2222
+	data[k3] = 3333
 
-	//k := randomstring.RandStringBytesMaskImprSrc(3)
-	//k := "ssdf"
-	//num := xxhash.ChecksumString32(k)
-	//fmt.Println(k)
-	//fmt.Println((num ^ (num >> 16)) & (uint32(10 - 1)))
-	d1 := []int{0, 2, 4, 6, 8}
-	d2 := make([]int, len(d1)*2)
-	copy(d2, d1)
-	fmt.Println(d2)
+	fmt.Println(data[k1])
+	fmt.Println(data[k2])
+	fmt.Println(data[k3])
+	fmt.Println(data[demo{"sdsd", 45,}])
+	fmt.Println(data[&demo{"wqeqwr", 36,}])
+}
+
+func test1() {
+	t := time.NewTicker(100 * time.Millisecond)
+	ctx := context.Background()
+	var wg sync.WaitGroup
+	for i := 0; i < 12; i++ {
+		wg.Add(1)
+		go func(i int, ctx context.Context) {
+			_, cancel := context.WithCancel(ctx)
+			defer wg.Done()
+			defer cancel()
+			select {
+			case <-t.C:
+				fmt.Println("ok" + "-" + strconv.Itoa(i))
+			}
+		}(i, ctx)
+	}
+	wg.Wait()
 }
