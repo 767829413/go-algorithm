@@ -63,7 +63,7 @@ func (bst *BinarySearchTree) Insert(v interface{}, index int) {
 
 /**
 删除节点要注意该节点左右均存在的情况,
-对于一个二叉查找树来说,删除的节点是比它的左树都大,右树都小的存在
+对于一个二叉查找树来说,替换该删除的节点应该是它右树的最小节点
  */
 func (bst *BinarySearchTree) Delete(index int) {
 	var fNode *node = nil
@@ -81,12 +81,12 @@ func (bst *BinarySearchTree) Delete(index int) {
 	if node == nil {
 		return
 	}
-	//删除左右节点均存在的
+	//如果要删除的节点下左右均在,则和该节点右树的最小叶子节点交换位置
 	if node.Left != nil && node.Right != nil {
 		//查找最小右树节点
 		minNode := node.Right
 		minFNode := node
-		if minNode.Right != nil {
+		for minNode.Left != nil {
 			minFNode = minNode
 			minNode = minNode.Left
 		}
@@ -157,7 +157,7 @@ func (bst *BinarySearchTree) midOrderTraverse(node *node) {
 	if node == nil {
 		return
 	}
-	fmt.Println(node.V)
 	bst.midOrderTraverse(node.Left)
+	fmt.Println(node.V)
 	bst.midOrderTraverse(node.Right)
 }
