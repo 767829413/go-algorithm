@@ -53,7 +53,7 @@ func (ht *HashTable) Put(k string, v interface{}) {
 			ht.resize()
 		}
 	} else {
-		//出现散列冲突,利用链表法解决(线性探测针,二次探测,多重hash,链表法各有千秋)
+		//出现散列冲突,利用链表法解决(线性探测,二次探测,多重hash,链表法各有千秋)
 		for tmp.next != nil {
 			tmp = tmp.next
 			//k相同则覆盖,结束插入
