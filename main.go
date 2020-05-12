@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 )
@@ -13,20 +14,27 @@ type demo struct {
 	age  int
 }
 
-func main() {
-	data := make(map[interface{}]interface{})
-	k1 := "sdsds"
-	k2 := demo{"sdsd", 45,}
-	k3 := &demo{"wqeqwr", 36,}
-	data[k1] = 1111
-	data[k2] = 2222
-	data[k3] = 3333
+const (
+	NUM1 = iota << 5
+	NUM2
+	NUM3
+)
 
-	fmt.Println(data[k1])
-	fmt.Println(data[k2])
-	fmt.Println(data[k3])
-	fmt.Println(data[demo{"sdsd", 45,}])
-	fmt.Println(data[&demo{"wqeqwr", 36,}])
+func main() {
+	fmt.Println(NUM1)
+	fmt.Println(NUM2)
+	fmt.Println(NUM3)
+}
+
+func ParseInputDidString(did string) (string, []string) {
+	data := make([]string, 0)
+	if strings.Contains(did, "#") {
+		data = strings.Split(did, "#")
+	}
+	if len(data) > 1 {
+		data = data[1:]
+	}
+	return did, data
 }
 
 func test1() {
@@ -46,4 +54,20 @@ func test1() {
 		}(i, ctx)
 	}
 	wg.Wait()
+}
+
+func test2() {
+	data := make(map[interface{}]interface{})
+	k1 := "sdsds"
+	k2 := demo{"sdsd", 45,}
+	k3 := &demo{"wqeqwr", 36,}
+	data[k1] = 1111
+	data[k2] = 2222
+	data[k3] = 3333
+
+	fmt.Println(data[k1])
+	fmt.Println(data[k2])
+	fmt.Println(data[k3])
+	fmt.Println(data[demo{"sdsd", 45,}])
+	fmt.Println(data[&demo{"wqeqwr", 36,}])
 }
