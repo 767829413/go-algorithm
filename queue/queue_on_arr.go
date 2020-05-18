@@ -24,6 +24,14 @@ func NewArrayQueue(n int) *ArrayQueue {
 	}
 }
 
+func (aq *ArrayQueue) Full() bool {
+	return aq.tail == aq.cap
+}
+
+func (aq *ArrayQueue) Empty() bool {
+	return aq.head == aq.tail
+}
+
 func (aq *ArrayQueue) EnQueue(v interface{}) bool {
 	if aq.tail == aq.cap {
 		return false

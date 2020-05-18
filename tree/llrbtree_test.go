@@ -8,7 +8,7 @@ import (
 
 func TestNewLLRBTree(t *testing.T) {
 	h := NewLLRBTree()
-	num := 12
+	num := 12000
 	testData := make(map[int]string, num)
 	for i := 1; i < num; i++ {
 		v := randomstring.RandStringBytesMaskImprSrc(2)
