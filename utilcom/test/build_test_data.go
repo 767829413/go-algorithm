@@ -1,4 +1,4 @@
-package sort
+package test
 
 import (
 	"fmt"
