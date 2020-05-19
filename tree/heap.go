@@ -36,6 +36,28 @@ func (h *Heap) DelMax() {
 	Heapify(h.v, 1, h.count)
 }
 
+/**
+构建堆
+在利用数组存储时(根节点0不用),从下标1开始到n/2,都是非叶子节点,n/2到n均为叶子节点
+堆是完全二叉树，求最后的非叶子节点即是求最大的叶子节点的父节点
+最大的叶子节点下标为n，他的父节点为n/2，这是最后一个非叶子节点，所以n/2+1到n都是叶子节点
+*/
+func BuildHeap(arr []int, n int) {
+	for i := n >> 1; i > 1; i-- {
+		Heapify(arr, i, n)
+	}
+}
+
+func HeapSort(arr []int, n int) {
+	BuildHeap(arr, n)
+	i := n
+	for i > 1 {
+		arr[i], arr[1] = arr[1], arr[i]
+		i--
+		Heapify(arr, 1, i)
+	}
+}
+
 //堆化
 func Heapify(arr []int, start, count int) {
 	for {

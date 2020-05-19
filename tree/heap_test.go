@@ -23,3 +23,12 @@ func TestHeap(t *testing.T) {
 		t.Log(IsBigTopHeap(h.v, h.count))
 	}
 }
+
+func TestHeapSort(t *testing.T) {
+	num := 90000
+	arr := test.BuildTestArr(num, 100, 0)
+	arr = append([]int{0}, arr...)
+	//t.Log(arr)
+	HeapSort(arr, len(arr)-1)
+	//t.Log(arr)
+}

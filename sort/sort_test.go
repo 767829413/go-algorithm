@@ -48,6 +48,12 @@ func TestBucketSortSimple(t *testing.T) {
 	test.PrintSortComparison(arr, BucketSortSimple)
 }
 
+func TestHeapSort(t *testing.T) {
+	arr := test.BuildTestArr(500, 1000, 0)
+	arr = append([]int{0}, arr...)
+	test.PrintSortComparison(arr, HeapSort)
+}
+
 func TestFindKMax(t *testing.T) {
 	arr := test.BuildTestArr(5, 50, 0)
 	fmt.Println(arr)
