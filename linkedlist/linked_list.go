@@ -2,7 +2,6 @@ package linkedlist
 
 import (
 	"fmt"
-	"sync"
 )
 
 const (
@@ -18,14 +17,12 @@ type SingleList struct {
 	Head  *Node
 	Tail  *Node
 	Size  int
-	mutex *sync.RWMutex
 }
 
 func (sl *SingleList) Init() {
 	sl.Head = nil
 	sl.Tail = nil
 	sl.Size = 0
-	sl.mutex = &sync.RWMutex{}
 }
 
 //添加节点到尾部
@@ -33,8 +30,6 @@ func (sl *SingleList) Append(node *Node) bool {
 	if node == nil {
 		return false
 	}
-	sl.mutex.Lock()
-	defer sl.mutex.Unlock()
 	if sl.Size == 0 {
 		sl.Head = node
 		sl.Tail = node
@@ -57,8 +52,6 @@ func (sl *SingleList) Insert(index int, node *Node) bool {
 	if index > sl.Size {
 		return false
 	}
-	sl.mutex.Lock()
-	defer sl.mutex.Unlock()
 	if index == 0 {
 		node.Next = sl.Head
 		sl.Head = node
@@ -82,8 +75,6 @@ func (sl *SingleList) Delete(index int) bool {
 	if sl == nil || sl.Size == 0 || index > tailIndex {
 		return false
 	}
-	sl.mutex.Lock()
-	defer sl.mutex.Unlock()
 	if index == 0 {
 		next := sl.Head.Next
 		sl.Head = next
@@ -112,8 +103,6 @@ func (sl *SingleList) Find(index int) (node *Node) {
 	if sl == nil || sl.Size == 0 || index > tailIndex {
 		return nil
 	}
-	sl.mutex.Lock()
-	defer sl.mutex.Unlock()
 	if index == 0 {
 		return sl.Head
 	}
