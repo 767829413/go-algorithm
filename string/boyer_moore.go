@@ -31,7 +31,7 @@ func BoyerMooreMatch(a, b []rune, n, m int) int {
 		ll := int(math.Max(float64(x), float64(y)))
 		if ll == 0 {
 			i++
-		}else{
+		} else {
 			i = i + ll
 		}
 
@@ -59,10 +59,12 @@ func generatePre(b []rune, m int) (suffix []int, prefix []bool) {
 	for i := 0; i < m-1; i++ {
 		j := i
 		l := 0
+		//fmt.Println("外", "j=", j, "l=", l, "(m-1-l)=", m-1-l, "b[j]=", b[j], "b[m-1-l]=", b[m-1-l])
 		for j >= 0 && b[j] == b[m-1-l] {
 			j--
 			l++
 			suffix[l] = j + 1
+			//fmt.Println("内", "j=", j, "l=", l, "(m-1-l)=", m-1-l, )
 		}
 		if j == -1 {
 			prefix[l] = true

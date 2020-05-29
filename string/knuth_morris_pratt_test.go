@@ -1,11 +1,8 @@
 package string
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
-func TestBoyerMooreMatch(t *testing.T) {
+func TestKnuthMorrisPrattMatch(t *testing.T) {
 	str1 := `毛选第五卷包括毛泽东在中华人民共和国建国后的文章共70篇，截至1957年。1977年4月15日由人民出版社正式出版发行，定价1.25元人民币。
 本卷1967年开始筹备，原负责筹备工作的是中央文革小组理论组，以周恩来为名义上的负责人，不久即停止。1969年后，在康生的领导下再次开始准备工作，但不久后因未获得毛泽东的认可，工作又一次停止。[5]
 毛泽东逝世后，华国锋决定继续出版毛选第五卷，在击溃四人帮后，于1976年10月8日再度开始筹备工作，由汪东兴为名义负责人，李鑫、吴泠西、胡绳、熊复实际负责编辑工作。
@@ -14,12 +11,6 @@ func TestBoyerMooreMatch(t *testing.T) {
 	str2 := "《毛泽东"
 	str1Rune := []rune(str1)
 	str2Rune := []rune(str2)
-	res := BoyerMooreMatch(str1Rune, str2Rune, len(str1Rune), len(str2Rune))
-	t.Log(res)//458
-}
-
-func TestBruteForceDebug(t *testing.T) {
-	str := "cabcab"
-	fmt.Println(str)
-	t.Log(generatePre([]rune(str), len(str)))
+	res := KnuthMorrisPrattMatch(str1Rune, str2Rune, len(str1Rune), len(str2Rune))
+	t.Log(res) //458
 }
