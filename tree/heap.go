@@ -80,6 +80,8 @@ func Heapify(arr []int, start, count int) {
 		if flagLeft && flagRight {
 			if arr[left] > arr[right] {
 				maxIndex = left
+			} else {
+				maxIndex = right
 			}
 		}
 		arr[maxIndex], arr[start] = arr[start], arr[maxIndex]
