@@ -1,7 +1,5 @@
 package dynamicprogramming
 
-import "fmt"
-
 /**
 示例1
 通过记录状态,防止重复操作
@@ -146,7 +144,6 @@ func (b *bageg3) GetMax() int {
 			}
 		}
 	}
-	fmt.Println(b.states)
 	for i := b.lw; i >= 0; i-- {
 		if b.states[i] {
 			return i

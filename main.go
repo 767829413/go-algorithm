@@ -2,10 +2,13 @@ package main
 
 import "fmt"
 
+type sss struct {
+	name string
+	age  int
+}
+
 func main() {
-	var d int
-	for i := 0; i < 8; i++ {
-		d = d << 1
-		fmt.Println(d)
-	}
+	fmt.Println(int(^uint(0) >> 1))
+	fmt.Println(^int(^uint(0) >> 1))
+	fmt.Println(^int(^uint(0) >> 1)-1)
 }
