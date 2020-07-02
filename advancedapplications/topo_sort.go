@@ -89,11 +89,11 @@ func (g *graph) initInDegree() map[string]int {
 }
 
 func (g *graph) TopoSortByDFS() {
-	visted := make(map[string]bool, g.v)
+	visited := make(map[string]bool, g.v)
 	for k := range g.obj {
-		if _, ok := visted[k]; !ok {
-			visted[k] = true
-			g.dfs(k, visted)
+		if _, ok := visited[k]; !ok {
+			visited[k] = true
+			g.dfs(k, visited)
 		}
 	}
 }
