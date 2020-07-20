@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 type sss struct {
 	name string
@@ -8,8 +11,35 @@ type sss struct {
 }
 
 func main() {
-	test1()
-	test2()
+
+}
+
+func testa() {
+	start1 := time.Now()
+	for i := 0; i < 100; i++ {
+		for i := 0; i < 1000; i++ {
+			for i := 0; i < 10000; i++ {
+			}
+		}
+	}
+	fmt.Println(time.Since(start1))
+	start := time.Now()
+	for i := 0; i < 10000; i++ {
+		for i := 0; i < 1000; i++ {
+			for i := 0; i < 100; i++ {
+			}
+		}
+	}
+	fmt.Println(time.Since(start))
+}
+
+func testb() {
+	for i := 0; i < 10000; i++ {
+		for i := 0; i < 1000; i++ {
+			for i := 0; i < 100; i++ {
+			}
+		}
+	}
 }
 
 func test1() {
