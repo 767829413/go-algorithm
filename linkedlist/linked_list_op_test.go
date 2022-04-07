@@ -1,9 +1,10 @@
 package linkedlist
 
 import (
-	"algorithm/utilcom/randomstring"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestReverseLinkedList(t *testing.T) {

@@ -2,9 +2,10 @@ package stack
 
 import (
 	"fmt"
-	"algorithm/linkedlist"
-	"algorithm/utilcom/randomstring"
 	"testing"
+
+	"github.com/767829413/go-algorithm/linkedlist"
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
 )
 
 func TestPushAndPop(t *testing.T) {

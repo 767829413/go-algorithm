@@ -1,8 +1,9 @@
 package divideconquer
 
 import (
-	"algorithm/utilcom/test"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/test"
 )
 
 func TestCount(t *testing.T) {

@@ -1,10 +1,11 @@
 package tree
 
 import (
-	"algorithm/utilcom/randomstring"
-	"github.com/stretchr/testify/assert"
 	"math/rand"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestNewBinarySearchTree_Inset_Find(t *testing.T) {

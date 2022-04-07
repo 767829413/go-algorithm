@@ -1,9 +1,10 @@
 package sort
 
 import (
-	"algorithm/utilcom/test"
 	"fmt"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/test"
 )
 
 func TestBubbleSort(t *testing.T) {

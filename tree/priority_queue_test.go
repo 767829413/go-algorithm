@@ -1,9 +1,10 @@
 package tree
 
 import (
-	"algorithm/utilcom/randomstring"
 	"math/rand"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
 )
 
 func TestPQueue(t *testing.T) {

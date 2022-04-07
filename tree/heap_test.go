@@ -1,8 +1,9 @@
 package tree
 
 import (
-	"algorithm/utilcom/test"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/test"
 )
 
 func TestHeap(t *testing.T) {

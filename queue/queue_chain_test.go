@@ -2,9 +2,10 @@ package queue
 
 import (
 	"fmt"
-	"algorithm/linkedlist"
-	"algorithm/utilcom/randomstring"
 	"testing"
+
+	"github.com/767829413/go-algorithm/linkedlist"
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
 )
 
 func TestQueueChainEnDeQueue(t *testing.T) {
@@ -17,7 +18,7 @@ func TestQueueChainEnDeQueue(t *testing.T) {
 	}
 	q.Items.Print()
 	fmt.Println("----")
-	for ; q.Items.Size != 0; {
+	for q.Items.Size != 0 {
 		fmt.Println(q.DeQueue())
 	}
 	q.Items.Print()

@@ -1,9 +1,10 @@
 package hashtable
 
 import (
-	"algorithm/utilcom/randomstring"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestHashTable(t *testing.T) {

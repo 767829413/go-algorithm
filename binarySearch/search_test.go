@@ -1,10 +1,11 @@
 package binarySearch
 
 import (
-	"algorithm/sort"
-	"algorithm/utilcom/test"
 	"fmt"
 	"testing"
+
+	"github.com/767829413/go-algorithm/sort"
+	"github.com/767829413/go-algorithm/utilcom/test"
 )
 
 type tf func(arr []int, find int, index *int)

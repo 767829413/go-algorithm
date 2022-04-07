@@ -1,8 +1,9 @@
 package linkedlist
 
 import (
-	"algorithm/utilcom/randomstring"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
 )
 
 func TestInsertToHead(t *testing.T) {

@@ -2,8 +2,9 @@ package queue
 
 import (
 	"fmt"
-	"algorithm/utilcom/randomstring"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
 )
 
 func TestEnAndDeQueue(t *testing.T) {
@@ -14,7 +15,7 @@ func TestEnAndDeQueue(t *testing.T) {
 		fmt.Println(q)
 	}
 	fmt.Println("----")
-	for ; len(q.Items) != 0; {
+	for len(q.Items) != 0 {
 		fmt.Println(q.DeQueue())
 	}
 	fmt.Println(q)

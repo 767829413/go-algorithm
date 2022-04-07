@@ -2,8 +2,9 @@ package queue
 
 import (
 	"fmt"
-	"algorithm/utilcom/randomstring"
 	"testing"
+
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
 )
 
 func TestQueueLoopEnDe(t *testing.T) {

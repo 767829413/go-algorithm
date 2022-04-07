@@ -1,7 +1,7 @@
 package queue
 
 import (
-	"algorithm/linkedlist"
+	"github.com/767829413/go-algorithm/linkedlist"
 )
 
 type QueueChain struct {

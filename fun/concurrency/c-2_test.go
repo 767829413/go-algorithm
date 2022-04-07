@@ -1,7 +1,6 @@
 package concurrency
 
 import (
-	"algorithm/utilcom/randomstring"
 	"crypto/rand"
 	"errors"
 	"log"
@@ -9,6 +8,8 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/767829413/go-algorithm/utilcom/randomstring"
 )
 
 func TestChannelUse(t *testing.T) {
@@ -23,7 +24,7 @@ func TestChannelUse(t *testing.T) {
 }
 
 func toOp(strs []string) {
-	errs := make(chan error,len(strs))
+	errs := make(chan error, len(strs))
 	for _, v := range strs {
 		go func(string) {
 			_, err := op(v)
