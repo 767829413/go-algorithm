@@ -1,0 +1,1542 @@
+[
+    {
+        "id": "did:wlk:ch8LaaoWM7LT1FmfcQiLEsfCH6XD8bawNaghJ#default",
+        "type": "info",
+        "appid": "3d971acb296f4bad95f913ff8306da3d",
+        "version": "0.0.15",
+        "name": "全文检索运营商",
+        "sub_org_key": "",
+        "app_type": "app_dev"
+    },
+    {
+        "id": "did:wlk:ch8LaaoWM7LT1FmfcQiLEsfCH6XD8bawNaghJ#topo",
+        "type": "topo",
+        "data": [
+            {
+                "app_type": "app",
+                "appid": "3d971acb296f4bad95f913ff8306da3d",
+                "children": [
+                    {
+                        "app_type": "service",
+                        "appid": "sihpkp4z3rg7wvsozr5lkta9nxxiocqj",
+                        "is_unique": "",
+                        "name": "Ucenter",
+                        "operator": "",
+                        "properties": {
+                            "no_need_assign_channel": 0,
+                            "no_need_deploy": 0
+                        },
+                        "real_appid": "",
+                        "site": {
+                            "siteuid": "s105",
+                            "clusteruid": "huawei-singapore-105"
+                        },
+                        "target_channel": {
+                            "alias": "default",
+                            "data": "sal2000016ff24e32203221icpsrcc6x",
+                            "group": "",
+                            "mode": "static"
+                        },
+                        "version": "0.1.36"
+                    },
+                    {
+                        "app_type": "service",
+                        "appid": "dwvzflvcgqgkmtqumindtwrylbakozn3",
+                        "is_unique": "",
+                        "name": "权限管理V2",
+                        "operator": "",
+                        "properties": {
+                            "no_need_assign_channel": 0,
+                            "no_need_deploy": 0
+                        },
+                        "site": {
+                            "siteuid": "s105",
+                            "clusteruid": "huawei-singapore-105"
+                        },
+                        "target_channel": {
+                            "alias": "default",
+                            "data": "sal2000016ff24e32203221idmfbccby",
+                            "group": "",
+                            "mode": "static"
+                        },
+                        "version": "0.0.59"
+                    },
+                    {
+                        "app_type": "service",
+                        "appid": "doatnnuotjlwbh6r83jed1m7yvwrps5q",
+                        "is_unique": "",
+                        "name": "账号服务",
+                        "operator": "",
+                        "properties": {
+                            "no_need_assign_channel": 0,
+                            "no_need_deploy": 0
+                        },
+                        "site": {
+                            "siteuid": "s105",
+                            "clusteruid": "huawei-singapore-105"
+                        },
+                        "target_channel": {
+                            "alias": "default",
+                            "data": "sal2000016ff24e32203221kmxbqccmw",
+                            "group": "",
+                            "mode": "static"
+                        },
+                        "version": "1.0.99"
+                    },
+                    {
+                        "app_type": "service",
+                        "appid": "6ca21e28b21745e796a4a83eb89df709",
+                        "is_unique": "",
+                        "name": "应用管理服务",
+                        "operator": "",
+                        "properties": {
+                            "no_need_assign_channel": 0,
+                            "no_need_deploy": 0
+                        },
+                        "site": "",
+                        "target_channel": {
+                            "alias": "default",
+                            "data": "sal2000016ff24e32203221klkrsccfu",
+                            "group": "",
+                            "mode": "static"
+                        },
+                        "version": "0.0.404"
+                    },
+                    {
+                        "app_type": "service",
+                        "appid": "7db5997baab04c3981286c9c2f2178b4",
+                        "is_unique": "",
+                        "name": "全文检索服务",
+                        "operator": "",
+                        "properties": {
+                            "no_need_assign_channel": 0,
+                            "no_need_deploy": 0
+                        },
+                        "site": {
+                            "siteuid": "s105",
+                            "clusteruid": "huawei-singapore-105"
+                        },
+                        "target_channel": {
+                            "alias": "",
+                            "data": "sal2000016ff24e322032220gqtwcc7n",
+                            "group": "sal2907x16ff24e322032220gqtxcca3",
+                            "mode": "dynamic"
+                        },
+                        "unique_key": "caa47188725180729cd8b8c75fd2d5ce",
+                        "version": "0.0.9"
+                    }
+                ],
+                "is_unique": "",
+                "name": "全文检索运营商",
+                "operator": "",
+                "properties": {
+                    "no_need_assign_channel": 0,
+                    "no_need_deploy": 0
+                },
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                },
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221h0j1iccvh"
+                },
+                "version": "0.0.15"
+            },
+            {
+                "app_type": "service",
+                "appid": "sihpkp4z3rg7wvsozr5lkta9nxxiocqj",
+                "children": [],
+                "is_unique": "",
+                "name": "Ucenter",
+                "operator": "",
+                "properties": {
+                    "no_need_assign_channel": 0,
+                    "no_need_deploy": 0
+                },
+                "real_appid": "",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                },
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221icpsrcc6x"
+                },
+                "version": "0.1.36"
+            },
+            {
+                "app_type": "service",
+                "appid": "dwvzflvcgqgkmtqumindtwrylbakozn3",
+                "children": [],
+                "is_unique": "",
+                "name": "权限管理V2",
+                "operator": "",
+                "properties": {
+                    "no_need_assign_channel": 0,
+                    "no_need_deploy": 0
+                },
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                },
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221idmfbccby"
+                },
+                "version": "0.0.59"
+            },
+            {
+                "app_type": "service",
+                "appid": "doatnnuotjlwbh6r83jed1m7yvwrps5q",
+                "children": [
+                    {
+                        "app_type": "service",
+                        "appid": "obn6mjks9ng3yipwqxp71vb8le0hcgdz",
+                        "is_unique": "",
+                        "name": "短信服务",
+                        "operator": "",
+                        "properties": {
+                            "no_need_assign_channel": 0,
+                            "no_need_deploy": 0
+                        },
+                        "site": {
+                            "siteuid": "s105",
+                            "clusteruid": "huawei-singapore-105"
+                        },
+                        "target_channel": {
+                            "alias": "default",
+                            "data": "sal2000016ff24e32203221kmxbqcczj",
+                            "group": "",
+                            "mode": "static"
+                        },
+                        "version": "1.0.13"
+                    }
+                ],
+                "is_unique": "",
+                "name": "账号服务",
+                "operator": "",
+                "properties": {
+                    "no_need_assign_channel": 0,
+                    "no_need_deploy": 0
+                },
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                },
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221kmxbqccmw"
+                },
+                "version": "1.0.99"
+            },
+            {
+                "app_type": "service",
+                "appid": "obn6mjks9ng3yipwqxp71vb8le0hcgdz",
+                "children": [],
+                "is_unique": "",
+                "name": "短信服务",
+                "operator": "",
+                "properties": {
+                    "no_need_assign_channel": 0,
+                    "no_need_deploy": 0
+                },
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                },
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221kmxbqcczj"
+                },
+                "version": "1.0.13"
+            },
+            {
+                "app_type": "service",
+                "appid": "6ca21e28b21745e796a4a83eb89df709",
+                "children": [],
+                "is_unique": "",
+                "name": "应用管理服务",
+                "operator": "",
+                "properties": {
+                    "no_need_assign_channel": 0,
+                    "no_need_deploy": 0
+                },
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                },
+                "target_channel": {
+                    "appkey": "s105jsvzuyvfyrltxa9eyz7hqdioyo8z",
+                    "channel": "2",
+                    "data": "sal2000016ff24e32203221klkrsccfu"
+                },
+                "version": "0.0.404"
+            },
+            {
+                "app_type": "service",
+                "appid": "7db5997baab04c3981286c9c2f2178b4",
+                "children": [],
+                "is_unique": "",
+                "name": "全文检索服务",
+                "operator": "",
+                "properties": {
+                    "no_need_assign_channel": 0,
+                    "no_need_deploy": 0
+                },
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                },
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e322032220gqtwcc7n"
+                },
+                "version": "0.0.9"
+            }
+        ]
+    },
+    {
+        "id": "did:wlk:ch8LaaoWM7LT1FmfcQiLEsfCH6XD8bawNaghJ#channel_pods",
+        "type": "channel_pods",
+        "data": [
+            {
+                "appid": "3d971acb296f4bad95f913ff8306da3d",
+                "version": "0.0.15",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221h0j1iccvh",
+                    "group": ""
+                },
+                "pods": [
+                    {
+                        "name": "21ec3a0e263461e3ec6962f93198cc21",
+                        "pod_instance": "s1059086xusebwsc2203253wlhdj8cmw",
+                        "annotation": "backend"
+                    },
+                    {
+                        "name": "c45464f67cbd4db788d50136c561c943",
+                        "pod_instance": "b0e5f12c5ffa41b489a77ea57e676679",
+                        "annotation": "import"
+                    }
+                ]
+            },
+            {
+                "appid": "sihpkp4z3rg7wvsozr5lkta9nxxiocqj",
+                "version": "0.1.36",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221icpsrcc6x",
+                    "group": ""
+                },
+                "pods": [
+                    {
+                        "name": "sal2000089a2f457210112eaenjkefqc",
+                        "pod_instance": "s1059086xusebwsc2203253wlhdk8cza",
+                        "annotation": "backend"
+                    }
+                ]
+            },
+            {
+                "appid": "dwvzflvcgqgkmtqumindtwrylbakozn3",
+                "version": "0.0.59",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221idmfbccby",
+                    "group": ""
+                },
+                "pods": [
+                    {
+                        "name": "sal2000089a2f457201229eaen5201w9",
+                        "pod_instance": "s1059086xusebwsc2203253wlhdk8cbr",
+                        "annotation": "backend"
+                    },
+                    {
+                        "name": "s1050000xusebwsc2203253wlhcv8ch6",
+                        "pod_instance": "s1050000xusebwsc2203253wlhcv8cy6",
+                        "annotation": "data_update"
+                    }
+                ]
+            },
+            {
+                "appid": "doatnnuotjlwbh6r83jed1m7yvwrps5q",
+                "version": "1.0.99",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221kmxbqccmw",
+                    "group": ""
+                },
+                "pods": [
+                    {
+                        "name": "sal2000089a2f457210306eaep9refse",
+                        "pod_instance": "s1059086xusebwsc2203253wlhdm8cwj",
+                        "annotation": "backend"
+                    }
+                ]
+            },
+            {
+                "appid": "obn6mjks9ng3yipwqxp71vb8le0hcgdz",
+                "version": "1.0.13",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221kmxbqcczj",
+                    "group": ""
+                },
+                "pods": [
+                    {
+                        "name": "sal2000089a2f457210423eaem6gefsy",
+                        "pod_instance": "s1059086xusebwsc2203253wlhdl8cz7",
+                        "annotation": "backend"
+                    }
+                ]
+            },
+            {
+                "appid": "6ca21e28b21745e796a4a83eb89df709",
+                "version": "0.0.404",
+                "target_channel": {
+                    "appkey": "s105jsvzuyvfyrltxa9eyz7hqdioyo8z",
+                    "channel": "2",
+                    "data": "sal2000016ff24e32203221klkrsccfu",
+                    "group": ""
+                },
+                "pods": []
+            },
+            {
+                "appid": "7db5997baab04c3981286c9c2f2178b4",
+                "version": "0.0.9",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e322032220gqtwcc7n",
+                    "group": "sal2907x16ff24e322032220gqtxcca3"
+                },
+                "pods": [
+                    {
+                        "name": "426713be94a529f05afce2ddc77d91e6",
+                        "pod_instance": "s1059086xusebwsc2203253wlhdq8cvr",
+                        "annotation": "backend"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "did:wlk:ch8LaaoWM7LT1FmfcQiLEsfCH6XD8bawNaghJ#pod_instances",
+        "type": "pod_instances",
+        "data": [
+            {
+                "annotation": "backend",
+                "appid": "3d971acb296f4bad95f913ff8306da3d",
+                "circuit_breaker_action": "",
+                "circuit_breaker_containers": [],
+                "circuit_breaker_setting": [],
+                "containers": [
+                    {
+                        "args": [],
+                        "command": [
+                            ""
+                        ],
+                        "envs": [],
+                        "image_asset": "",
+                        "name": "sal2000016ff24e32203221h0j1jcctz",
+                        "resources": [
+                            {
+                                "name": "",
+                                "properties": {
+                                    "cpu_limit": "500m",
+                                    "cpu_request": "10m",
+                                    "memory_limit": "256Mi",
+                                    "memory_request": "128Mi"
+                                },
+                                "sku_id": 1,
+                                "type": "quota",
+                                "logic_instance_key": "s10500uvxusebwsc2203253wkulo00uo",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": ""
+                            },
+                            {
+                                "name": "DB1",
+                                "properties": {
+                                    "memory": "",
+                                    "qps": "",
+                                    "storage": ""
+                                },
+                                "sku_id": 33,
+                                "type": "mysql",
+                                "use_type": "mysql_db",
+                                "logic_instance_key": "s10501mnxusebwsc2203253wkulo00ia",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkzc700mn",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": []
+                            }
+                        ],
+                        "asset_key": "3d971acb296f4bad95f913ff83000100@0.0.15"
+                    }
+                ],
+                "deploy_labels": [
+                    "sidecar"
+                ],
+                "health_check_uri": "healthcheck",
+                "init_containers": [],
+                "is_root": 1,
+                "name": "21ec3a0e263461e3ec6962f93198cc21",
+                "name_literal": "default",
+                "networks": [
+                    {
+                        "backend_protocol": "http",
+                        "cors_allow_origins": "",
+                        "domain": "",
+                        "need_expose": 1,
+                        "need_https": 0,
+                        "node_ip": "",
+                        "node_port": 0,
+                        "proxy_body_size": "",
+                        "ssl_certificate_data": "",
+                        "ssl_key_data": "",
+                        "ssl_passthrough": "",
+                        "ssl_redirct": 0,
+                        "target_port": 0,
+                        "white_list": []
+                    }
+                ],
+                "node_name": "全文检索运营商",
+                "pod_runtime_require": "all",
+                "pod_type": "permanent",
+                "replicas": 1,
+                "repo_key": "sal2000016ff24e32203221ir57vcc1o",
+                "setting_form": [],
+                "support_ssh": "false",
+                "version": "0.0.15",
+                "pod_instance": "s1059086xusebwsc2203253wlhdj8cmw",
+                "deploy_mode": "share",
+                "pod_resource_sku_id": 34,
+                "bl_info": {
+                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                },
+                "option": "",
+                "logic_instance_key": "s10500uvxusebwsc2203253wkulo00uo",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                }
+            },
+            {
+                "annotation": "backend",
+                "appid": "sihpkp4z3rg7wvsozr5lkta9nxxiocqj",
+                "bind_to_pod_name": "",
+                "containers": [
+                    {
+                        "args": [],
+                        "assest_key": "",
+                        "command": [
+                            ""
+                        ],
+                        "envs": [],
+                        "image_asset": "",
+                        "name": "sal2000089a2f457210112eaenjlefl3",
+                        "package_options": [],
+                        "resources": [
+                            {
+                                "levels": [],
+                                "name": "",
+                                "properties": {
+                                    "cpu_limit": "500m",
+                                    "cpu_request": "50m",
+                                    "level": "",
+                                    "memory_limit": "512Mi",
+                                    "memory_request": "256Mi"
+                                },
+                                "sku_id": 1,
+                                "type": "quota",
+                                "unique_key": "66ea6f217b784eb595bd5f97f3835a86",
+                                "logic_instance_key": "s10500uvxusebwsc2203253wkulo009t",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": ""
+                            },
+                            {
+                                "name": "DB1",
+                                "properties": {
+                                    "memory": "",
+                                    "qps": "",
+                                    "storage": ""
+                                },
+                                "sku_id": 33,
+                                "type": "mysql",
+                                "unique_key": "3e3874241aa24db483c863d608195ee5",
+                                "use_type": "mysql_db",
+                                "logic_instance_key": "s10501mnxusebwsc2203253wkulo0023",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkzc700mn",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": []
+                            }
+                        ],
+                        "asset_key": "sihpkp4z3rg7wvsozr5lkta9nx000100@0.1.36"
+                    }
+                ],
+                "deploy_labels": [
+                    "sidecar"
+                ],
+                "health_check_uri": "healthcheck",
+                "init_containers": [],
+                "is_root": 0,
+                "name": "sal2000089a2f457210112eaenjkefqc",
+                "name_literal": "default",
+                "networks": [
+                    {
+                        "backend_protocol": "http",
+                        "cors_allow_origins": "",
+                        "domain": "",
+                        "need_expose": 0,
+                        "need_https": "",
+                        "node_ip": "",
+                        "node_port": "",
+                        "proxy_body_size": "",
+                        "ssl_certificate_data": "",
+                        "ssl_key_data": "",
+                        "ssl_passthrough": "",
+                        "ssl_redirct": "",
+                        "target_port": "",
+                        "unique_key": "ec5c2a849eed438a95ccaab4c6beb6a9",
+                        "white_list": ""
+                    }
+                ],
+                "node_name": "Ucenter",
+                "output": [],
+                "pod_runtime_require": "all",
+                "pod_type": "permanent",
+                "replicas": 1,
+                "repo_key": "7eecc8dd1fec492bad9266aa54f491c2",
+                "setting_form": [],
+                "support_ssh": "false",
+                "version": "0.1.36",
+                "pod_instance": "s1059086xusebwsc2203253wlhdk8cza",
+                "deploy_mode": "share",
+                "pod_resource_sku_id": 34,
+                "bl_info": {
+                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                },
+                "option": "",
+                "logic_instance_key": "s10500uvxusebwsc2203253wkulo009t",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                }
+            },
+            {
+                "annotation": "backend",
+                "appid": "dwvzflvcgqgkmtqumindtwrylbakozn3",
+                "containers": [
+                    {
+                        "args": [],
+                        "command": [
+                            ""
+                        ],
+                        "envs": [
+                            {
+                                "name": "PHP72_FPM_ALLOCATABLE_MEMORY",
+                                "value": "512"
+                            },
+                            {
+                                "name": "PHP72_FPM_PROCESS_MEMORY_COST",
+                                "value": "50"
+                            }
+                        ],
+                        "name": "sal2000089a2f457201229eaen5301hq",
+                        "resources": [
+                            {
+                                "name": "",
+                                "properties": {
+                                    "cpu_limit": "500m",
+                                    "cpu_request": "50m",
+                                    "memory_limit": "512Mi",
+                                    "memory_request": "256Mi"
+                                },
+                                "type": "quota",
+                                "unique_key": "644cf72b6df94fad945fa65b595e1043",
+                                "logic_instance_key": "s10500uvxusebwsc2203253wkulo0027",
+                                "sku_id": 1,
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": ""
+                            },
+                            {
+                                "name": "DB1",
+                                "properties": [],
+                                "sku_id": 33,
+                                "type": "mysql",
+                                "unique_key": "9f888b31fb0f4d9aa940acaba194c3b5",
+                                "use_type": "mysql",
+                                "logic_instance_key": "s10501mnxusebwsc2203253wkulo0024",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkzc700mn",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": []
+                            }
+                        ],
+                        "asset_key": "dwvzflvcgqgkmtqumindtwrylb000100@0.0.59"
+                    }
+                ],
+                "deploy_labels": [
+                    "sidecar"
+                ],
+                "health_check_uri": "healthcheck",
+                "init_containers": [],
+                "is_root": 0,
+                "name": "sal2000089a2f457201229eaen5201w9",
+                "name_literal": "default",
+                "networks": [
+                    {
+                        "backend_protocol": "http",
+                        "cors_allow_origins": "",
+                        "domain": "",
+                        "need_expose": 0,
+                        "need_https": "",
+                        "node_ip": "",
+                        "node_port": "",
+                        "proxy_body_size": "",
+                        "ssl_certificate_data": "",
+                        "ssl_key_data": "",
+                        "ssl_passthrough": "",
+                        "ssl_redirct": "",
+                        "target_port": "",
+                        "type": "DOMAIN",
+                        "unique_key": "ae13645ee72642b4aa3c2304cfb63ded",
+                        "white_list": ""
+                    }
+                ],
+                "node_name": "权限管理V2",
+                "pod_runtime_require": "all",
+                "pod_type": "permanent",
+                "replicas": 1,
+                "repo_key": "be5953c28f0042f39696a1313d21e491",
+                "version": "0.0.59",
+                "pod_instance": "s1059086xusebwsc2203253wlhdk8cbr",
+                "deploy_mode": "share",
+                "pod_resource_sku_id": 34,
+                "bl_info": {
+                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                },
+                "option": "",
+                "logic_instance_key": "s10500uvxusebwsc2203253wkulo0027",
+                "support_ssh": "false",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                }
+            },
+            {
+                "annotation": "backend",
+                "appid": "obn6mjks9ng3yipwqxp71vb8le0hcgdz",
+                "circuit_breaker_action": "",
+                "circuit_breaker_containers": [],
+                "circuit_breaker_setting": [],
+                "containers": [
+                    {
+                        "args": [],
+                        "command": [
+                            ""
+                        ],
+                        "envs": [],
+                        "image_asset": "",
+                        "name": "sal2000089a2f457210423eaem6gef9o",
+                        "resources": [
+                            {
+                                "name": "",
+                                "properties": {
+                                    "cpu_limit": "1000m",
+                                    "cpu_request": "100m",
+                                    "memory_limit": "256Mi",
+                                    "memory_request": "128Mi"
+                                },
+                                "sku_id": 1,
+                                "type": "quota",
+                                "unique_key": "8e819719e14a4e5ead5879c92faf0a93",
+                                "logic_instance_key": "s10500uvxusebwsc2203253wkuln00ja",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": ""
+                            },
+                            {
+                                "name": "DB1",
+                                "properties": {
+                                    "memory": "",
+                                    "qps": "",
+                                    "storage": ""
+                                },
+                                "sku_id": 33,
+                                "type": "mysql",
+                                "unique_key": "4b419bad568d4aa386cefdde864a599c",
+                                "use_type": "mysql_db",
+                                "logic_instance_key": "s10501mnxusebwsc2203253wkulo00ot",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkzc700mn",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": []
+                            }
+                        ],
+                        "asset_key": "obn6mjks9ng3yipwqxp71vb8le000100@1.0.13"
+                    }
+                ],
+                "deploy_labels": [
+                    "sidecar"
+                ],
+                "health_check_uri": "healthcheck",
+                "init_containers": [],
+                "is_root": 0,
+                "name": "sal2000089a2f457210423eaem6gefsy",
+                "name_literal": "default",
+                "networks": [
+                    {
+                        "backend_protocol": "http",
+                        "cors_allow_origins": "",
+                        "domain": "",
+                        "need_expose": 0,
+                        "need_https": 0,
+                        "node_ip": "",
+                        "node_port": 0,
+                        "proxy_body_size": "",
+                        "ssl_certificate_data": "",
+                        "ssl_key_data": "",
+                        "ssl_passthrough": "",
+                        "ssl_redirct": 0,
+                        "target_port": 0,
+                        "unique_key": "9bdc1e7363424534957128c16d88c0af",
+                        "white_list": []
+                    }
+                ],
+                "node_name": "短信服务",
+                "pod_runtime_require": "all",
+                "pod_type": "permanent",
+                "replicas": 1,
+                "repo_key": "665cb3b83e3e4bce99739a3f241c1f63",
+                "setting_form": [],
+                "support_ssh": "false",
+                "version": "1.0.13",
+                "pod_instance": "s1059086xusebwsc2203253wlhdl8cz7",
+                "deploy_mode": "share",
+                "pod_resource_sku_id": 34,
+                "bl_info": {
+                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                },
+                "option": "",
+                "logic_instance_key": "s10500uvxusebwsc2203253wkuln00ja",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                }
+            },
+            {
+                "annotation": "backend",
+                "appid": "doatnnuotjlwbh6r83jed1m7yvwrps5q",
+                "containers": [
+                    {
+                        "args": [],
+                        "command": [
+                            ""
+                        ],
+                        "envs": [
+                            {
+                                "name": "PHP72_FPM_ALLOCATABLE_MEMORY",
+                                "value": "512"
+                            },
+                            {
+                                "name": "PHP72_FPM_PROCESS_MEMORY_COST",
+                                "value": "40"
+                            }
+                        ],
+                        "name": "sal2000089a2f457210306eaep9sefk2",
+                        "resources": [
+                            {
+                                "name": "",
+                                "properties": {
+                                    "cpu_limit": "500m",
+                                    "cpu_request": "50m",
+                                    "memory_limit": "512Mi",
+                                    "memory_request": "256Mi"
+                                },
+                                "type": "quota",
+                                "unique_key": "6909acbe285c41939dda5ca7274c52ec",
+                                "logic_instance_key": "s10500uvxusebwsc2203253wkuln00c7",
+                                "sku_id": 1,
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": ""
+                            },
+                            {
+                                "name": "DB1",
+                                "properties": [],
+                                "sku_id": 33,
+                                "type": "mysql",
+                                "unique_key": "65294d859ba24cbebc487ea39a35f0a1",
+                                "use_type": "mysql",
+                                "logic_instance_key": "s10501mnxusebwsc2203253wkulo005k",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkzc700mn",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": []
+                            }
+                        ],
+                        "asset_key": "doatnnuotjlwbh6r83jed1m7yv000100@1.0.99"
+                    }
+                ],
+                "deploy_labels": [
+                    "sidecar"
+                ],
+                "health_check_uri": "healthcheck",
+                "init_containers": [],
+                "is_root": 0,
+                "name": "sal2000089a2f457210306eaep9refse",
+                "name_literal": "default",
+                "networks": [
+                    {
+                        "backend_protocol": "http",
+                        "cors_allow_origins": "",
+                        "domain": "",
+                        "need_expose": 1,
+                        "need_https": "",
+                        "node_ip": "",
+                        "node_port": "",
+                        "proxy_body_size": "",
+                        "ssl_certificate_data": "",
+                        "ssl_key_data": "",
+                        "ssl_passthrough": "",
+                        "ssl_redirct": "",
+                        "target_port": "",
+                        "type": "DOMAIN",
+                        "unique_key": "d37003957db94c6b8bfd572c7c764563",
+                        "white_list": ""
+                    }
+                ],
+                "node_name": "账号服务",
+                "output": {
+                    "data_schema": "json",
+                    "destination": [
+                        {
+                            "keys_mapping": [
+                                {
+                                    "destination_key": "",
+                                    "origin_key": ""
+                                }
+                            ],
+                            "merge_always": "1",
+                            "pod_name": "",
+                            "type": "env"
+                        }
+                    ],
+                    "keys": [
+                        {
+                            "data_schema": "text",
+                            "key": "",
+                            "name": "",
+                            "unique_key": "f2e58948-2bba-4730-3f6f-da176cf44246",
+                            "value": ""
+                        }
+                    ],
+                    "type": "terminal"
+                },
+                "pod_runtime_require": "all",
+                "pod_type": "permanent",
+                "replicas": 1,
+                "repo_key": "06e423251bf6447b9e331916e57de03e",
+                "version": "1.0.99",
+                "pod_instance": "s1059086xusebwsc2203253wlhdm8cwj",
+                "deploy_mode": "share",
+                "pod_resource_sku_id": 34,
+                "bl_info": {
+                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                },
+                "option": "",
+                "logic_instance_key": "s10500uvxusebwsc2203253wkuln00c7",
+                "support_ssh": "false",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                }
+            },
+            {
+                "annotation": "backend",
+                "appid": "7db5997baab04c3981286c9c2f2178b4",
+                "circuit_breaker_action": "",
+                "circuit_breaker_containers": [],
+                "circuit_breaker_setting": [],
+                "containers": [
+                    {
+                        "args": [],
+                        "command": [
+                            ""
+                        ],
+                        "envs": [],
+                        "image_asset": "",
+                        "name": "sal2000016ff24e32203173hudjhcc9s",
+                        "resources": [
+                            {
+                                "name": "",
+                                "properties": {
+                                    "cpu_limit": "500m",
+                                    "cpu_request": "10m",
+                                    "memory_limit": "256Mi",
+                                    "memory_request": "128Mi"
+                                },
+                                "sku_id": 1,
+                                "type": "quota",
+                                "unique_key": "29a260c0ab8e4d8dad6b8145d2a324f2",
+                                "logic_instance_key": "s10500uvxusebwsc2203253wkuln002p",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": ""
+                            },
+                            {
+                                "name": "DB1",
+                                "properties": {
+                                    "memory": "",
+                                    "qps": "",
+                                    "storage": ""
+                                },
+                                "sku_id": 33,
+                                "type": "mysql",
+                                "unique_key": "fcc0daabc9b5456a8ec90af803605ce9",
+                                "use_type": "mysql_db",
+                                "logic_instance_key": "s10501mnxusebwsc2203253wkulo00er",
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkzc700mn",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": []
+                            }
+                        ],
+                        "asset_key": "7db5997baab04c3981286c9c2f000100@0.0.9"
+                    }
+                ],
+                "deploy_labels": [
+                    "sidecar"
+                ],
+                "health_check_uri": "healthcheck",
+                "init_containers": [],
+                "is_root": 0,
+                "name": "426713be94a529f05afce2ddc77d91e6",
+                "name_literal": "default",
+                "networks": [
+                    {
+                        "backend_protocol": "http",
+                        "cors_allow_origins": "",
+                        "domain": "",
+                        "need_expose": 0,
+                        "need_https": 0,
+                        "node_ip": "",
+                        "node_port": 0,
+                        "proxy_body_size": "",
+                        "ssl_certificate_data": "",
+                        "ssl_key_data": "",
+                        "ssl_passthrough": "",
+                        "ssl_redirct": 0,
+                        "target_port": 0,
+                        "unique_key": "e40c6328f4c149c2af59a46ebc34a78b",
+                        "white_list": []
+                    }
+                ],
+                "node_name": "全文检索服务",
+                "pod_runtime_require": "all",
+                "pod_type": "permanent",
+                "replicas": 1,
+                "repo_key": "sal2000016ff24e32203173hw0pmccs9",
+                "setting_form": [],
+                "support_ssh": "false",
+                "version": "0.0.9",
+                "pod_instance": "s1059086xusebwsc2203253wlhdq8cvr",
+                "deploy_mode": "share",
+                "pod_resource_sku_id": 34,
+                "bl_info": {
+                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                },
+                "option": "",
+                "logic_instance_key": "s10500uvxusebwsc2203253wkuln002p",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                }
+            },
+            {
+                "appid": "dwvzflvcgqgkmtqumindtwrylbakozn3",
+                "version": "0.0.59",
+                "name": "s1050000xusebwsc2203253wlhcv8ch6",
+                "pod_instance": "s1050000xusebwsc2203253wlhcv8cy6",
+                "deploy_mode": "share",
+                "pod_runtime_require": "all",
+                "replicas": 1,
+                "annotation": "data_update",
+                "networks": [],
+                "containers": [
+                    {
+                        "name": "s1050000xusebwsc2203253wlhcv8ccj",
+                        "image_url": "harbor.oneitfarm.com/itfarm-test/sal2000089a2f4572202101mu1jxefae:0.0.69",
+                        "command": [
+                            "php",
+                            "/opt/ci123/www/html/idg_init/init.php"
+                        ],
+                        "resources": [
+                            {
+                                "name": "",
+                                "properties": {
+                                    "cpu_limit": "1000m",
+                                    "cpu_request": "1m",
+                                    "memory_limit": "256Mi",
+                                    "memory_request": "125Mi"
+                                },
+                                "type": "quota",
+                                "logic_instance_key": "s10500uvxusebwsc2203253wkuln00zd",
+                                "sku_id": 1,
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "option": ""
+                            }
+                        ],
+                        "args": [],
+                        "envs": [
+                            {
+                                "name": "IDG_SOURCE_APPID",
+                                "value": "3d971acb296f4bad95f913ff8306da3d"
+                            },
+                            {
+                                "name": "IDG_SOURCE_VERSION",
+                                "value": "0.0.15"
+                            },
+                            {
+                                "name": "IDG_RUNTIME",
+                                "value": "release"
+                            },
+                            {
+                                "name": "IDG_APPID",
+                                "value": "dwvzflvcgqgkmtqumindtwrylbakozn3"
+                            },
+                            {
+                                "name": "MYSQL_DATABASE_IDGMARKET_USERNAME",
+                                "value": "usem0v2bgynzhpx"
+                            },
+                            {
+                                "name": "MYSQL_DATABASE_IDGMARKET_PORT",
+                                "value": 3306
+                            },
+                            {
+                                "name": "MYSQL_DATABASE_IDGMARKET_HOST_READ",
+                                "value": "rm-uf6wj6ch16l45wgc1bo.mysql.rds.aliyuncs.com"
+                            },
+                            {
+                                "name": "MYSQL_DATABASE_IDGMARKET_NAME",
+                                "value": "temwml2ka9paclu"
+                            },
+                            {
+                                "name": "MYSQL_DATABASE_IDGMARKET_PASSWORD",
+                                "value": "pascepurl6lzsyn"
+                            },
+                            {
+                                "name": "MYSQL_DATABASE_IDGMARKET_TABLENAME",
+                                "value": "instance_data"
+                            }
+                        ]
+                    }
+                ],
+                "pod_resource_sku_id": 29,
+                "bl_info": {
+                    "logic_resource_key": "s1050003xusebwsc2203253wkyuz00mg",
+                    "bl_no": "s1050000xusebwsc2203253wkxwb8ck6",
+                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                },
+                "option": "",
+                "logic_instance_key": "s10500uvxusebwsc2203253wkuln00zd",
+                "pod_type": "job",
+                "deploy_labels": [
+                    "sidecar"
+                ],
+                "health_check_uri": "/healtchcheck",
+                "support_ssh": "false",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                }
+            },
+            {
+                "annotation": "import",
+                "appid": "3d971acb296f4bad95f913ff8306da3d",
+                "circuit_breaker_action": "",
+                "circuit_breaker_containers": [],
+                "circuit_breaker_setting": [],
+                "containers": [
+                    {
+                        "name": "c9e4b4323dd84f9cbce57e9c49c79c5c",
+                        "args": [],
+                        "envs": [],
+                        "image_url": "harbor.oneitfarm.com/itfarm-test/sal20000850aaf4e210831eaejw00c7q:0.2.5",
+                        "resources": [
+                            {
+                                "type": "quota",
+                                "name": "",
+                                "properties": [],
+                                "sku_id": 1,
+                                "bl_info": {
+                                    "logic_resource_key": "s1050003xusebwsc2204141u8jor008h",
+                                    "bl_no": "s1050000xusebwsc2204141u8in5lpuh",
+                                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                                },
+                                "logic_instance_key": "s10500uvxusebwsc2204141u8fge001g"
+                            }
+                        ],
+                        "command": []
+                    }
+                ],
+                "deploy_labels": [
+                    "sidecar"
+                ],
+                "health_check_uri": "healthcheck",
+                "init_containers": [],
+                "is_root": 1,
+                "name": "c45464f67cbd4db788d50136c561c943",
+                "name_literal": "default",
+                "networks": [
+                    {
+                        "backend_protocol": "http",
+                        "cors_allow_origins": "",
+                        "domain": "",
+                        "need_expose": 1,
+                        "need_https": 0,
+                        "node_ip": "",
+                        "node_port": 0,
+                        "proxy_body_size": "",
+                        "ssl_certificate_data": "",
+                        "ssl_key_data": "",
+                        "ssl_passthrough": "",
+                        "ssl_redirct": 0,
+                        "target_port": 0,
+                        "white_list": []
+                    }
+                ],
+                "node_name": "全文检索运营商",
+                "pod_runtime_require": "all",
+                "pod_type": "permanent",
+                "replicas": 1,
+                "repo_key": "sal2000016ff24e32203221ir57vcc1o",
+                "setting_form": [],
+                "support_ssh": "false",
+                "version": "0.0.15",
+                "pod_instance": "b0e5f12c5ffa41b489a77ea57e676679",
+                "deploy_mode": "share",
+                "pod_resource_sku_id": 1,
+                "bl_info": {
+                    "logic_resource_key": "s1050003xusebwsc2204141u8jor008h",
+                    "bl_no": "s1050000xusebwsc2204141u8in5lpuh",
+                    "plat_key": "s1050001850aaf4e2112075cdkjhavfw"
+                },
+                "option": "",
+                "logic_instance_key": "s10500uvxusebwsc2204141u8fge001g",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "huawei-singapore-105"
+                }
+            }
+        ]
+    },
+    {
+        "id": "did:wlk:ch8LaaoWM7LT1FmfcQiLEsfCH6XD8bawNaghJ#before_deploy_jobs",
+        "type": "before_deploy_jobs",
+        "data": []
+    },
+    {
+        "id": "did:wlk:ch8LaaoWM7LT1FmfcQiLEsfCH6XD8bawNaghJ#deploying_jobs",
+        "type": "deploying_jobs",
+        "data": []
+    },
+    {
+        "id": "did:wlk:ch8LaaoWM7LT1FmfcQiLEsfCH6XD8bawNaghJ#deploy_finished_jobs",
+        "type": "deploy_finished_jobs",
+        "data": [
+            {
+                "appid": "dwvzflvcgqgkmtqumindtwrylbakozn3",
+                "version": "0.0.59",
+                "target_channel": {
+                    "data": "sal2000016ff24e32203221idmfbccby"
+                },
+                "pod_name": "s1050000xusebwsc2203253wlhcv8ch6",
+                "pod_instance": "s1050000xusebwsc2203253wlhcv8cy6",
+                "job_params": {
+                    "data": [],
+                    "data_string": "",
+                    "type": "configmap",
+                    "param_type": "data",
+                    "name": ""
+                },
+                "setting_form": [],
+                "related_deploy_resource": [
+                    {
+                        "type": "mysql_database",
+                        "resource_id": "3d971acb296f4bad95f913ff83003500@0.0.15"
+                    }
+                ],
+                "temp_db_unique_id": [
+                    "b8b5681f69572645a237a33902392bbf"
+                ]
+            },
+            {
+                "appid": "3d971acb296f4bad95f913ff8306da3d",
+                "version": "0.0.15",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221h0j1iccvh",
+                    "group": ""
+                },
+                "pod_name": "c45464f67cbd4db788d50136c561c943",
+                "pod_instance": "b0e5f12c5ffa41b489a77ea57e676679",
+                "job_params": [
+                    {
+                        "name": "source_url",
+                        "data": "https://s2-cdn.oneitfarm.com/FrBPPuj15D-jsWKYG1C7cv4ayrsz?attname=data.zip"
+                    },
+                    {
+                        "name": "target_appkey",
+                        "data": ""
+                    },
+                    {
+                        "name": "target_channel",
+                        "data": ""
+                    },
+                    {
+                        "name": "source_appkey",
+                        "data": "appkey"
+                    },
+                    {
+                        "name": "source_channel",
+                        "data": "0"
+                    }
+                ]
+            },
+            {
+                "appid": "sihpkp4z3rg7wvsozr5lkta9nxxiocqj",
+                "version": "0.1.36",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221icpsrcc6x",
+                    "group": ""
+                },
+                "pod_name": "c45464f67cbd4db788d50136c561c943",
+                "pod_instance": "b0e5f12c5ffa41b489a77ea57e676679",
+                "job_params": [
+                    {
+                        "name": "source_url",
+                        "data": "https://s2-cdn.oneitfarm.com/Ft6rrKPhTj6bQNGfg9IDrnNs9vfU?attname=data.zip"
+                    },
+                    {
+                        "name": "target_appkey",
+                        "data": ""
+                    },
+                    {
+                        "name": "target_channel",
+                        "data": ""
+                    },
+                    {
+                        "name": "source_appkey",
+                        "data": "appkey"
+                    },
+                    {
+                        "name": "source_channel",
+                        "data": "0"
+                    }
+                ]
+            },
+            {
+                "appid": "dwvzflvcgqgkmtqumindtwrylbakozn3",
+                "version": "0.0.59",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221idmfbccby",
+                    "group": ""
+                },
+                "pod_name": "c45464f67cbd4db788d50136c561c943",
+                "pod_instance": "b0e5f12c5ffa41b489a77ea57e676679",
+                "job_params": [
+                    {
+                        "name": "source_url",
+                        "data": "https://s2-cdn.oneitfarm.com/Fv6tSMzxQe_FExHAR1rP4QLt_4cH?attname=data.zip"
+                    },
+                    {
+                        "name": "target_appkey",
+                        "data": ""
+                    },
+                    {
+                        "name": "target_channel",
+                        "data": ""
+                    },
+                    {
+                        "name": "source_appkey",
+                        "data": "appkey"
+                    },
+                    {
+                        "name": "source_channel",
+                        "data": "0"
+                    }
+                ]
+            },
+            {
+                "appid": "doatnnuotjlwbh6r83jed1m7yvwrps5q",
+                "version": "1.0.99",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221kmxbqccmw",
+                    "group": ""
+                },
+                "pod_name": "c45464f67cbd4db788d50136c561c943",
+                "pod_instance": "b0e5f12c5ffa41b489a77ea57e676679",
+                "job_params": [
+                    {
+                        "name": "source_url",
+                        "data": "https://s2-cdn.oneitfarm.com/Fu2mdWwH7Z169oKxpLRwNBWZsmxo?attname=data.zip"
+                    },
+                    {
+                        "name": "target_appkey",
+                        "data": ""
+                    },
+                    {
+                        "name": "target_channel",
+                        "data": ""
+                    },
+                    {
+                        "name": "source_appkey",
+                        "data": "appkey"
+                    },
+                    {
+                        "name": "source_channel",
+                        "data": "0"
+                    }
+                ]
+            },
+            {
+                "appid": "obn6mjks9ng3yipwqxp71vb8le0hcgdz",
+                "version": "1.0.13",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e32203221kmxbqcczj",
+                    "group": ""
+                },
+                "pod_name": "c45464f67cbd4db788d50136c561c943",
+                "pod_instance": "b0e5f12c5ffa41b489a77ea57e676679",
+                "job_params": [
+                    {
+                        "name": "source_url",
+                        "data": ""
+                    },
+                    {
+                        "name": "target_appkey",
+                        "data": ""
+                    },
+                    {
+                        "name": "target_channel",
+                        "data": ""
+                    },
+                    {
+                        "name": "source_appkey",
+                        "data": "appkey"
+                    },
+                    {
+                        "name": "source_channel",
+                        "data": "0"
+                    }
+                ]
+            },
+            {
+                "appid": "7db5997baab04c3981286c9c2f2178b4",
+                "version": "0.0.9",
+                "target_channel": {
+                    "appkey": "",
+                    "channel": "",
+                    "data": "sal2000016ff24e322032220gqtwcc7n",
+                    "group": "sal2907x16ff24e322032220gqtxcca3"
+                },
+                "pod_name": "c45464f67cbd4db788d50136c561c943",
+                "pod_instance": "b0e5f12c5ffa41b489a77ea57e676679",
+                "job_params": [
+                    {
+                        "name": "source_url",
+                        "data": ""
+                    },
+                    {
+                        "name": "target_appkey",
+                        "data": ""
+                    },
+                    {
+                        "name": "target_channel",
+                        "data": ""
+                    },
+                    {
+                        "name": "source_appkey",
+                        "data": "appkey"
+                    },
+                    {
+                        "name": "source_channel",
+                        "data": "0"
+                    }
+                ]
+            }
+        ]
+    }
+]
