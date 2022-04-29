@@ -3,12 +3,12 @@ package tree
 import (
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/test"
+	"github.com/767829413/go-algorithm/utilcom"
 )
 
 func TestHeap(t *testing.T) {
 	num := 120
-	arr := test.BuildTestArr(num, 100, 0)
+	arr := utilcom.BuildTestArr(num, 100, 0)
 	h := NewHeap(num)
 	for _, v := range arr {
 		h.Insert(v)
@@ -27,7 +27,7 @@ func TestHeap(t *testing.T) {
 
 func TestHeapSort(t *testing.T) {
 	num := 90000
-	arr := test.BuildTestArr(num, 100, 0)
+	arr := utilcom.BuildTestArr(num, 100, 0)
 	arr = append([]int{0}, arr...)
 	//t.Log(arr)
 	HeapSort(arr, len(arr)-1)

@@ -4,14 +4,14 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 )
 
 func TestPQueue(t *testing.T) {
 	num := 25
 	p := NewPQueue(num)
 	for i := 0; i < num; i++ {
-		v := randomstring.RandStringBytesMaskImprSrc(3)
+		v := utilcom.RandStringBytesMaskImprSrc(3)
 		node := NewPnode(v, rand.Intn(100))
 		p.Push(node)
 	}
@@ -26,7 +26,7 @@ func TestPQueue2(t *testing.T) {
 	num := 25
 	p := NewPQueue(num)
 	for i := 0; i < num; i++ {
-		v := randomstring.RandStringBytesMaskImprSrc(3)
+		v := utilcom.RandStringBytesMaskImprSrc(3)
 		node := NewPnode(v, rand.Intn(100))
 		p.Push(node)
 		t.Log(p.IsBigTopHeap())

@@ -1,4 +1,4 @@
-package randomstring
+package utilcom
 
 import (
 	"math/rand"

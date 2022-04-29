@@ -9,14 +9,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 )
 
 func TestChannelUse(t *testing.T) {
 	num := 10000000
 	strs := make([]string, num)
 	for i := 0; i < num; i++ {
-		strs[i] = randomstring.RandStringBytesMaskImprSrc(3)
+
+		strs[i] = utilcom.RandStringBytesMaskImprSrc(3)
 	}
 	start := time.Now()
 	toOp(strs)

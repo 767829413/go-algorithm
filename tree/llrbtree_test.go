@@ -3,7 +3,7 @@ package tree
 import (
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -12,7 +12,7 @@ func TestNewLLRBTree(t *testing.T) {
 	num := 12000
 	testData := make(map[int]string, num)
 	for i := 1; i < num; i++ {
-		v := randomstring.RandStringBytesMaskImprSrc(2)
+		v := utilcom.RandStringBytesMaskImprSrc(2)
 		testData[i] = v
 		h.Inset(i, v)
 	}

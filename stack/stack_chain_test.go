@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/767829413/go-algorithm/linkedlist"
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 )
 
 func TestPushAndPop(t *testing.T) {
@@ -14,7 +14,7 @@ func TestPushAndPop(t *testing.T) {
 	s.Init(5)
 	for i := 0; i < s.Count; i++ {
 		node := &linkedlist.Node{}
-		node.Item = randomstring.RandStringBytesMaskImprSrc(2)
+		node.Item = utilcom.RandStringBytesMaskImprSrc(2)
 		s.Push(node)
 	}
 	s.Items.Print()

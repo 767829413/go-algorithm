@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -16,7 +16,7 @@ func TestNewBinarySearchTree_Inset_Find(t *testing.T) {
 		testData := make(map[int]string, num)
 		for i := 0; i < num; i++ {
 			index := rand.Intn(20)
-			v := randomstring.RandStringBytesMaskImprSrc(2)
+			v := utilcom.RandStringBytesMaskImprSrc(2)
 			testData[index] = v
 			tree.Insert(v, index)
 		}
@@ -39,7 +39,7 @@ func TestNewBinarySearchTree_Find_Max_Min(t *testing.T) {
 		if _, ok := testData[index]; ok {
 			continue
 		}
-		v := randomstring.RandStringBytesMaskImprSrc(2)
+		v := utilcom.RandStringBytesMaskImprSrc(2)
 		if min > index {
 			min = index
 			minV = v
@@ -63,7 +63,7 @@ func TestNewBinarySearchTree_Delete(t *testing.T) {
 		testData := make(map[int]string, num)
 		for i := 0; i < num; i++ {
 			index := rand.Intn(20)
-			v := randomstring.RandStringBytesMaskImprSrc(2)
+			v := utilcom.RandStringBytesMaskImprSrc(2)
 			testData[index] = v
 		}
 		for k, v := range testData {

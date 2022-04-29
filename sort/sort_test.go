@@ -4,59 +4,59 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/test"
+	"github.com/767829413/go-algorithm/utilcom"
 )
 
 func TestBubbleSort(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
-	test.PrintSortComparison(arr, BubbleSort)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
+	utilcom.PrintSortComparison(arr, BubbleSort)
 }
 
 func TestInsertSort(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
-	test.PrintSortComparison(arr, InsertSort)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
+	utilcom.PrintSortComparison(arr, InsertSort)
 }
 
 func TestSelectSort(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
-	test.PrintSortComparison(arr, SelectSort)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
+	utilcom.PrintSortComparison(arr, SelectSort)
 }
 
 func TestMergeSort(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
-	test.PrintSortComparison(arr, MergeSort)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
+	utilcom.PrintSortComparison(arr, MergeSort)
 	//MergeSort(arr)
 }
 
 func TestQuicksort(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
-	test.PrintSortComparison(arr, Quicksort)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
+	utilcom.PrintSortComparison(arr, Quicksort)
 	//Quicksort(arr)
 }
 
 func TestCountSort(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
-	test.PrintSortComparison(arr, CountSort)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
+	utilcom.PrintSortComparison(arr, CountSort)
 }
 
 func TestBucketSort(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
-	test.PrintSortComparison(arr, BucketSort)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
+	utilcom.PrintSortComparison(arr, BucketSort)
 }
 
 func TestBucketSortSimple(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
-	test.PrintSortComparison(arr, BucketSortSimple)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
+	utilcom.PrintSortComparison(arr, BucketSortSimple)
 }
 
 func TestHeapSort(t *testing.T) {
-	arr := test.BuildTestArr(500, 1000, 0)
+	arr := utilcom.BuildTestArr(500, 1000, 0)
 	arr = append([]int{0}, arr...)
-	test.PrintSortComparison(arr, HeapSort)
+	utilcom.PrintSortComparison(arr, HeapSort)
 }
 
 func TestFindKMax(t *testing.T) {
-	arr := test.BuildTestArr(5, 50, 0)
+	arr := utilcom.BuildTestArr(5, 50, 0)
 	fmt.Println(arr)
 	fmt.Println(FindKMax(arr, 5))
 }
