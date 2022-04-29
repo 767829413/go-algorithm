@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 
+	"github.com/gin-gonic/gin"
 	"github.com/go-playground/webhooks/v6/github"
 )
 
@@ -13,16 +13,17 @@ const (
 
 func main() {
 	hook, _ := github.New(github.Options.Secret("6217512Fang"))
-
-	http.HandleFunc(path, func(w http.ResponseWriter, r *http.Request) {
-		payload, err := hook.Parse(r, github.ReleaseEvent, github.PullRequestEvent)
+	// gin.SetMode(gin.ReleaseMode)
+	router := gin.Default()
+	router.POST(path, func(c *gin.Context) {
+		payload, err := hook.Parse(c.Request, github.ReleaseEvent, github.PullRequestEvent)
 		if err != nil {
-			if err == github.ErrEventNotFound {
-				fmt.Printf("%+v", err)
-			}
+			fmt.Println("error is: " + err.Error())
 		}
 		switch payload.(type) {
 
+		case github.PushPayload:
+			fmt.Println(11111)
 		case github.ReleasePayload:
 			release := payload.(github.ReleasePayload)
 			// Do whatever you want from here...
@@ -34,5 +35,5 @@ func main() {
 			fmt.Printf("%+v", pullRequest)
 		}
 	})
-	http.ListenAndServe(":3000", nil)
+	router.Run(":3000")
 }
