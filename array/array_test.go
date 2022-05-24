@@ -25,14 +25,14 @@ func TestArrayInsert(t *testing.T) {
 func TestTwoSum(t *testing.T) {
 	assert := assert.New(t)
 	nums := []int{2, 7, 11, 15}
-	target := 9
-	assert.Equal([]int{0, 1}, twoSum(nums, target))
+	target := 18
+	assert.Equal([]int{1, 2}, twoSum(nums, target))
 }
 
 func TestFindMedianSortedArrays(t *testing.T) {
 	assert := assert.New(t)
-	nums1 := []int{1, 2}
-	nums2 := []int{3, 4}
-	target := 2.5
+	nums1 := []int{2, 3, 5}
+	nums2 := []int{1, 4, 7, 9}
+	target := 4.0
 	assert.Equal(target, findMedianSortedArrays(nums1, nums2))
 }
