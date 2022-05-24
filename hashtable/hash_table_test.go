@@ -3,7 +3,7 @@ package hashtable
 import (
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -12,7 +12,7 @@ func TestHashTable(t *testing.T) {
 	ht := NewHashTable()
 	testData := make(map[string]int, num)
 	for i := 0; i < num; i++ {
-		index := randomstring.RandStringBytesMaskImprSrc(3)
+		index := utilcom.RandStringBytesMaskImprSrc(3)
 		testData[index] = i
 		ht.Put(index, i)
 	}

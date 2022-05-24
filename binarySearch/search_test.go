@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/767829413/go-algorithm/sort"
-	"github.com/767829413/go-algorithm/utilcom/test"
+	"github.com/767829413/go-algorithm/utilcom"
 )
 
 type tf func(arr []int, find int, index *int)
@@ -18,7 +18,7 @@ func printTestRes(arr []int, find int, index int, f tf) {
 }
 
 func TestEasyLoopBinarySearch(t *testing.T) {
-	arr := test.BuildTestArr(10, 20, 0)
+	arr := utilcom.BuildTestArr(10, 20, 0)
 	find := arr[3]
 	index := -1
 	sort.Quicksort(arr)
@@ -26,7 +26,7 @@ func TestEasyLoopBinarySearch(t *testing.T) {
 }
 
 func TestEasyRecursiveBinarySearch(t *testing.T) {
-	arr := test.BuildTestArr(10, 20, 0)
+	arr := utilcom.BuildTestArr(10, 20, 0)
 	find := arr[3]
 	index := -1
 	sort.Quicksort(arr)

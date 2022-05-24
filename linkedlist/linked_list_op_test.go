@@ -3,14 +3,14 @@ package linkedlist
 import (
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestReverseLinkedList(t *testing.T) {
 	l := NewLinkedList()
 	for i := 0; i < 5; i++ {
-		l.InsertToTail(randomstring.RandStringBytesMaskImprSrc(1))
+		l.InsertToTail(utilcom.RandStringBytesMaskImprSrc(1))
 	}
 	t.Log(l.Print())
 	ReverseLinkedList(l)
@@ -20,7 +20,7 @@ func TestReverseLinkedList(t *testing.T) {
 func TestIsHasLoop(t *testing.T) {
 	l := NewLinkedList()
 	for i := 0; i < 4; i++ {
-		l.InsertToTail(randomstring.RandStringBytesMaskImprSrc(1))
+		l.InsertToTail(utilcom.RandStringBytesMaskImprSrc(1))
 	}
 	t.Log(HasLoop(l))
 	l.head.next.next.next = l.head
@@ -45,7 +45,7 @@ func TestMergeSortedList(t *testing.T) {
 func TestDeleteBottomN(t *testing.T) {
 	l := NewLinkedList()
 	for i := 0; i < 4; i++ {
-		l.InsertToTail(randomstring.RandStringBytesMaskImprSrc(1))
+		l.InsertToTail(utilcom.RandStringBytesMaskImprSrc(1))
 	}
 	t.Log(l.Print())
 	assert.Equal(t, false, DeleteBottomN(l, 100), l.Print())
@@ -65,7 +65,7 @@ func TestDeleteBottomN(t *testing.T) {
 func TestFindMiddleNode(t *testing.T) {
 	l := NewLinkedList()
 	for i := 0; i < 3; i++ {
-		l.InsertToTail(randomstring.RandStringBytesMaskImprSrc(1))
+		l.InsertToTail(utilcom.RandStringBytesMaskImprSrc(1))
 	}
 	t.Log(l.Print())
 	t.Log(FindMiddleNode(l).value)

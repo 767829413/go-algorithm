@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/767829413/go-algorithm/linkedlist"
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 )
 
 func TestQueueChainEnDeQueue(t *testing.T) {
@@ -13,7 +13,7 @@ func TestQueueChainEnDeQueue(t *testing.T) {
 	q := NewQueueChain(6)
 	for i := 0; i < q.Count; i++ {
 		node := &linkedlist.Node{}
-		node.Item = randomstring.RandStringBytesMaskImprSrc(3)
+		node.Item = utilcom.RandStringBytesMaskImprSrc(3)
 		q.EnQueue(node)
 	}
 	q.Items.Print()

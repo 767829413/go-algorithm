@@ -3,7 +3,7 @@ package hashtable
 import (
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -13,7 +13,7 @@ func TestLRUHashTableOp(t *testing.T) {
 	lru := NewLRUHashTable(capacity)
 	t.Log(lru.Print())
 	for i := 0; i < capacity; i++ {
-		v := randomstring.RandStringBytesMaskImprSrc(5)
+		v := utilcom.RandStringBytesMaskImprSrc(5)
 		testData[v] = i
 		lru.Add(v, i)
 	}

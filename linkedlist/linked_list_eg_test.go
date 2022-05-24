@@ -3,7 +3,7 @@ package linkedlist
 import (
 	"testing"
 
-	"github.com/767829413/go-algorithm/utilcom/randomstring"
+	"github.com/767829413/go-algorithm/utilcom"
 )
 
 func TestInsertToHead(t *testing.T) {
@@ -25,7 +25,7 @@ func TestInsertToTail(t *testing.T) {
 func TestFindByIndex(t *testing.T) {
 	l := NewLinkedList()
 	for i := 0; i < 10; i++ {
-		l.InsertToTail(randomstring.RandStringBytesMaskImprSrc(1))
+		l.InsertToTail(utilcom.RandStringBytesMaskImprSrc(1))
 	}
 	t.Log(l.Print())
 	t.Log(l.FindByIndex(0))
@@ -37,7 +37,7 @@ func TestFindByIndex(t *testing.T) {
 func TestDeleteNode(t *testing.T) {
 	l := NewLinkedList()
 	for i := 0; i < 5; i++ {
-		l.InsertToTail(randomstring.RandStringBytesMaskImprSrc(1))
+		l.InsertToTail(utilcom.RandStringBytesMaskImprSrc(1))
 	}
 	t.Log(l.Print())
 
