@@ -2,6 +2,7 @@ package array
 
 import (
 	"math"
+	"sort"
 )
 
 // 两数之和
@@ -86,4 +87,50 @@ func max(a, b int) int {
 		return a
 	}
 	return b
+}
+
+// 三数之和
+func threeSum(nums []int) [][]int {
+	var res [][]int
+	l := len(nums)
+	//特判,数组长度小于3就返回
+	if l < 3 {
+		return res
+	}
+	// 排序,从小到大
+	sort.Ints(nums)
+	// 遍历排序后的数组
+	for i, _ := range nums {
+		// 已经排好序,当nums[i]>0时.后面不会出现和为零了
+		if nums[i] > 0 {
+			return res
+		}
+		// 过滤重复的值
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		lo := i + 1
+		hi := l - 1
+		for lo < hi {
+			r := nums[i] + nums[lo] + nums[hi]
+			if r == 0 {
+				res = append(res, []int{nums[i], nums[lo], nums[hi]})
+				// 过滤重复的值
+				for lo < hi && nums[lo] == nums[lo+1] {
+					lo++
+				}
+				// 过滤重复的值
+				for lo < hi && nums[hi] == nums[hi-1] {
+					hi--
+				}
+				hi--
+				lo++
+			} else if r > 0 { // 和大于0,那么右边界向左,总和缩小
+				hi--
+			} else { // 和小于0,那么左边界向右,总和增大
+				lo++
+			}
+		}
+	}
+	return res
 }

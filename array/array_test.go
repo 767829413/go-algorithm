@@ -36,9 +36,20 @@ func TestFindMedianSortedArrays(t *testing.T) {
 	target := 4.0
 	assert.Equal(target, findMedianSortedArrays(nums1, nums2))
 }
+
 func TestMaxArea(t *testing.T) {
 	assert := assert.New(t)
 	height := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
 	target := 49
 	assert.Equal(target, maxArea(height))
+}
+
+func TestThreeSum(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{-1, 0, 1, 2, -1, -4}
+	target := [][]int{
+		{-1, -1, 2},
+		{-1, 0, 1},
+	}
+	assert.Equal(target, threeSum(nums))
 }
