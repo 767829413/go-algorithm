@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	fmt.Println(3<<1, 3>>1)
+	a := math.MinInt
+	b := a - 1
+	c := -b
+	fmt.Println(a, b, c)
 }

@@ -5,7 +5,7 @@ import (
 	"sort"
 )
 
-// 两数之和
+// Sum of two numbers
 func twoSum(nums []int, target int) []int {
 	l := len(nums)
 	m := make(map[int]int, l)
@@ -19,7 +19,7 @@ func twoSum(nums []int, target int) []int {
 	return nil
 }
 
-// 寻找两个正序数组的中位数
+// Find the median of two positive-order arrays
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	l1, l2 := len(nums1), len(nums2)
 	if l1 > l2 {
@@ -61,7 +61,7 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	return (math.Max(float64(lmax1), float64(lmax2)) + math.Min(float64(rmin1), float64(rmin2))) / 2
 }
 
-// 盛最多水的容器
+// Containers for the most water
 func maxArea(height []int) int {
 	index := len(height) - 1
 	l1, l2, area := 0, index, 0
@@ -89,7 +89,7 @@ func max(a, b int) int {
 	return b
 }
 
-// 三数之和
+// Sum of three numbers
 func threeSum(nums []int) [][]int {
 	var res [][]int
 	l := len(nums)
@@ -129,6 +129,113 @@ func threeSum(nums []int) [][]int {
 				hi--
 			} else { // 和小于0,那么左边界向右,总和增大
 				lo++
+			}
+		}
+	}
+	return res
+}
+
+// Sum of the nearest three numbers
+func threeSumClosest(nums []int, target int) int {
+	res := math.MaxInt
+	l := len(nums)
+	//特判,数组长度小于3就返回
+	if l < 3 {
+		return 0
+	}
+	// 排序,从小到大
+	sort.Ints(nums)
+	// 遍历排序后的数组
+	for i, _ := range nums {
+		// 过滤重复的值
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		lo := i + 1
+		hi := l - 1
+		for lo < hi {
+			r := nums[i] + nums[lo] + nums[hi]
+			tmp := r - target
+			if tmp == 0 {
+				return r
+			} else if r > target { // 和大于 target,那么右边界向左,总和缩小
+				// 过滤重复的值
+				for lo < hi && nums[hi] == nums[hi-1] {
+					hi--
+				}
+				hi--
+			} else { // 和小于 target,那么左边界向右,总和增大
+				// 过滤重复的值
+				for lo < hi && nums[lo] == nums[lo-1] {
+					lo++
+				}
+				lo++
+			}
+			res = approachNumber(res, r, target)
+		}
+	}
+	return res
+}
+
+func approachNumber(a, b, c int) int {
+	l := math.Abs(float64(a) - float64(c))
+	r := math.Abs(float64(b) - float64(c))
+	if l > r {
+		return b
+	}
+	return a
+}
+
+// Sum of four numbers
+func fourSum(nums []int, target int) [][]int {
+	res := [][]int{}
+	l := len(nums)
+	//特判,数组长度小于4就返回
+	if l < 4 {
+		return res
+	}
+	// 排序,从小到大
+	sort.Ints(nums)
+	// 遍历排序后的数组
+	for i := 0; i < l-3; i++ {
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		if nums[i]+nums[i+1]+nums[i+2]+nums[i+3] > target {
+			return res
+		}
+		if nums[i]+nums[l-3]+nums[l-2]+nums[l-1] < target {
+			continue
+		}
+		for j := i + 1; j < l-2; j++ {
+			if j > i+1 && nums[j] == nums[j-1] {
+				continue
+			}
+			if nums[i]+nums[j]+nums[j+1]+nums[j+2] > target {
+				break
+			}
+			if nums[i]+nums[j]+nums[l-2]+nums[l-1] < target {
+				continue
+			}
+			lo := j + 1
+			hi := l - 1
+			for lo < hi {
+				tmp := nums[i] + nums[j] + nums[lo] + nums[hi]
+				if tmp == target {
+					res = append(res, []int{nums[i], nums[j], nums[lo], nums[hi]})
+					for lo < hi && nums[lo] == nums[lo+1] {
+						lo++
+					}
+					for lo < hi && nums[hi] == nums[hi-1] {
+						hi--
+					}
+					lo++
+					hi--
+				} else if tmp > target {
+					hi--
+				} else {
+					lo++
+				}
 			}
 		}
 	}

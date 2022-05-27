@@ -53,3 +53,29 @@ func TestThreeSum(t *testing.T) {
 	}
 	assert.Equal(target, threeSum(nums))
 }
+
+func TestThreeSumClosest(t *testing.T) {
+	assert := assert.New(t)
+	// nums := []int{-1, 2, 1, -4}
+	// approachNumber := 1
+	// target := 2
+	nums := []int{-1, 2, 1, -4}
+	approachNumber := 1
+	target := 2
+	assert.Equal(target, threeSumClosest(nums, approachNumber))
+}
+
+func TestFourSum(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{1, 0, -1, 0, -2, 2}
+	approachNumber := 0
+	target := [][]int{
+		{-2, -1, 1, 2},
+		{-2, 0, 0, 2},
+		{-1, 0, 0, 1},
+	}
+	// nums := []int{2, 2, 2, 2}
+	// approachNumber := 8
+	// target := [][]int{}
+	assert.Equal(target, fourSum(nums, approachNumber))
+}
