@@ -1,1 +1,586 @@
-{}
+{
+    "err_info": "The deployment task cannot be executed, please check the deployment structure, pod_instance.containers.name",
+    "err_data": {
+        "id": "did:wlk:ch8Lefec88213e7e04800a2e44320dd63e0a5#pod_instances",
+        "type": "pod_instances",
+        "data": [
+            {
+                "annotation": "backend",
+                "appid": "e5596962050b49cf8ab326e7f4cc6556",
+                "circuit_breaker_action": "",
+                "circuit_breaker_containers": [],
+                "circuit_breaker_setting": [],
+                "containers": [
+                    {
+                        "args": [],
+                        "command": [
+                            "python",
+                            "Control_TrainOrDetection.py"
+                        ],
+                        "envs": [
+                            {
+                                "name": "DECISION",
+                                "value": "Train"
+                            },
+                            {
+                                "name": "WEIGHTS",
+                                "value": "\\/usr\\/src\\/app\\/yolov5s.pt"
+                            },
+                            {
+                                "name": "EPOCHS",
+                                "value": "1"
+                            },
+                            {
+                                "name": "YAML",
+                                "value": "data\\/data.yaml"
+                            },
+                            {
+                                "name": "PROJECT",
+                                "value": "\\/usr\\/src\\/app\\/train_results"
+                            },
+                            {
+                                "name": "NAME",
+                                "value": "exp"
+                            },
+                            {
+                                "name": "URL",
+                                "value": "http:\\/\\/101.132.129.29:28699\\/train_status"
+                            },
+                            {
+                                "name": "MODEL_URL",
+                                "value": "http:\\/\\/101.132.129.29:28699\\/getfile"
+                            },
+                            {
+                                "name": "SEND_MODEL",
+                                "value": "True"
+                            },
+                            {
+                                "name": "TRAIN_ZIP",
+                                "value": "\\/usr\\/src\\/app\\/data\\/train.zip"
+                            },
+                            {
+                                "name": "VAL_ZIP",
+                                "value": "\\/usr\\/src\\/app\\/data\\/val.zip"
+                            },
+                            {
+                                "name": "TEST_ZIP",
+                                "value": "\\/usr\\/src\\/app\\/data\\/test.zip"
+                            },
+                            {
+                                "name": "TRAIN_DATA",
+                                "value": "\\/usr\\/src\\/app\\/data\\/train\\/images\\/train2017"
+                            },
+                            {
+                                "name": "VAL_DATA",
+                                "value": "\\/usr\\/src\\/app\\/data\\/val\\/images\\/train2017"
+                            },
+                            {
+                                "name": "TEST_DATA",
+                                "value": "\\/usr\\/src\\/app\\/data\\/test\\/images\\/train2017"
+                            },
+                            {
+                                "name": "TRAIN_COMMUNICATION",
+                                "value": "True"
+                            },
+                            {
+                                "name": "BATCH_SIZE",
+                                "value": "1"
+                            }
+                        ],
+                        "image_asset": "",
+                        "name": "sal20000d71f3fad2205241gvju487xu",
+                        "resources": [
+                            {
+                                "name": "",
+                                "properties": {
+                                    "cpu_limit": "5000m",
+                                    "cpu_request": "500m",
+                                    "gpu_limit": "",
+                                    "gpu_request": 100,
+                                    "memory_limit": "5120Mi",
+                                    "memory_request": "256Mi"
+                                },
+                                "sku_id": 65,
+                                "type": "quota",
+                                "unique_key": "abc96412b27e463f85a9c795e7ac09e8",
+                                "logic_instance_key": "s10500v068tm6s1d2205301f04ji00lw",
+                                "bl_info": {
+                                    "logic_resource_key": "s105000368tm6s1d2205301f08s600fv",
+                                    "bl_no": "s105000068tm6s1d2205301f07r278w9",
+                                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                                    "type": "1116"
+                                },
+                                "option": []
+                            },
+                            {
+                                "bind_data_set": {
+                                    "unique_id": "s105000068tm6s1d2205275ire5467nn",
+                                    "name":"AI-",
+                                    "type": "task_dev_ai",
+                                    "dev_pvc_link": "\\/\\/s2-cdn.oneitfarm.com\\/ls1VO_e9CvcBkf74IPR-PxVYUuHB",
+                                    "publish_pvc_link": "ac04e979751d4923ba5343da294298fa@0.0.0"
+                                },
+                                "name": "train",
+                                "properties": {
+                                    "mount_path": "\\/1",
+                                    "read_only": false,
+                                    "storage": "100G",
+                                    "sub_path": "",
+                                    "capacity": "100G"
+                                },
+                                "type": "pvc",
+                                "unique_key": "0db19aa4c5f44ed7953e820847bf9638",
+                                "logic_instance_key": "s105000268tm6s1d2205301f09vk00sl",
+                                "sku_id": 213,
+                                "bl_info": {
+                                    "logic_resource_key": "s105000368tm6s1d2205301f090f00bg",
+                                    "bl_no": "s105000068tm6s1d2205301f07r278w9",
+                                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                                    "type": "1113"
+                                },
+                                "option": [],
+                                "mount_path": "\\/1",
+                                "sub_path": ""
+                            },
+                            {
+                                "bind_data_set": {
+                                    "unique_id": "s105000068tm6s1d2205275ire5467nn",
+                                    "name":"AI-",
+                                    "type": "task_dev_ai",
+                                    "dev_pvc_link": "\\/\\/s2-cdn.oneitfarm.com\\/ls1VO_e9CvcBkf74IPR-PxVYUuHB",
+                                    "publish_pvc_link": "ac04e979751d4923ba5343da294298fa@0.0.0"
+                                },
+                                "name": "verify",
+                                "properties": {
+                                    "mount_path": "\\/2",
+                                    "read_only": false,
+                                    "storage": "100G",
+                                    "sub_path": "",
+                                    "capacity": "100G"
+                                },
+                                "type": "pvc",
+                                "unique_key": "f810943406804be4b519a709a7725bfc",
+                                "logic_instance_key": "s105000268tm6s1d2205301f09x900ej",
+                                "sku_id": 213,
+                                "bl_info": {
+                                    "logic_resource_key": "s105000368tm6s1d2205301f090f00bg",
+                                    "bl_no": "s105000068tm6s1d2205301f07r278w9",
+                                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                                    "type": "1113"
+                                },
+                                "option": [],
+                                "mount_path": "\\/2",
+                                "sub_path": ""
+                            },
+                            {
+                                "bind_data_set": {
+                                    "unique_id": "s105000068tm6s1d2205275ire5467nn",
+                                    "name":"AI-",
+                                    "type": "task_dev_ai",
+                                    "dev_pvc_link": "\\/\\/s2-cdn.oneitfarm.com\\/ls1VO_e9CvcBkf74IPR-PxVYUuHB",
+                                    "publish_pvc_link": "ac04e979751d4923ba5343da294298fa@0.0.0"
+                                },
+                                "name": "test",
+                                "properties": {
+                                    "mount_path": "\\/3",
+                                    "read_only": false,
+                                    "storage": "100G",
+                                    "sub_path": "",
+                                    "capacity": "100G"
+                                },
+                                "type": "pvc",
+                                "unique_key": "35c50c2e272d4b279bc2a15b3f6684e6",
+                                "logic_instance_key": "s105000268tm6s1d2205301f09yt00gu",
+                                "sku_id": 213,
+                                "bl_info": {
+                                    "logic_resource_key": "s105000368tm6s1d2205301f090f00bg",
+                                    "bl_no": "s105000068tm6s1d2205301f07r278w9",
+                                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                                    "type": "1113"
+                                },
+                                "option": [],
+                                "mount_path": "\\/3",
+                                "sub_path": ""
+                            }
+                        ],
+                        "asset_key": "e5596962050b49cf8ab326e7f4000100@0.0.8"
+                    }
+                ],
+                "cron_jobs": [],
+                "deploy_labels": [],
+                "health_check_uri": "healthcheck",
+                "init_containers": [],
+                "is_root": 0,
+                "name": "ca961050f19b01df729050c77fb28833",
+                "name_literal": "default",
+                "net_policy": [],
+                "networks": [],
+                "node_name":"-0524",
+                "output": {
+                    "data_schema": "json",
+                    "destination": [],
+                    "keys": [
+                        {
+                            "data_schema": "text",
+                            "key": "",
+                            "name": "",
+                            "unique_key": "51a6eee9-1257-4554-310c-aee0319f3755",
+                            "value": ""
+                        }
+                    ],
+                    "type": "terminal"
+                },
+                "pod_runtime_require": "all",
+                "pod_type": "permanent",
+                "replicas": 1,
+                "repo_key": "sal20000d71f3fad2205241gws6r8716",
+                "setting_form": [
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "DECISION",
+                        "name": "DECISION",
+                        "need_expose": "",
+                        "unique_key": "532df615-aebb-4935-3949-59d5a49914a8",
+                        "value": "Train"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "WEIGHTS",
+                        "name": "WEIGHTS",
+                        "need_expose": "",
+                        "unique_key": "67280516-c027-4c39-3eaf-1b95548c60aa",
+                        "value": "\\/usr\\/src\\/app\\/yolov5s.pt"
+                    },
+                    {
+                        "data_schema": "int",
+                        "description": "",
+                        "from": "",
+                        "key": "EPOCHS",
+                        "name": "EPOCHS",
+                        "need_expose": "",
+                        "unique_key": "69e23ec7-8d5d-478e-31ee-647205fefecd",
+                        "value": "1"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "YAML",
+                        "name": "YAML",
+                        "need_expose": "",
+                        "unique_key": "c6b9f852-58d2-443c-3566-fa7c99906a9a",
+                        "value": "data\\/data.yaml"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "PROJECT",
+                        "name": "PROJECT",
+                        "need_expose": "",
+                        "unique_key": "b2fb6250-8b03-4d98-38ac-c5920fb395bb",
+                        "value": "\\/usr\\/src\\/app\\/train_results"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "NAME",
+                        "name": "NAME",
+                        "need_expose": "",
+                        "unique_key": "7b7ac26f-ef16-4734-35bc-a490d18192f3",
+                        "value": "exp"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "URL",
+                        "name": "URL",
+                        "need_expose": "",
+                        "unique_key": "3d4031ea-b2b5-4955-373d-dd50dd190d49",
+                        "value": "http:\\/\\/101.132.129.29:28699\\/train_status"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "MODEL_URL",
+                        "name": "MODEL_URL",
+                        "need_expose": "",
+                        "unique_key": "b524745a-593f-412d-33b0-23c0b199462d",
+                        "value": "http:\\/\\/101.132.129.29:28699\\/getfile"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "SEND_MODEL",
+                        "name": "SEND_MODEL",
+                        "need_expose": "",
+                        "unique_key": "19f9074b-d89a-4efe-3b3a-4e78bd284177",
+                        "value": "True"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "TRAIN_ZIP",
+                        "name": "TRAIN_ZIP",
+                        "need_expose": "",
+                        "unique_key": "69aed542-344b-41eb-3dc7-00a18509133e",
+                        "value": "\\/usr\\/src\\/app\\/data\\/train.zip"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "VAL_ZIP",
+                        "name": "VAL_ZIP",
+                        "need_expose": "",
+                        "unique_key": "396266ea-270c-433b-3b2d-6c15722a1881",
+                        "value": "\\/usr\\/src\\/app\\/data\\/val.zip"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "TEST_ZIP",
+                        "name": "TEST_ZIP",
+                        "need_expose": "",
+                        "unique_key": "07578f68-69e4-43b2-36d8-c8077fb99f42",
+                        "value": "\\/usr\\/src\\/app\\/data\\/test.zip"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "TRAIN_DATA",
+                        "name": "TRAIN_DATA",
+                        "need_expose": "",
+                        "unique_key": "3127503e-52f4-42b9-322e-51fb36fc6ca9",
+                        "value": "\\/usr\\/src\\/app\\/data\\/train\\/images\\/train2017"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "VAL_DATA",
+                        "name": "VAL_DATA",
+                        "need_expose": "",
+                        "unique_key": "24746343-1010-431e-37fa-30d741610990",
+                        "value": "\\/usr\\/src\\/app\\/data\\/val\\/images\\/train2017"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "TEST_DATA",
+                        "name": "TEST_DATA",
+                        "need_expose": "",
+                        "unique_key": "042e6397-ed4e-44e5-3724-c70c796644c2",
+                        "value": "\\/usr\\/src\\/app\\/data\\/test\\/images\\/train2017"
+                    },
+                    {
+                        "data_schema": "txt",
+                        "description": "",
+                        "from": "",
+                        "key": "TRAIN_COMMUNICATION",
+                        "name": "TRAIN_COMMUNICATION",
+                        "need_expose": "",
+                        "unique_key": "54d7845f-f9ff-45f0-3b98-b8fe4a075666",
+                        "value": "True"
+                    },
+                    {
+                        "data_schema": "int",
+                        "description": "",
+                        "from": "",
+                        "key": "BATCH_SIZE",
+                        "name": "BATCH_SIZE",
+                        "need_expose": "",
+                        "unique_key": "d53772fa-5ac0-4799-379d-a0b702bd66bb",
+                        "value": "1"
+                    }
+                ],
+                "support_ssh": "true",
+                "version": "0.0.8",
+                "not_default_pvc": 1,
+                "pod_instance": "s105908668tm6s1d2205301f09fh784z",
+                "deploy_mode": "personal",
+                "pod_resource_sku_id": 31,
+                "bl_info": {
+                    "logic_resource_key": "s105000368tm6s1d2205301f08s600fv",
+                    "bl_no": "s105000068tm6s1d2205301f07r278w9",
+                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                    "type": "1116"
+                },
+                "option": "",
+                "logic_instance_key": "s10500v068tm6s1d2205301f04ji00lw",
+                "site": {
+                    "siteuid": "s105",
+                    "clusteruid": "ymc-001"
+                }
+            },
+            {
+                "appid": "",
+                "version": "",
+                "pipeline": "",
+                "pipeline_index": "",
+                "target_channel": {
+                    "data": ""
+                },
+                "pod_instance": "8b8bae0a2f614b2cb748955c1ff3c190",
+                "job_params": [
+                    {
+                        "data": [
+                            {
+                                "name": "PVC_ZIP_FILE_URL",
+                                "value": "\\/\\/s2-cdn.oneitfarm.com\\/ls1VO_e9CvcBkf74IPR-PxVYUuHB"
+                            },
+                            {
+                                "name": "PVC_UNZIP_FILEPATH",
+                                "value": "\\/opt\\/pvc"
+                            }
+                        ],
+                        "data_schema": {
+                            "param_type": "data",
+                            "type": "env",
+                            "name": "IDG_TOPO"
+                        }
+                    }
+                ],
+                "pod_resource_sku_id": 1,
+                "bl_info": {
+                    "logic_resource_key": "s105000368tm6s1d2205301f0gkf00iw",
+                    "bl_no": "s105000068tm6s1d2205301f0frj78rz",
+                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                    "type": "1111"
+                },
+                "containers": [
+                    {
+                        "resources": [
+                            {
+                                "sku_id": 1,
+                                "bl_info": {
+                                    "logic_resource_key": "s105000368tm6s1d2205301f0gkf00iw",
+                                    "bl_no": "s105000068tm6s1d2205301f0frj78rz",
+                                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                                    "type": "1111"
+                                },
+                                "logic_instance_key": "s10500uv68tm6s1d2205301f0c21006h"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "appid": "",
+                "version": "",
+                "pipeline": "",
+                "pipeline_index": "",
+                "target_channel": {
+                    "data": ""
+                },
+                "pod_instance": "dbb01551f6304388b95808ff461071f1",
+                "job_params": [
+                    {
+                        "data": [
+                            {
+                                "name": "PVC_ZIP_FILE_URL",
+                                "value": "\\/\\/s2-cdn.oneitfarm.com\\/ls1VO_e9CvcBkf74IPR-PxVYUuHB"
+                            },
+                            {
+                                "name": "PVC_UNZIP_FILEPATH",
+                                "value": "\\/opt\\/pvc"
+                            }
+                        ],
+                        "data_schema": {
+                            "param_type": "data",
+                            "type": "env",
+                            "name": "IDG_TOPO"
+                        }
+                    }
+                ],
+                "pod_resource_sku_id": 1,
+                "bl_info": {
+                    "logic_resource_key": "s105000368tm6s1d2205301f0gkf00iw",
+                    "bl_no": "s105000068tm6s1d2205301f0frj78rz",
+                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                    "type": "1111"
+                },
+                "containers": [
+                    {
+                        "resources": [
+                            {
+                                "sku_id": 1,
+                                "bl_info": {
+                                    "logic_resource_key": "s105000368tm6s1d2205301f0gkf00iw",
+                                    "bl_no": "s105000068tm6s1d2205301f0frj78rz",
+                                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                                    "type": "1111"
+                                },
+                                "logic_instance_key": "s10500uv68tm6s1d2205301f0c210080"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "appid": "",
+                "version": "",
+                "pipeline": "",
+                "pipeline_index": "",
+                "target_channel": {
+                    "data": ""
+                },
+                "pod_instance": "0a0734b7beb0426b85d5483e101d1884",
+                "job_params": [
+                    {
+                        "data": [
+                            {
+                                "name": "PVC_ZIP_FILE_URL",
+                                "value": "\\/\\/s2-cdn.oneitfarm.com\\/ls1VO_e9CvcBkf74IPR-PxVYUuHB"
+                            },
+                            {
+                                "name": "PVC_UNZIP_FILEPATH",
+                                "value": "\\/opt\\/pvc"
+                            }
+                        ],
+                        "data_schema": {
+                            "param_type": "data",
+                            "type": "env",
+                            "name": "IDG_TOPO"
+                        }
+                    }
+                ],
+                "pod_resource_sku_id": 1,
+                "bl_info": {
+                    "logic_resource_key": "s105000368tm6s1d2205301f0gkf00iw",
+                    "bl_no": "s105000068tm6s1d2205301f0frj78rz",
+                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                    "type": "1111"
+                },
+                "containers": [
+                    {
+                        "resources": [
+                            {
+                                "sku_id": 1,
+                                "bl_info": {
+                                    "logic_resource_key": "s105000368tm6s1d2205301f0gkf00iw",
+                                    "bl_no": "s105000068tm6s1d2205301f0frj78rz",
+                                    "plat_key": "s1050001850aaf4e22042917lunfkyc9",
+                                    "type": "1111"
+                                },
+                                "logic_instance_key": "s10500uv68tm6s1d2205301f0c2100m5"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -79,3 +79,14 @@ func TestFourSum(t *testing.T) {
 	// target := [][]int{}
 	assert.Equal(target, fourSum(nums, approachNumber))
 }
+
+func TestRemoveDuplicates(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	target := 5
+	targetNums := []int{0, 1, 2, 3, 4}
+	assert.Equal(target, removeDuplicates(nums))
+	for k, v := range targetNums {
+		assert.Equal(v, nums[k])
+	}
+}

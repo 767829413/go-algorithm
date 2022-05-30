@@ -247,3 +247,22 @@ func fourSum(nums []int, target int) [][]int {
 	}
 	return res
 }
+
+// Remove duplicate items from an ordered array
+func removeDuplicates(nums []int) int {
+	l := len(nums)
+	if l < 2 {
+		return l
+	}
+	// 快慢指针,慢指针用来放不重复的数,快指针用来过滤重复
+	i := 0
+	for j := 1; j < len(nums); j++ {
+		// 已经排好序了,快指针j遍历 1 ~ len(nums)-1 位置
+		// 快指针 j 与 j-1 不等表示当前j位置的数可以放到慢指针i+1的位置
+		if nums[j] != nums[j-1] {
+			nums[i+1] = nums[j]
+			i++
+		}
+	}
+	return i + 1
+}
