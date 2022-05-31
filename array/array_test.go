@@ -90,3 +90,16 @@ func TestRemoveDuplicates(t *testing.T) {
 		assert.Equal(v, nums[k])
 	}
 }
+func TestRemoveElement(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{0, 1, 2, 2, 3, 0, 4, 2}
+	removeNum := 2
+	target := 5
+	targetNums := []int{0, 1, 4, 0, 3, 0, 4, 2}
+	// nums := []int{2}
+	// removeNum := 2
+	// target := 0
+	// targetNums := []int{2}
+	assert.Equal(target, removeElement(nums, removeNum))
+	assert.Equal(targetNums, nums)
+}

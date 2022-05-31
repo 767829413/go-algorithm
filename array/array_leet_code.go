@@ -266,3 +266,25 @@ func removeDuplicates(nums []int) int {
 	}
 	return i + 1
 }
+
+// Remove elements
+func removeElement(nums []int, val int) int {
+	// l := 0 // 定义覆盖位置指针l
+	// for _,v := range nums {
+	//     if v != val { // 不等则将指针l位置覆盖,同时移动l向右
+	//         nums[l] = v
+	//         l++
+	//     } // 相等子继续遍历,指针l位置不变
+	// }
+	// return l
+	lo, hi := 0, len(nums) // 定义左右指针
+	for lo < hi {
+		if nums[lo] == val { // 相等表示可以覆盖左指针位置,然后右指针减一,左指针不变,下轮继续判断
+			nums[lo] = nums[hi-1]
+			hi--
+		} else { // 不等则移动左指针,进行下轮判断
+			lo++
+		}
+	}
+	return lo
+}
