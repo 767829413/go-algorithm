@@ -103,3 +103,11 @@ func TestRemoveElement(t *testing.T) {
 	assert.Equal(target, removeElement(nums, removeNum))
 	assert.Equal(targetNums, nums)
 }
+
+func TestNextPermutation(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{3, 2, 1}
+	targetNums := []int{1, 2, 3}
+	nextPermutation(nums)
+	assert.Equal(targetNums, nums)
+}

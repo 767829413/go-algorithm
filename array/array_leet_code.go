@@ -288,3 +288,28 @@ func removeElement(nums []int, val int) int {
 	}
 	return lo
 }
+
+// Next permutation
+func nextPermutation(nums []int) {
+	l := len(nums)
+	if l < 2 {
+		return
+	}
+	i, j, k := l-2, l-1, l-1
+	for i >= 0 && nums[i] >= nums[j] {
+		i--
+		j--
+	}
+	if i >= 0 {
+		for k >= j && nums[i] >= nums[k] {
+			k--
+		}
+		if nums[i] < nums[k] {
+			nums[i], nums[k] = nums[k], nums[i]
+		}
+	}
+
+	for i, j := j, l-1; i < j; i, j = i+1, j-1 {
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+}
