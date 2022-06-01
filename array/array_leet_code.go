@@ -291,15 +291,23 @@ func removeElement(nums []int, val int) int {
 
 // Next permutation
 func nextPermutation(nums []int) {
+	// 翻译下 给定数字序列的字典序中下一个更大的排列。如果不存在下一个更大的排列，则将数字重新排列成最小的排列
+	// 等同于 给定若干个数字将其组合为一个整数.如何将这些数字重新排列,以得到下一个更大的整数.如 123 下一个更大的数为 132.如果没有更大的整数,则输出最小的整数
 	l := len(nums)
 	if l < 2 {
 		return
 	}
+	// 从后往前开始匹配,设置两个指针i,j
+	// 找到第一个 nums[i] < nums[j] 处
 	i, j, k := l-2, l-1, l-1
 	for i >= 0 && nums[i] >= nums[j] {
 		i--
 		j--
 	}
+
+	// 在在[j,l)中寻找 nums[i] < nums[k] 满足的指针k的位置
+	// 调换 i,k 位置
+	// i<0标识数组元素是降序的,只要变为升序即可
 	if i >= 0 {
 		for k >= j && nums[i] >= nums[k] {
 			k--
@@ -309,6 +317,7 @@ func nextPermutation(nums []int) {
 		}
 	}
 
+	// [j,l)转换为升序
 	for i, j := j, l-1; i < j; i, j = i+1, j-1 {
 		nums[i], nums[j] = nums[j], nums[i]
 	}
