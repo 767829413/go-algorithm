@@ -111,3 +111,11 @@ func TestNextPermutation(t *testing.T) {
 	nextPermutation(nums)
 	assert.Equal(targetNums, nums)
 }
+
+func TestSearch(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{4, 5, 6, 7, 0, 1, 2}
+	target := 0
+	output := 4
+	assert.Equal(output, search(nums, target))
+}

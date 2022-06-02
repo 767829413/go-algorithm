@@ -322,3 +322,42 @@ func nextPermutation(nums []int) {
 		nums[i], nums[j] = nums[j], nums[i]
 	}
 }
+
+// Search in rotated sorted array
+func search(nums []int, target int) int {
+	l := len(nums)
+	if l == 0 {
+		return -1
+	}
+	if l == 1 {
+		if nums[0] == target {
+			return 0
+		} else {
+			return -1
+		}
+	}
+	// 初始化边界和循环退出条件
+	for lo, hi := 0, l-1; lo <= hi; {
+		mid := (lo + hi) >> 1
+		if nums[mid] == target {
+			return mid
+		}
+		// 数组数据二分,不包含旋转点的一定是正常升序
+		// 目标在正常升序中,继续二分即可
+		// 目标在有旋转点的部分,可以继续二分,重新判断按照上述逻辑判断
+		if nums[0] <= nums[mid] { // 表示[0,mid)正常升序的,不包含旋转点,常规二分
+			if nums[0] <= target && target < nums[mid] {
+				hi = mid - 1
+			} else { // 重新定义,mid值随之更新
+				lo = mid + 1
+			}
+		} else { // [0,mid)包含旋转点,那么[mid,l)为正常升序,常规二分
+			if nums[mid] < target && target <= nums[l-1] {
+				lo = mid + 1
+			} else { // 重新定义,mid值随之更新
+				hi = mid - 1
+			}
+		}
+	}
+	return -1
+}
