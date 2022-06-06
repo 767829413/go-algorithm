@@ -119,3 +119,11 @@ func TestSearch(t *testing.T) {
 	output := 4
 	assert.Equal(output, search(nums, target))
 }
+
+func TestSearchRange(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{5, 7, 7, 8, 8, 10}
+	target := 8
+	output := []int{3, 4}
+	assert.Equal(output, searchRange(nums, target))
+}
