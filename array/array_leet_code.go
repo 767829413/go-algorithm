@@ -145,6 +145,15 @@ func threeSumClosest(nums []int, target int) int {
 	}
 	// 排序,从小到大
 	sort.Ints(nums)
+	//定义处理
+	approachNumber := func(a, b, c int) int {
+		l := math.Abs(float64(a) - float64(c))
+		r := math.Abs(float64(b) - float64(c))
+		if l > r {
+			return b
+		}
+		return a
+	}
 	// 遍历排序后的数组
 	for i, _ := range nums {
 		// 过滤重复的值
@@ -175,15 +184,6 @@ func threeSumClosest(nums []int, target int) int {
 		}
 	}
 	return res
-}
-
-func approachNumber(a, b, c int) int {
-	l := math.Abs(float64(a) - float64(c))
-	r := math.Abs(float64(b) - float64(c))
-	if l > r {
-		return b
-	}
-	return a
 }
 
 // Sum of four numbers
