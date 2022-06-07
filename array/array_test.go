@@ -127,3 +127,15 @@ func TestSearchRange(t *testing.T) {
 	output := []int{3, 4}
 	assert.Equal(output, searchRange(nums, target))
 }
+
+func TestSearchInsert(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{1, 3, 5, 6}
+	target := 5
+	output := 2
+	assert.Equal(output, searchInsert(nums, target))
+	nums = []int{1, 3, 5, 6}
+	target = 2
+	output = 1
+	assert.Equal(output, searchInsert(nums, target))
+}
