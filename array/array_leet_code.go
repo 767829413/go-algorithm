@@ -443,3 +443,39 @@ func searchInsert(nums []int, target int) int {
 	// lo , hi 在找数组中不在的元素都是收缩边界,可以任选
 	return hi
 }
+
+// Valid sudoku
+func isValidSudoku(board [][]byte) bool {
+	ti := make(map[int]map[byte]int) // 存储横向数据
+	tj := make(map[int]map[byte]int) // 存储纵向数据
+	t := make(map[int]map[byte]int)  // 存储九宫格内数据
+	for i := 0; i < 9; i++ {
+		ti[i] = make(map[byte]int)
+		tj[i] = make(map[byte]int)
+		t[i] = make(map[byte]int)
+	}
+	// 从左到右从上到下的遍历 O(n²)
+	for i := 0; i < 9; i++ {
+		for j := 0; j < 9; j++ {
+			if board[i][j] == '.' {
+				continue
+			}
+			if _, ok := ti[i][board[i][j]]; ok {
+				return false
+			}
+			if _, ok := tj[j][board[i][j]]; ok {
+				return false
+			}
+			// 当只有一排的时候 数独九宫格是只和纵坐标相关
+			// 每增加n排 九宫格的位置就是 j/3 + (i/3)*n
+			index := (i/3)*3 + (j / 3)
+			if _, ok := t[index][board[i][j]]; ok {
+				return false
+			}
+			ti[i][board[i][j]] = 1    // 横向数据
+			tj[j][board[i][j]] = 1    // 纵向数据
+			t[index][board[i][j]] = 1 // 九宫格内数据
+		}
+	}
+	return true
+}

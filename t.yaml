@@ -55,10 +55,40 @@ spec:
               name: conf
       containers:
         - name: mysql
+          image: mysql:5.7
+          env:
+            - name: MYSQL_ALLOW_EMPTY_PASSWORD
+              value: "1"
+          ports:
+            - name: mysql
+              containerPort: 3306
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+              subPath: mysql
+            - name: conf
+              mountPath: /etc/mysql/conf.d
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+          livenessProbe:
+            exec:
+              command: ["mysqladmin", "ping"]
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command: ["mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
+            initialDelaySeconds: 5
+            periodSeconds: 2
+            timeoutSeconds: 1
         - name: xtrabackup
           image: yizhiyong/xtrabackup:latest
           ports:
-            - containerPort: 3307
+            - name: xtrabackup
+              containerPort: 3307
           command:
             - bash
             - "-c"
@@ -80,6 +110,24 @@ spec:
                 
                 echo "Initializing replication from clone position"
                 mv change_master_to.sql.in change_master_to.sql.orig
+
+                mysql -h 127.0.0.1 <<EOF
+                $(<change_master_to.sql.orig),
+                MASTER_HOST='mysql-0.mysql',
+                MASTER_USER='root',
+                MASTER_PASSWORD='',
+                MASTER_CONNECT_RETRY=10;
+                START SLAVE; 
+                EOF
+              fi
+
+              exec ncat --listen --keep-open --send-only --max-conns=1 3307 -c "xtrabackup --backup --slave-info --stream=xbstream --host=127.0.0.1 --user=root"
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: data
+              subPath: mysql
+            - mountPath: /etc/mysql/conf.d
+              name: conf
       volumes:
         - name: conf
           emptyDir: {}
