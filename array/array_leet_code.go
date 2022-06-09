@@ -446,36 +446,86 @@ func searchInsert(nums []int, target int) int {
 
 // Valid sudoku
 func isValidSudoku(board [][]byte) bool {
-	ti := make(map[int]map[byte]int) // 存储横向数据
-	tj := make(map[int]map[byte]int) // 存储纵向数据
-	t := make(map[int]map[byte]int)  // 存储九宫格内数据
-	for i := 0; i < 9; i++ {
-		ti[i] = make(map[byte]int)
-		tj[i] = make(map[byte]int)
-		t[i] = make(map[byte]int)
-	}
+	var (
+		// 数字 1~9 映射到数组[]int{}的位置就是 0~8
+		//  l[2][3] = true 表示数字 4 在第 2 行已经出现过
+		//  c[2][3] = true 表示数字 4 在第 2 列已经出现过
+		//  box[0][0][3] = true 表示数字 4 在(0,0)九宫格中已经出现过
+		l, c [9][9]bool    // 存储横,纵向数据
+		box  [3][3][9]bool // 存储九宫格内数据
+	)
 	// 从左到右从上到下的遍历 O(n²)
-	for i := 0; i < 9; i++ {
-		for j := 0; j < 9; j++ {
-			if board[i][j] == '.' {
+	for i, row := range board {
+		for j, v := range row {
+			if v == '.' {
 				continue
 			}
-			if _, ok := ti[i][board[i][j]]; ok {
+			index := v - '1'
+			if l[i][index] {
 				return false
 			}
-			if _, ok := tj[j][board[i][j]]; ok {
+
+			if c[j][index] {
 				return false
 			}
-			// 当只有一排的时候 数独九宫格是只和纵坐标相关
-			// 每增加n排 九宫格的位置就是 j/3 + (i/3)*n
-			index := (i/3)*3 + (j / 3)
-			if _, ok := t[index][board[i][j]]; ok {
+
+			if box[i/3][j/3][index] {
 				return false
 			}
-			ti[i][board[i][j]] = 1    // 横向数据
-			tj[j][board[i][j]] = 1    // 纵向数据
-			t[index][board[i][j]] = 1 // 九宫格内数据
+			l[i][index] = true
+			c[j][index] = true
+			box[i/3][j/3][index] = true
 		}
 	}
 	return true
+}
+
+// Sudoku solver
+func solveSudoku(board [][]byte) {
+	var (
+		// 数字 1~9 映射到数组[]int{}的位置就是 0~8
+		//  l[2][3] = true 表示数字 4 在第 2 行已经出现过
+		//  c[2][3] = true 表示数字 4 在第 2 列已经出现过
+		//  box[0][0][3] = true 表示数字 4 在(0,0)九宫格中已经出现过
+		l, c [9][9]bool
+		box  [3][3][9]bool
+		tmp  [][2]int
+		dfs  func(int) bool
+	)
+
+	for i, row := range board {
+		for j, v := range row {
+			if v == '.' {
+				tmp = append(tmp, [2]int{i, j})
+			} else {
+				index := v - '1'
+				l[i][index] = true
+				c[j][index] = true
+				box[i/3][j/3][index] = true
+			}
+		}
+	}
+
+	dfs = func(p int) bool {
+		if p == len(tmp) {
+			return true
+		}
+		i, j := tmp[p][0], tmp[p][1]
+		for v := byte(0); v < 9; v++ {
+			if !l[i][v] && !c[j][v] && !box[i/3][j/3][v] {
+				l[i][v] = true
+				c[j][v] = true
+				box[i/3][j/3][v] = true
+				board[i][j] = v + '1'
+				if dfs(p + 1) {
+					return true
+				}
+				l[i][v] = false
+				c[j][v] = false
+				box[i/3][j/3][v] = false
+			}
+		}
+		return false
+	}
+	dfs(0)
 }
