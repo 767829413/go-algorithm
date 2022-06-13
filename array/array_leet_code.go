@@ -529,3 +529,55 @@ func solveSudoku(board [][]byte) {
 	}
 	dfs(0)
 }
+
+// Combination sum
+func combinationSum(candidates []int, target int) [][]int {
+	l := len(candidates)
+	if l <= 0 {
+		return [][]int{}
+	}
+	sort.Ints(candidates)
+	boxs := [][]int{}
+	// var dfs func(target int, tmp []int)
+	// dfs = func(target int, tmp []int) {
+	// 	if target <= 0 {
+	// 		if target == 0 {
+	// 			newTmp := make([]int, len(tmp))
+	// 			copy(newTmp, tmp)
+	// 			boxs = append(boxs, newTmp)
+	// 		}
+	// 		return
+	// 	}
+	// 	for _, v := range candidates {
+	// 		if target-v < 0 {
+	// 			break
+	// 		}
+	// 		tmp = append(tmp, v)
+	// 		dfs(target-v, tmp)
+	// 		tmp = tmp[:len(tmp)-1]
+	// 	}
+	// }
+	// dfs(7, []int{})
+	var dfs func(target, start int, tmp []int)
+	dfs = func(target, start int, tmp []int) {
+		if target <= 0 {
+			if target == 0 {
+				newTmp := make([]int, len(tmp))
+				copy(newTmp, tmp)
+				boxs = append(boxs, newTmp)
+			}
+			return
+		}
+		for i := start; i < len(candidates); i++ {
+			v := target - candidates[i]
+			if v < 0 {
+				break
+			}
+			tmp = append(tmp, candidates[i])
+			dfs(v, i, tmp)
+			tmp = tmp[:len(tmp)-1]
+		}
+	}
+	dfs(7, 0, []int{})
+	return boxs
+}

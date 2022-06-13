@@ -197,3 +197,13 @@ func TestSolveSudoku(t *testing.T) {
 	solveSudoku(nums)
 	assert.Equal(output, nums)
 }
+
+func TestCombinationSum(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{2, 3, 6, 7}
+	target := 7
+	output := [][]int{
+		{2, 2, 3}, {7},
+	}
+	assert.Equal(output, combinationSum(nums, target))
+}
