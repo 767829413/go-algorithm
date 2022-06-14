@@ -533,14 +533,16 @@ func solveSudoku(board [][]byte) {
 // Combination sum
 func combinationSum(candidates []int, target int) [][]int {
 	l := len(candidates)
-	if l <= 0 {
-		return [][]int{}
-	}
-	sort.Ints(candidates)
 	boxs := [][]int{}
-	// var dfs func(target int, tmp []int)
-	// dfs = func(target int, tmp []int) {
-	// 	if target <= 0 {
+	if l <= 0 {
+		return boxs
+	}
+	// 排序,方便减枝
+	sort.Ints(candidates)
+	// 采用 选择 | 不选择 来构建递归树
+	// var dfs func(target, idx int, tmp []int)
+	// dfs = func(target, idx int, tmp []int) {
+	// 	if target <= 0 || idx == l {
 	// 		if target == 0 {
 	// 			newTmp := make([]int, len(tmp))
 	// 			copy(newTmp, tmp)
@@ -548,16 +550,19 @@ func combinationSum(candidates []int, target int) [][]int {
 	// 		}
 	// 		return
 	// 	}
-	// 	for _, v := range candidates {
-	// 		if target-v < 0 {
-	// 			break
-	// 		}
-	// 		tmp = append(tmp, v)
-	// 		dfs(target-v, tmp)
+
+	// 	// 不选择
+	// 	dfs(target, idx+1, tmp)
+	// 	// 选择
+	// 	v := target - candidates[idx]
+	// 	if v >= 0 {
+	// 		tmp = append(tmp, candidates[idx])
+	// 		dfs(v, idx, tmp)
 	// 		tmp = tmp[:len(tmp)-1]
 	// 	}
 	// }
-	// dfs(7, []int{})
+	// dfs(target, 0, []int{})
+	// 采用目标值减值构建递归树
 	var dfs func(target, start int, tmp []int)
 	dfs = func(target, start int, tmp []int) {
 		if target <= 0 {
@@ -568,7 +573,10 @@ func combinationSum(candidates []int, target int) [][]int {
 			}
 			return
 		}
-		for i := start; i < len(candidates); i++ {
+		// 这里保证同层第二个节点不使用第一个节点在 candidates 里完全使用过的值
+		// candidates = [2,3,5]
+		// 第一个节点是(-2 -3 -5) 第二个节点(-3 -5)
+		for i := start; i < l; i++ {
 			v := target - candidates[i]
 			if v < 0 {
 				break
@@ -578,6 +586,6 @@ func combinationSum(candidates []int, target int) [][]int {
 			tmp = tmp[:len(tmp)-1]
 		}
 	}
-	dfs(7, 0, []int{})
+	dfs(target, 0, []int{})
 	return boxs
 }

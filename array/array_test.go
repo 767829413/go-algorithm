@@ -200,10 +200,10 @@ func TestSolveSudoku(t *testing.T) {
 
 func TestCombinationSum(t *testing.T) {
 	assert := assert.New(t)
-	nums := []int{2, 3, 6, 7}
-	target := 7
+	nums := []int{2, 3, 5}
+	target := 8
 	output := [][]int{
-		{2, 2, 3}, {7},
+		{2, 2, 2, 2}, {2, 3, 3}, {3, 5},
 	}
 	assert.Equal(output, combinationSum(nums, target))
 }
