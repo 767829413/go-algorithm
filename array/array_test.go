@@ -217,3 +217,10 @@ func TestCombinationSum2(t *testing.T) {
 	}
 	assert.Equal(output, combinationSum2(nums, target))
 }
+
+func TestFirstMissingPositive(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{3, 4, -1, 1}
+	output := 2
+	assert.Equal(output, firstMissingPositive(nums))
+}

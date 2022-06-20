@@ -665,3 +665,25 @@ func combinationSum2(candidates []int, target int) [][]int {
 	dfs(target, 0, []int{})
 	return box
 }
+
+// First missing positive
+func firstMissingPositive(nums []int) int {
+	l := len(nums)
+	// 建立hash表,存储所有nums 大于0的值
+	m := make(map[int]int, l)
+	for _, v := range nums {
+		if v <= 0 {
+			continue
+		}
+		m[v] = 1
+	}
+	// 从1到l进行遍历,因为找的是最小的未出现的数,转换为hash表里未出现的最小数即可
+	// 为啥终止条件是l呢? 如果是 [1~n](顺序+1递增)那么nums长为n,最终最小值也就为n+1了
+	// 如果是 [x~n](非顺序+1递增) 那么 1到n遍历最小的值肯定在1到l之间
+	for i := 1; i <= l; i++ {
+		if _, ok := m[i]; !ok {
+			return i
+		}
+	}
+	return l + 1
+}
