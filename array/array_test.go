@@ -224,3 +224,10 @@ func TestFirstMissingPositive(t *testing.T) {
 	output := 2
 	assert.Equal(output, firstMissingPositive(nums))
 }
+
+func TestTrap(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
+	output := 6
+	assert.Equal(output, trap(nums))
+}

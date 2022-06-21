@@ -687,3 +687,39 @@ func firstMissingPositive(nums []int) int {
 	}
 	return l + 1
 }
+
+// Trapping rain water
+func trap(height []int) int {
+	l := len(height)
+	sum := 0
+	if l <= 0 {
+		return sum
+	}
+
+	// 接水我们以当前位置是否能积水为参考标准
+	// 当前位置高为h,左边最高设为lm,右边最高设为rm
+	// 只有当前位置高度h小于min(lm,rm)的时候才能有积水等于 min(lm,rm) - h
+	// 建立左右指针 lo hi,通过比较 height[lo] , height[hi]的高度确定当前位置依赖哪边高度
+	lo, hi, lm, rm := 0, l-1, 0, 0
+	for lo < hi {
+		// 左边高度为依赖
+		if height[lo] < height[hi] {
+			// 判断lo位置是不是左边最高的
+			if height[lo] >= lm {
+				lm = height[lo]
+			} else {
+				// 不是最高则是可积水位置
+				sum += lm - height[lo]
+			}
+			lo++
+		} else {
+			if height[hi] >= rm {
+				rm = height[hi]
+			} else {
+				sum += rm - height[hi]
+			}
+			hi--
+		}
+	}
+	return sum
+}
