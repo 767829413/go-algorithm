@@ -723,3 +723,30 @@ func trap(height []int) int {
 	}
 	return sum
 }
+
+// Jump game ii
+func jump(nums []int) int {
+	step, jmax, l, f := 0, 0, len(nums), 0
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	// 正向寻找,将每次的前进距离选取最大值
+	// 最后一个位置跳过,因为要么超过最后位置,要么等于,都表示结束
+	for i := 0; i < l-1; i++ {
+		// 每个位置能到达的最远位置
+		jmax = max(jmax, i+nums[i])
+		// 到达最远位置边界
+		if i == f {
+			// fmt.Println("边界位置", f)
+			// 更新最新能到达的最远位置
+			f = jmax
+			// 此时因为已经到了上一次最远的边界,将跳的次数更新
+			step++
+		}
+		// fmt.Println(i, jmax, f)
+	}
+	return step
+}
