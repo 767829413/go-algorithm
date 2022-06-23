@@ -750,3 +750,40 @@ func jump(nums []int) int {
 	}
 	return step
 }
+
+// Permutations
+func permute(nums []int) [][]int {
+	box := [][]int{}
+	l := len(nums)
+	if l == 0 {
+		return box
+	}
+	var dfs func(depth int, used []bool, path []int)
+	// 利用深度进行逐层循环遍历
+	dfs = func(depth int, used []bool, path []int) {
+		// 设置终止条件,深度
+		if depth == l {
+			// 必须用新的值去拷贝,不然数据会被重复设置
+			// 切片底层还是数组,引用导致的
+			newPath := make([]int, len(path))
+			copy(newPath, path)
+			box = append(box, newPath)
+			return
+		}
+		for i := 0; i < l; i++ {
+			// 剔除重复使用
+			if used[i] {
+				continue
+			}
+			// 开始尝试状态
+			path = append(path, nums[i])
+			used[i] = true
+			dfs(depth+1, used, path)
+			// 恢复到尝试前的状态
+			path = path[:len(path)-1]
+			used[i] = false
+		}
+	}
+	dfs(0, make([]bool, l), []int{})
+	return box
+}

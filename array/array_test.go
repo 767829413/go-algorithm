@@ -238,3 +238,17 @@ func TestJump(t *testing.T) {
 	output := 4
 	assert.Equal(output, jump(nums))
 }
+
+func TestPermute(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{1, 2, 3}
+	output := [][]int{
+		{1, 2, 3},
+		{1, 3, 2},
+		{2, 1, 3},
+		{2, 3, 1},
+		{3, 1, 2},
+		{3, 2, 1},
+	}
+	assert.Equal(output, permute(nums))
+}
