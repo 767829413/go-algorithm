@@ -789,7 +789,7 @@ func permute(nums []int) [][]int {
 	return box
 }
 
-// Permutations-ii
+// Permutations ii
 func permuteUnique(nums []int) [][]int {
 	box := [][]int{}
 	l := len(nums)
