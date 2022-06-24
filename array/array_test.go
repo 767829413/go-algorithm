@@ -252,3 +252,14 @@ func TestPermute(t *testing.T) {
 	}
 	assert.Equal(output, permute(nums))
 }
+
+func TestPermuteUnique(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{1, 1, 2}
+	output := [][]int{
+		{1, 1, 2},
+		{1, 2, 1},
+		{2, 1, 1},
+	}
+	assert.Equal(output, permuteUnique(nums))
+}
