@@ -826,3 +826,27 @@ func permuteUnique(nums []int) [][]int {
 	dfs(0, []int{}, make([]bool, l))
 	return box
 }
+
+// Rotate image
+func rotate(matrix [][]int) {
+	n := len(matrix)
+	// 关键公式 90°旋转表示 matrix[row][col] <=> matrix[col][n-row-1]
+	// 水平翻转 matrix[row][col] <=> matrix[n-row-1][col]
+	// 主对角线翻转 matrix[n-row-1][col] <=> matrix[col][n-row-1]
+
+	// 水平轴翻转 记住水平轴翻转是整体的一半
+	for i := 0; i < (n >> 1); i++ {
+		for j := 0; j < n; j++ {
+			matrix[i][j], matrix[n-i-1][j] = matrix[n-i-1][j], matrix[i][j]
+		}
+	}
+
+	// fmt.Println(matrix)
+	// 对角线翻转 记住翻转的时候j<i
+	for i := 0; i < n; i++ {
+		for j := 0; j < i; j++ {
+			matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+		}
+	}
+	// fmt.Println(matrix)
+}
