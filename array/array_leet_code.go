@@ -850,3 +850,33 @@ func rotate(matrix [][]int) {
 	}
 	// fmt.Println(matrix)
 }
+
+// Group anagrams
+func groupAnagrams(strs []string) [][]string {
+	// sort.Slice()
+	box := make([][]string, 0, len(strs))
+	// 字符串字典排序后作为hash key
+	// m := make(map[string][]string)
+	// for _, v := range strs {
+	// 	tmp := []byte(v)
+	// 	sort.Slice(tmp, func(i, j int) bool { return tmp[j] > tmp[i] })
+	// 	index := string(tmp)
+	// 	m[index] = append(m[index], v)
+	// }
+	// for _, v := range m {
+	// 	box = append(box, v)
+	// }
+	// 使用计数,字母异位词之间包含的字母必定个数相同
+	c := make(map[[26]int][]string)
+	for _, v := range strs {
+		tmp := [26]int{}
+		for _, b := range v {
+			tmp[b-'a']++
+		}
+		c[tmp] = append(c[tmp], v)
+	}
+	for _, v := range c {
+		box = append(box, v)
+	}
+	return box
+}

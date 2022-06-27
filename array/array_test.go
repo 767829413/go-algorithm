@@ -279,3 +279,16 @@ func TestRotate(t *testing.T) {
 	rotate(nums)
 	assert.Equal(output, nums)
 }
+
+func TestGroupAnagrams(t *testing.T) {
+	assert := assert.New(t)
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	output := [][]string{
+		{"bat"},
+		{"tan", "nat"},
+		{"eat", "tea", "ate"},
+	}
+	for _, v := range groupAnagrams(strs) {
+		assert.Contains(output, v)
+	}
+}
