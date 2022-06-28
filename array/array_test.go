@@ -235,7 +235,7 @@ func TestTrap(t *testing.T) {
 func TestJump(t *testing.T) {
 	assert := assert.New(t)
 	nums := []int{2, 3, 0, 1, 5, 1, 1, 1, 1, 6}
-	output := 4
+	output := 3
 	assert.Equal(output, jump(nums))
 }
 
