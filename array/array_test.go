@@ -292,3 +292,15 @@ func TestGroupAnagrams(t *testing.T) {
 		assert.Contains(output, v)
 	}
 }
+
+func TestSolveNQueens(t *testing.T) {
+	assert := assert.New(t)
+	input := 4
+	output := [][]string{
+		{".Q..", "...Q", "Q...", "..Q."},
+		{"..Q.", "Q...", "...Q", ".Q.."},
+	}
+	for _, v := range solveNQueens(input) {
+		assert.Contains(output, v)
+	}
+}

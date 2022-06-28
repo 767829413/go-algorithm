@@ -880,3 +880,66 @@ func groupAnagrams(strs []string) [][]string {
 	}
 	return box
 }
+
+// N queens
+func solveNQueens(n int) [][]string {
+	if n == 0 {
+		return [][]string{{""}}
+	}
+	if n == 1 {
+		return [][]string{{"Q"}}
+	}
+	box := [][]int{}
+	// 每一列的使用
+	col := make([]bool, n)
+	// 主对角线的使用 row(行) col(列) 关系是 row - col => [-3~3],总体+3,[0~6]
+	main := make([]bool, 2*n-1)
+	// 副对角线的使用 row(行) col(列) 关系是 row + col => [0~6]
+	vice := make([]bool, 2*n-1)
+
+	var dfs func(row int, path []int)
+	dfs = func(row int, path []int) {
+		if row == n {
+			newPath := make([]int, len(path))
+			copy(newPath, path)
+			box = append(box, newPath)
+			return
+		}
+		for i := 0; i < n; i++ {
+			if col[i] || main[row-i+n-1] || vice[row+i] {
+				continue
+			}
+			path = append(path, i)
+			// 记录使用状态
+			col[i] = true
+			main[row-i+n-1] = true
+			vice[row+i] = true
+
+			dfs(row+1, path)
+
+			// 状态还原
+			col[i] = false
+			main[row-i+n-1] = false
+			vice[row+i] = false
+			path = path[:len(path)-1]
+		}
+	}
+	dfs(0, []int{})
+	ans := make([][]string, len(box))
+	// 将获取的数组转化为字符串
+	for k, v := range box {
+		ans[k] = []string{}
+		for _, index := range v {
+			tmp := []byte{}
+			for j := 0; j < n; j++ {
+				if j == index {
+					tmp = append(tmp, 'Q')
+				} else {
+					tmp = append(tmp, '.')
+				}
+			}
+			ans[k] = append(ans[k], string(tmp))
+		}
+	}
+	return ans
+}
