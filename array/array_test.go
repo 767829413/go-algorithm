@@ -234,8 +234,8 @@ func TestTrap(t *testing.T) {
 
 func TestJump(t *testing.T) {
 	assert := assert.New(t)
-	nums := []int{2, 3, 0, 1, 5, 1, 1, 1, 1, 6}
-	output := 3
+	nums := []int{2, 3, 1, 1, 4}
+	output := 2
 	assert.Equal(output, jump(nums))
 }
 
@@ -303,4 +303,12 @@ func TestSolveNQueens(t *testing.T) {
 	for _, v := range solveNQueens(input) {
 		assert.Contains(output, v)
 	}
+}
+
+func TestMaxSubArray(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
+	output := 6
+	assert.Equal(output, maxSubArray(input))
+
 }

@@ -943,3 +943,34 @@ func solveNQueens(n int) [][]string {
 	}
 	return ans
 }
+
+// Maximum subarray
+func maxSubArray(nums []int) int {
+	l := len(nums)
+	if l == 1 {
+		return nums[0]
+	}
+	// 动态规划经典题
+	// 定义子问题 以当前nums[i]位置结尾的最大值
+	// 描叙子问题之间联系 nums[i]位置的最大值是取决于nums[i-1]位置的最大值
+	// 初值设置 nums[0]位置的最大值就是nums[0]
+	dp := make([]int, l)
+	dp[0] = nums[0]
+	m := math.MinInt
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	for i := 1; i < l; i++ {
+		if dp[i-1] > 0 {
+			dp[i] = nums[i] + dp[i-1]
+		} else {
+			dp[i] = nums[i]
+		}
+		m = max(dp[i], m)
+	}
+	m = max(dp[0], m)
+	return m
+}
