@@ -974,3 +974,57 @@ func maxSubArray(nums []int) int {
 	m = max(dp[0], m)
 	return m
 }
+
+// Spiral matrix
+func spiralOrder(matrix [][]int) []int {
+	box := []int{}
+	l := len(matrix)
+	if l == 0 {
+		return box
+	}
+	// 构建上下,左右边界
+	rowU, rowrD, colL, colR := 0, l-1, 0, len(matrix[0])-1
+	// 向右走,向下走,向左走,向上走
+	for {
+		// 循环退出条件
+		if colL > colR {
+			break
+		}
+
+		for j := colL; j <= colR; j++ {
+			box = append(box, matrix[rowU][j])
+		}
+		rowU++
+
+		// 循环退出条件
+		if rowU > rowrD {
+			break
+		}
+
+		for i := rowU; i <= rowrD; i++ {
+			box = append(box, matrix[i][colR])
+		}
+		colR--
+
+		// 循环退出条件
+		if colL > colR {
+			break
+		}
+
+		for j := colR; j >= colL; j-- {
+			box = append(box, matrix[rowrD][j])
+		}
+		rowrD--
+
+		// 循环退出条件
+		if rowU > rowrD {
+			break
+		}
+
+		for i := rowrD; i >= rowU; i-- {
+			box = append(box, matrix[i][colL])
+		}
+		colL++
+	}
+	return box
+}
