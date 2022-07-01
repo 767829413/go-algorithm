@@ -323,3 +323,10 @@ func TestSpiralOrder(t *testing.T) {
 	output := []int{1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7}
 	assert.Equal(output, spiralOrder(input))
 }
+
+func TestCanJump(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{1, 1, 1, 0}
+	output := true
+	assert.Equal(output, canJump(input))
+}
