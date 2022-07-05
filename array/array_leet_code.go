@@ -1,7 +1,6 @@
 package array
 
 import (
-	"fmt"
 	"math"
 	"sort"
 )
@@ -801,7 +800,7 @@ func permuteUnique(nums []int) [][]int {
 	var dfs func(depth int, path []int, used []bool)
 	dfs = func(depth int, path []int, used []bool) {
 		if depth == l {
-			fmt.Println(path)
+			// fmt.Println(path)
 			newPath := make([]int, len(path))
 			copy(newPath, path)
 			box = append(box, newPath)
@@ -1076,4 +1075,35 @@ func canJump(nums []int) bool {
 		index = max(index, nums[i]+i)
 	}
 	return true
+}
+
+// Merge intervals
+func merge(intervals [][]int) [][]int {
+	box := [][]int{}
+	l := len(intervals)
+	if l == 1 {
+		return intervals
+	}
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	// 首先对每个区间的起始位置进行排序
+	sort.Slice(intervals, func(i int, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+	// 构建一个对比的序列
+	box = append(box, intervals[0])
+	for i := 1; i < l; i++ {
+		j := len(box) - 1
+		// 如果a,b区间能合并,必然是 a区间[i,j]中的j >= b区间[x,y]中x
+		if intervals[i][0] <= box[j][1] {
+			box[j][1] = max(intervals[i][1], box[j][1])
+		} else { // 不能合并那就得把当前值push到对比序列里
+			box = append(box, intervals[i])
+		}
+	}
+	return box
 }
