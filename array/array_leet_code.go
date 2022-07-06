@@ -1115,6 +1115,6 @@ func insert(intervals [][]int, newInterval []int) [][]int {
 		return [][]int{newInterval}
 	}
 	intervals = append(intervals, newInterval)
-
+	// 直接复用上一题的解答就ok了
 	return merge(intervals)
 }
