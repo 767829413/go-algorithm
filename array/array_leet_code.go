@@ -1107,3 +1107,14 @@ func merge(intervals [][]int) [][]int {
 	}
 	return box
 }
+
+// Insert interval
+func insert(intervals [][]int, newInterval []int) [][]int {
+	l := len(intervals)
+	if l == 0 {
+		return [][]int{newInterval}
+	}
+	intervals = append(intervals, newInterval)
+
+	return merge(intervals)
+}

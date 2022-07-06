@@ -345,3 +345,21 @@ func TestMerge(t *testing.T) {
 	}
 	assert.Equal(expected, merge(input))
 }
+
+func TestInsert(t *testing.T) {
+	assert := assert.New(t)
+	input := [][]int{
+		{1, 2},
+		{3, 5},
+		{6, 7},
+		{8, 10},
+		{12, 16},
+	}
+	newInterval := []int{4, 8}
+	expected := [][]int{
+		{1, 2},
+		{3, 10},
+		{12, 16},
+	}
+	assert.Equal(expected, insert(input, newInterval))
+}
