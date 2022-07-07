@@ -363,3 +363,14 @@ func TestInsert(t *testing.T) {
 	}
 	assert.Equal(expected, insert(input, newInterval))
 }
+
+func TestGenerateMatrix(t *testing.T) {
+	assert := assert.New(t)
+	input := 3
+	expected := [][]int{
+		{1, 2, 3},
+		{8, 9, 4},
+		{7, 6, 5},
+	}
+	assert.Equal(expected, generateMatrix(input))
+}
