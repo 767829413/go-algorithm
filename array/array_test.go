@@ -374,3 +374,14 @@ func TestGenerateMatrix(t *testing.T) {
 	}
 	assert.Equal(expected, generateMatrix(input))
 }
+
+func TestUniquePathsWithObstacles(t *testing.T) {
+	assert := assert.New(t)
+	input := [][]int{
+		{0, 0, 0},
+		{0, 0, 1},
+		{1, 0, 0},
+	}
+	expected := 2
+	assert.Equal(expected, uniquePathsWithObstacles(input))
+}

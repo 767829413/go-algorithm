@@ -1176,3 +1176,40 @@ func generateMatrix(n int) [][]int {
 	}
 	return box
 }
+
+// Unique paths ii
+func uniquePathsWithObstacles(obstacleGrid [][]int) int {
+	n := len(obstacleGrid)
+	m := len(obstacleGrid[0])
+	if n == 0 || m == 0 || obstacleGrid[0][0] == 1 {
+		return 0
+	}
+	// 动态规划求解,先推到子问题到最终大问题的求解递推式
+	// dp[i][j] = dp[i-1][j] + dp[i][j-1]
+	dp := make([][]int, n)
+	for k := range dp {
+		dp[k] = make([]int, m)
+	}
+	// 最初解确定
+	dp[0][0] = 1
+	// 最左侧可达解,只要有障碍物那后续都不可达,可达只有一条路径
+	for i := 1; i < n && obstacleGrid[i][0] != 1; i++ {
+		dp[i][0] = 1
+	}
+	// 最上侧可达解,同上
+	for j := 1; j < m && obstacleGrid[0][j] != 1; j++ {
+		dp[0][j] = 1
+	}
+
+	for i := 1; i < n; i++ {
+		for j := 1; j < m; j++ {
+			// 当前位置是障碍物的,那必然不可达
+			if obstacleGrid[i][j] == 1 {
+				continue
+			}
+			// 按递推公式进行递推求解
+			dp[i][j] = dp[i-1][j] + dp[i][j-1]
+		}
+	}
+	return dp[n-1][m-1]
+}
