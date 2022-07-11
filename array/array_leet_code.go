@@ -1213,3 +1213,45 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	}
 	return dp[n-1][m-1]
 }
+
+// Minimum path sum
+func minPathSum(grid [][]int) int {
+	n := len(grid)
+	m := len(grid[0])
+	if n == 0 || m == 0 {
+		return 0
+	}
+	if m == n && n == 1 {
+		return grid[0][0]
+	}
+	min := func(a, b int) int {
+		if a > b {
+			return b
+		}
+		return a
+	}
+	// 动态规划求解,先推到子问题到最终大问题的求解递推式
+	// dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])
+	dp := make([][]int, n)
+	for k := range dp {
+		dp[k] = make([]int, m)
+	}
+	// 最初解确定
+	dp[0][0] = grid[0][0]
+	// 向下走的初始最小解
+	for i := 1; i < n; i++ {
+		dp[i][0] = grid[i][0] + dp[i-1][0]
+	}
+	// 向右走的初始最小解
+	for j := 1; j < m; j++ {
+		dp[0][j] = grid[0][j] + dp[0][j-1]
+	}
+
+	for i := 1; i < n; i++ {
+		for j := 1; j < m; j++ {
+			// 按递推公式进行递推求解
+			dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])
+		}
+	}
+	return dp[n-1][m-1]
+}

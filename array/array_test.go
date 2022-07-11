@@ -385,3 +385,14 @@ func TestUniquePathsWithObstacles(t *testing.T) {
 	expected := 2
 	assert.Equal(expected, uniquePathsWithObstacles(input))
 }
+
+func TestMinPathSum(t *testing.T) {
+	assert := assert.New(t)
+	input := [][]int{
+		{1, 3, 1},
+		{1, 5, 1},
+		{4, 2, 1},
+	}
+	expected := 7
+	assert.Equal(expected, minPathSum(input))
+}
