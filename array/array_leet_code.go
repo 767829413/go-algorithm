@@ -1255,3 +1255,20 @@ func minPathSum(grid [][]int) int {
 	}
 	return dp[n-1][m-1]
 }
+
+// Plus one
+func plusOne(digits []int) []int {
+	l := len(digits)
+	// 取最后一位数开始
+	for i := l - 1; i >= 0; i-- {
+		digits[i]++
+		// 取余
+		digits[i] %= 10
+		// 取余不为0则返回
+		if digits[i] != 0 {
+			return digits
+		}
+	}
+	// 到这就是全体进一位,扩充切片
+	return append([]int{1}, digits...)
+}

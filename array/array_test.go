@@ -396,3 +396,10 @@ func TestMinPathSum(t *testing.T) {
 	expected := 7
 	assert.Equal(expected, minPathSum(input))
 }
+
+func TestPlusOne(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{9}
+	expected := []int{1, 0}
+	assert.Equal(expected, plusOne(input))
+}
