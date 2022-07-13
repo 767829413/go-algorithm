@@ -3,6 +3,7 @@ package array
 import (
 	"math"
 	"sort"
+	"strings"
 )
 
 // Sum of two numbers
@@ -1271,4 +1272,133 @@ func plusOne(digits []int) []int {
 	}
 	// 到这就是全体进一位,扩充切片
 	return append([]int{1}, digits...)
+}
+
+// Text justification
+func fullJustify(words []string, maxWidth int) []string {
+	l := len(words)
+	box := []string{}
+	var builder strings.Builder
+	if l == 0 {
+		for i := 0; i < maxWidth; i++ {
+			builder.WriteString(" ")
+		}
+		return []string{builder.String()}
+	}
+
+	getP := func(nsn, indexN int) int {
+		var p, p1, p2 int
+		p1 = nsn % indexN
+		p2 = nsn / indexN
+		if p1 == 0 {
+			p = p2
+		} else {
+			p = p2 + 1
+		}
+		return p
+	}
+
+	setSpace := func(nsn int, res []string) string {
+		end := len(res) - 1
+		indexN := end
+		p := getP(nsn, indexN)
+		newR := []string{}
+		for k := range res {
+			newR = append(newR, res[k])
+			if k == end {
+				break
+			}
+			if k == end-1 {
+				for i := 0; i < nsn; i++ {
+					newR = append(newR, " ")
+				}
+			} else {
+				for i := 0; i < p; i++ {
+					newR = append(newR, " ")
+				}
+				indexN--
+				nsn -= p
+				p = getP(nsn, indexN)
+			}
+
+		}
+		return strings.Join(newR, "")
+	}
+	setEndSpace := func(nsn int, res []string) string {
+		end := len(res) - 1
+		indexN := end
+		if indexN == 0 {
+			for i := 0; i < nsn; i++ {
+				res = append(res, " ")
+			}
+			return strings.Join(res, "")
+		} else {
+			tmp := []string{}
+			for k := range res {
+				tmp = append(tmp, res[k])
+				if k == end {
+					for i := 0; i < nsn; i++ {
+						tmp = append(tmp, " ")
+					}
+					break
+				} else {
+					tmp = append(tmp, " ")
+					nsn--
+				}
+			}
+			return strings.Join(tmp, "")
+		}
+	}
+	type tmp struct {
+		len     int
+		realLen int
+		str     []string
+	}
+	t := &tmp{
+		len: 0,
+		str: []string{},
+	}
+	for i := 0; i < l; i++ {
+		sn := maxWidth - t.realLen
+		flag := maxWidth - t.len - len(words[i])
+
+		if flag <= 0 {
+			if flag == 0 {
+				t.str = append(t.str, words[i])
+				t.realLen = t.realLen + len(words[i])
+				t.len = t.len + len(words[i]) + 1
+				sn = maxWidth - t.realLen
+			}
+			needStr := ""
+			if len(t.str) == 1 {
+				needStr = setEndSpace(sn, t.str)
+			} else {
+				needStr = setSpace(sn, t.str)
+			}
+			box = append(box, needStr)
+			t = &tmp{
+				len:     0,
+				realLen: 0,
+				str:     []string{},
+			}
+		}
+
+		if i == l-1 && flag != 0 {
+			t.str = append(t.str, words[i])
+			t.realLen = t.realLen + len(words[i])
+			t.len = t.len + len(words[i]) + 1
+			sn = maxWidth - t.realLen
+			needStr := setEndSpace(sn, t.str)
+			box = append(box, needStr)
+			return box
+		}
+
+		if flag != 0 {
+			t.str = append(t.str, words[i])
+			t.realLen = t.realLen + len(words[i])
+			t.len = t.len + len(words[i]) + 1
+		}
+
+	}
+	return box
 }

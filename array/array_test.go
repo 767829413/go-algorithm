@@ -403,3 +403,11 @@ func TestPlusOne(t *testing.T) {
 	expected := []int{1, 0}
 	assert.Equal(expected, plusOne(input))
 }
+
+func TestFullJustify(t *testing.T) {
+	assert := assert.New(t)
+	input := []string{"This", "is", "an", "example", "of", "text", "justification."}
+	maxWidth := 16
+	expected := []string{"This    is    an", "example  of text", "justification.  "}
+	assert.Equal(expected, fullJustify(input, maxWidth))
+}
