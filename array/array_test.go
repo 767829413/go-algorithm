@@ -411,3 +411,19 @@ func TestFullJustify(t *testing.T) {
 	expected := []string{"This    is    an", "example  of text", "justification.  "}
 	assert.Equal(expected, fullJustify(input, maxWidth))
 }
+
+func TestSetZeroes(t *testing.T) {
+	assert := assert.New(t)
+	input := [][]int{
+		{0, 1, 2, 0},
+		{3, 4, 5, 2},
+		{1, 3, 1, 5},
+	}
+	expected := [][]int{
+		{0, 0, 0, 0},
+		{0, 4, 5, 0},
+		{0, 3, 1, 0},
+	}
+	setZeroes(input)
+	assert.Equal(expected, input)
+}

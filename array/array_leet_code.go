@@ -1402,3 +1402,61 @@ func fullJustify(words []string, maxWidth int) []string {
 	}
 	return box
 }
+
+// Set matrix zeroes
+func setZeroes(matrix [][]int) {
+	n := len(matrix)
+	m := len(matrix[0])
+
+	if n == 0 || m == 0 {
+		return
+	}
+	// 判断行列是否有0标志
+	col0Flag, row0Flag := false, false
+	// 判断行是否有0
+	for i := 0; i < n; i++ {
+		if matrix[i][0] == 0 {
+			row0Flag = true
+			break
+		}
+	}
+
+	// 判断列是否为0
+	for j := 0; j < m; j++ {
+		if matrix[0][j] == 0 {
+			col0Flag = true
+			break
+		}
+	}
+
+	// 然后利用第一行第一列作为记录来标记
+	for i := 1; i < n; i++ {
+		for j := 1; j < m; j++ {
+			if matrix[i][j] == 0 {
+				matrix[0][j], matrix[i][0] = 0, 0
+			}
+		}
+	}
+
+	// 根据第一行第一列的标记开始置0
+	for i := 1; i < n; i++ {
+		for j := 1; j < m; j++ {
+			if matrix[0][j] == 0 || matrix[i][0] == 0 {
+				matrix[i][j] = 0
+			}
+		}
+	}
+
+	// 最后根绝条件将第一行第一列置0
+	if row0Flag {
+		for i := 0; i < n; i++ {
+			matrix[i][0] = 0
+		}
+	}
+
+	if col0Flag {
+		for j := 0; j < m; j++ {
+			matrix[0][j] = 0
+		}
+	}
+}
