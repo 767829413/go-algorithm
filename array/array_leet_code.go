@@ -101,7 +101,7 @@ func threeSum(nums []int) [][]int {
 	// 排序,从小到大
 	sort.Ints(nums)
 	// 遍历排序后的数组
-	for i, _ := range nums {
+	for i := range nums {
 		// 已经排好序,当nums[i]>0时.后面不会出现和为零了
 		if nums[i] > 0 {
 			return res
@@ -156,7 +156,7 @@ func threeSumClosest(nums []int, target int) int {
 		return a
 	}
 	// 遍历排序后的数组
-	for i, _ := range nums {
+	for i := range nums {
 		// 过滤重复的值
 		if i > 0 && nums[i] == nums[i-1] {
 			continue
@@ -1459,4 +1459,49 @@ func setZeroes(matrix [][]int) {
 			matrix[0][j] = 0
 		}
 	}
+}
+
+// Search a 2d matrix
+func searchMatrix(matrix [][]int, target int) bool {
+	n := len(matrix)
+	m := len(matrix[0])
+	if n == 0 || m == 0 || target < matrix[0][0] || target > matrix[n-1][m-1] {
+		return false
+	}
+	// 二分查找
+	secondPartSearch := func(a []int, target int) bool {
+		lo, hi := 0, len(a)-1
+		if lo == hi {
+			return a[lo] == target
+		}
+		// 定义[lo,mid],[mid+1,hi]区间,lo = mid+1 | hi = mid
+		for lo <= hi {
+			mid := (lo + hi) >> 1
+			if target < a[mid] {
+				hi = mid - 1
+			} else if target > a[mid] {
+				lo = mid + 1
+			} else {
+				return true
+			}
+		}
+		return false
+	}
+
+	// 对第一列进行二分查找一个稍微大一点的值
+	row, rowL, rowH := -1, 0, n-1
+	for rowL <= rowH {
+		mid := (rowL + rowH) >> 1
+		if target <= matrix[mid][m-1] {
+			row = mid
+			rowH = mid - 1
+		} else if target > matrix[mid][m-1] {
+			rowL = mid + 1
+		}
+	}
+	if row == -1 {
+		return false
+	}
+
+	return secondPartSearch(matrix[row], target)
 }

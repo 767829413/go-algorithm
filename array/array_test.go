@@ -427,3 +427,14 @@ func TestSetZeroes(t *testing.T) {
 	setZeroes(input)
 	assert.Equal(expected, input)
 }
+
+func TestSearchMatrix(t *testing.T) {
+	assert := assert.New(t)
+	input := [][]int{
+		{1}, {3}, {5},
+	}
+	target := 30
+	expected := false
+
+	assert.Equal(expected, searchMatrix(input, target))
+}
