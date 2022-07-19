@@ -438,3 +438,15 @@ func TestSearchMatrix(t *testing.T) {
 
 	assert.Equal(expected, searchMatrix(input, target))
 }
+
+func TestSortColors(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{
+		1, 2, 0,
+	}
+	expected := []int{
+		0, 1, 2,
+	}
+	sortColors(input)
+	assert.Equal(expected, input)
+}

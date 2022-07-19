@@ -1505,3 +1505,25 @@ func searchMatrix(matrix [][]int, target int) bool {
 
 	return secondPartSearch(matrix[row], target)
 }
+
+// Sort colors
+func sortColors(nums []int) {
+	// 整数 0、 1 和 2 分别表示红色、白色和蓝色
+	// 按照红色、白色、蓝色顺序排列
+	start, zero, two := 0, 0, len(nums)-1
+
+	// 构建区间 [0,zero) [zero,two] (two,len(nums)-1]
+	for start <= two {
+		if nums[start] == 0 {
+			nums[start], nums[zero] = nums[zero], nums[start]
+			zero++
+			start++
+		} else if nums[start] == 1 {
+			start++
+		} else {
+			nums[start], nums[two] = nums[two], nums[start]
+			two--
+		}
+		// fmt.Println(start, zero, two, nums)
+	}
+}
