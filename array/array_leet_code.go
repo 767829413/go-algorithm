@@ -1527,3 +1527,30 @@ func sortColors(nums []int) {
 		// fmt.Println(start, zero, two, nums)
 	}
 }
+
+// Subsets
+func subsets(nums []int) [][]int {
+	// 首先画出递归参照图
+	l := len(nums)
+	if l == 0 {
+		return append([][]int{}, []int{})
+	}
+	if l == 1 {
+		return append([][]int{{}}, nums)
+	}
+	box := [][]int{}
+	var dfs func(start int, tmp []int)
+	dfs = func(start int, tmp []int) {
+		newTmp := make([]int, len(tmp))
+		copy(newTmp, tmp)
+		box = append(box, newTmp)
+		for i := start; i < l; i++ {
+			tmp = append(tmp, nums[i])
+			// 当前递归 return 时候,应该是i+1而不是 start+1 组合排列是有区别的
+			dfs(i+1, tmp)
+			tmp = tmp[:len(tmp)-1]
+		}
+	}
+	dfs(0, []int{})
+	return box
+}

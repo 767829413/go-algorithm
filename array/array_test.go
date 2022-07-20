@@ -450,3 +450,24 @@ func TestSortColors(t *testing.T) {
 	sortColors(input)
 	assert.Equal(expected, input)
 }
+
+func TestSubsets(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{
+		1, 2, 3,
+	}
+	expected := [][]int{
+		{},
+		{1},
+		{2},
+		{1, 2},
+		{3},
+		{1, 3},
+		{2, 3},
+		{1, 2, 3},
+	}
+
+	for _, v := range subsets(input) {
+		assert.Contains(expected, v)
+	}
+}
