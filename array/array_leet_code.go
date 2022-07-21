@@ -1,9 +1,11 @@
 package array
 
 import (
+	"fmt"
 	"math"
 	"sort"
 	"strings"
+	"time"
 )
 
 // Sum of two numbers
@@ -1553,4 +1555,92 @@ func subsets(nums []int) [][]int {
 	}
 	dfs(0, []int{})
 	return box
+}
+
+// Word search
+func exist(board [][]byte, word string) bool {
+	// {'A', 'B', 'C', 'E'},
+	// {'S', 'F', 'C', 'S'},
+	// {'A', 'D', 'E', 'E'},
+	n := len(board)
+	m := len(board[0])
+	wordArr := []byte(word)
+	// 构建map记录已走
+	mr := make([][]int, n)
+	for k := range mr {
+		mr[k] = make([]int, m)
+	}
+	flag := make(chan bool)
+	var dfs func(depth, row, col int, tmp, wordArr []byte)
+	dfs = func(depth, row, col int, tmp, wordArr []byte) {
+		// 标识存在
+		if depth == len(wordArr)-1 {
+			flag <- true
+			return
+		}
+
+		// 向下走
+		if row+1 < n && wordArr[depth+1] == board[row+1][col] && mr[row+1][col] == 0 {
+			fmt.Println("向下走", string(board[row+1][col]), string(wordArr[depth+1]), depth+1, mr[row+1][col])
+			tmp = append(tmp, board[row+1][col])
+			mr[row+1][col] = 1
+			dfs(depth+1, row+1, col, tmp, wordArr)
+			mr[row+1][col] = 0
+			tmp = tmp[:len(tmp)-1]
+		}
+
+		// 向右走
+		if col+1 < m && wordArr[depth+1] == board[row][col+1] && mr[row][col+1] == 0 {
+			fmt.Println("向右走", string(board[row][col+1]), string(wordArr[depth+1]), depth+1, mr[row][col+1])
+			tmp = append(tmp, board[row][col+1])
+			mr[row][col+1] = 1
+			dfs(depth+1, row, col+1, tmp, wordArr)
+			mr[row][col+1] = 0
+			tmp = tmp[:len(tmp)-1]
+		}
+
+		// 向左走
+		if col >= 1 && wordArr[depth+1] == board[row][col-1] && mr[row][col-1] == 0 {
+			fmt.Println("向左走", string(board[row][col-1]), string(wordArr[depth+1]), depth+1, mr[row][col-1])
+			tmp = append(tmp, board[row][col-1])
+			mr[row][col-1] = 1
+			dfs(depth+1, row, col-1, tmp, wordArr)
+			mr[row][col-1] = 0
+			tmp = tmp[:len(tmp)-1]
+		}
+
+		// 向上走
+		if row >= 1 && wordArr[depth+1] == board[row-1][col] && mr[row-1][col] == 0 {
+			fmt.Println("向上走", string(board[row-1][col]), string(wordArr[depth+1]), depth+1, mr[row-1][col])
+			tmp = append(tmp, board[row-1][col])
+			mr[row-1][col] = 1
+			dfs(depth+1, row-1, col, tmp, wordArr)
+			mr[row-1][col] = 0
+			tmp = tmp[:len(tmp)-1]
+		}
+
+		// 无路可走那必然没有
+		return
+	}
+
+	go func() {
+		for i := 0; i < n; i++ {
+			for j := 0; j < m; j++ {
+				if wordArr[0] != board[i][j] {
+					continue
+				}
+				dfs(0, i, j, []byte{board[i][j]}, wordArr)
+			}
+		}
+		flag <- false
+	}()
+
+	select {
+	case res := <-flag:
+		return res
+	case time.After(100 * time.Second):
+		return false
+	}
+
+	return false
 }
