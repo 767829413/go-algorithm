@@ -474,12 +474,17 @@ func TestSubsets(t *testing.T) {
 
 func TestExist(t *testing.T) {
 	assert := assert.New(t)
+	// input := [][]byte{
+	// 	{'A', 'B', 'C', 'E'},
+	// 	{'S', 'F', 'C', 'S'},
+	// 	{'A', 'D', 'E', 'E'},
+	// }
+	// word := "ABCCED"
+	// expected := true
 	input := [][]byte{
-		{'A', 'B', 'C', 'E'},
-		{'S', 'F', 'C', 'S'},
-		{'A', 'D', 'E', 'E'},
+		{'A', 'A'},
 	}
-	word := "ABCCED"
-	expected := true
+	word := "AAA"
+	expected := false
 	assert.Equal(expected, exist(input, word))
 }
