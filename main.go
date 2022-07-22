@@ -1,15 +1,21 @@
 package main
 
-import (
-	"encoding/json"
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	str := `{"state":-106,"msg":"Response error: \u001f\ufffd\u0008\u0000\u0000\u0000\u0000\u0000\u0000\u0003\ufffdV*.I,IU\ufffd24000\ufffdQ\ufffd-NW\ufffdR\ufffd)53N4\ufffd)55N5\ufffd)5I5H\u0001\ufffd\ufffdL-\ufffd\ufffd\ufffd\ufffd\ufffdR-\u0000\ufffdZ\ufffdp6\u0000\u0000\u0000"}`
-	data := make(map[string]interface{})
+	a := make([]int, 3)
 
-	json.Unmarshal([]byte(str), &data)
+	del(a)
 
-	fmt.Println(data)
+	fmt.Println("final", a)
+}
+
+func add(a []int) {
+	a = append(a, 999)
+	fmt.Println("add", a)
+}
+
+func del(a []int) {
+	a = append(a[:1], a[2:]...)
+	fmt.Println("del", a)
 }

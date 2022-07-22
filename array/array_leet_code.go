@@ -251,7 +251,7 @@ func fourSum(nums []int, target int) [][]int {
 }
 
 // Remove duplicate items from an ordered array
-func removeDuplicates(nums []int) int {
+func removeDuplicatesI(nums []int) int {
 	l := len(nums)
 	if l < 2 {
 		return l
@@ -1631,4 +1631,22 @@ func exist(board [][]byte, word string) bool {
 	case <-time.After(500 * time.Second):
 		return false
 	}
+}
+
+// Remove duplicates from sorted array ii
+func removeDuplicates(nums []int) int {
+	i, j := 0, 1
+	for j < len(nums) {
+		if nums[i] == nums[j] {
+			if j < len(nums) && j > i+1 {
+				nums = append(nums[:j], nums[j+1:]...)
+			} else {
+				j++
+			}
+		} else {
+			i = j
+			j += 1
+		}
+	}
+	return j
 }

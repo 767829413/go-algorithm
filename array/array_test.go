@@ -81,12 +81,12 @@ func TestFourSum(t *testing.T) {
 	assert.Equal(expected, fourSum(nums, approachNumber))
 }
 
-func TestRemoveDuplicates(t *testing.T) {
+func TestRemoveDuplicatesI(t *testing.T) {
 	assert := assert.New(t)
 	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
 	expected := 5
 	targetNums := []int{0, 1, 2, 3, 4}
-	assert.Equal(expected, removeDuplicates(nums))
+	assert.Equal(expected, removeDuplicatesI(nums))
 	for k, v := range targetNums {
 		assert.Equal(v, nums[k])
 	}
@@ -487,4 +487,18 @@ func TestExist(t *testing.T) {
 	word := "AAA"
 	expected := false
 	assert.Equal(expected, exist(input, word))
+}
+
+func TestRemoveDuplicates(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{
+		1, 3,
+	}
+	expected := []int{
+		1, 3,
+	}
+	l := 2
+	nowl := removeDuplicates(input)
+	assert.Equal(l, nowl)
+	assert.Equal(expected, input[:nowl])
 }
