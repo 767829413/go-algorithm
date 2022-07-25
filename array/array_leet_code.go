@@ -326,7 +326,7 @@ func nextPermutation(nums []int) {
 }
 
 // Search in rotated sorted array
-func search(nums []int, target int) int {
+func searchI(nums []int, target int) int {
 	l := len(nums)
 	if l == 0 {
 		return -1
@@ -1649,4 +1649,51 @@ func removeDuplicates(nums []int) int {
 		}
 	}
 	return j
+}
+
+// Search in rotated sorted array ii
+func search(nums []int, target int) bool {
+	l := len(nums)
+	if l == 0 {
+		return false
+	}
+	if l == 1 {
+		return nums[0] == target
+	}
+	for low, hig := 0, l-1; low <= hig; {
+		mid := (low + hig) >> 1
+		// fmt.Println(low, hig, mid)
+		// fmt.Println(nums[low], nums[hig], nums[mid])
+		if target == nums[mid] || target == nums[low] || target == nums[hig] {
+			return true
+		}
+
+		if nums[mid] == nums[low] {
+			low++
+			continue
+		}
+		if nums[mid] == nums[hig] {
+			hig--
+			continue
+		}
+
+		// 左边有序
+		if nums[mid] > nums[low] {
+			// 在有序部分
+			if nums[low] < target && target < nums[mid] {
+				hig = mid - 1
+			} else {
+				low = mid + 1
+			}
+
+		} else {
+			// 在有序部分
+			if nums[hig] > target && target > nums[mid] {
+				low = mid + 1
+			} else {
+				hig = mid - 1
+			}
+		}
+	}
+	return false
 }

@@ -113,12 +113,12 @@ func TestNextPermutation(t *testing.T) {
 	assert.Equal(targetNums, nums)
 }
 
-func TestSearch(t *testing.T) {
+func TestSearchI(t *testing.T) {
 	assert := assert.New(t)
 	nums := []int{4, 5, 6, 7, 0, 1, 2}
 	target := 0
 	expected := 4
-	assert.Equal(expected, search(nums, target))
+	assert.Equal(expected, searchI(nums, target))
 }
 
 func TestSearchRange(t *testing.T) {
@@ -501,4 +501,12 @@ func TestRemoveDuplicates(t *testing.T) {
 	nowl := removeDuplicates(input)
 	assert.Equal(l, nowl)
 	assert.Equal(expected, input[:nowl])
+}
+
+func TestSearch(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{4, 5, 6, 7, 0, 1, 2}
+	target := 0
+	expected := true
+	assert.Equal(expected, search(input, target))
 }
