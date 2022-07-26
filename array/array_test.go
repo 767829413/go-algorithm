@@ -510,3 +510,10 @@ func TestSearch(t *testing.T) {
 	expected := true
 	assert.Equal(expected, search(input, target))
 }
+
+func TestLargestRectangleArea(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{2, 1, 5, 6, 2, 3}
+	expected := 10
+	assert.Equal(expected, largestRectangleArea(input))
+}
