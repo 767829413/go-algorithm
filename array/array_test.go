@@ -517,3 +517,15 @@ func TestLargestRectangleArea(t *testing.T) {
 	expected := 10
 	assert.Equal(expected, largestRectangleArea(input))
 }
+
+func TestMaximalRectangle(t *testing.T) {
+	assert := assert.New(t)
+	input := [][]byte{
+		{'1', '0', '1', '0', '0'},
+		{'1', '0', '1', '1', '1'},
+		{'1', '1', '1', '1', '1'},
+		{'1', '0', '0', '1', '0'},
+	}
+	expected := 6
+	assert.Equal(expected, maximalRectangle(input))
+}

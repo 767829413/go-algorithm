@@ -5,17 +5,9 @@ import "fmt"
 func main() {
 	a := make([]int, 3)
 
-	del(a)
+	a[0] = '1'
+	a[1] = '2'
+	a[2] = '3'
 
-	fmt.Println("final", a)
-}
-
-func add(a []int) {
-	a = append(a, 999)
-	fmt.Println("add", a)
-}
-
-func del(a []int) {
-	a = append(a[:1], a[2:]...)
-	fmt.Println("del", a)
+	fmt.Println("final", int(a[0]+a[1]))
 }

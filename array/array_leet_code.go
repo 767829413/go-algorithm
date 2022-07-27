@@ -1749,3 +1749,95 @@ func largestRectangleArea(heights []int) int {
 	}
 	return ans
 }
+
+// Maximal rectangle
+func maximalRectangle(matrix [][]byte) int {
+	n := len(matrix)
+	m := len(matrix[0])
+
+	maxArea := math.MinInt
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	// 通过寻找最大矩形的题解来解决当前问题
+	largestRectangleArea := func(heights []int) int {
+		l := len(heights)
+		if l == 0 {
+			return 0
+		}
+		if l == 1 {
+			return heights[0]
+		}
+		// 搜索数组,以当前高度,向左右寻找边界
+		// 边界必定是小于等于当前高度所对应的高度对应的index
+		// 左右边界的差值(边界肯定不包含在内)需要减一才是宽度
+
+		left, right, stack := make([]int, l), make([]int, l), []int{}
+		// 寻找左边界
+		for i := 0; i < l; i++ {
+			for len(stack) > 0 && heights[stack[len(stack)-1]] >= heights[i] {
+				stack = stack[:len(stack)-1]
+			}
+			if len(stack) == 0 {
+				left[i] = -1
+			} else {
+				left[i] = stack[len(stack)-1]
+			}
+			// 当前位置入栈
+			stack = append(stack, i)
+		}
+		stack = []int{}
+		for i := l - 1; i >= 0; i-- {
+			for len(stack) > 0 && heights[stack[len(stack)-1]] >= heights[i] {
+				stack = stack[:len(stack)-1]
+			}
+			if len(stack) == 0 {
+				right[i] = l
+			} else {
+				right[i] = stack[len(stack)-1]
+			}
+			stack = append(stack, i)
+		}
+		ans := 0
+		max := func(a, b int) int {
+			if a > b {
+				return a
+			}
+			return b
+		}
+		for i := 0; i < l; i++ {
+			ans = max(ans, ((right[i] - left[i] - 1) * heights[i]))
+		}
+		return ans
+	}
+
+	for row := 0; row < n; row++ {
+		input := make([]int, m)
+		for col := 0; col < m; col++ {
+			// 构建求解入参
+			if row == 0 {
+				if matrix[row][col] == '1' {
+					input[col] = 1
+				} else {
+					input[col] = 0
+				}
+			} else {
+				if matrix[row][col] == '0' {
+					input[col] = 0
+				} else {
+					for now := row; now >= 0; now-- {
+						if matrix[now][col] == '0' {
+							break
+						}
+						input[col]++
+					}
+				}
+			}
+		}
+		maxArea = max(maxArea, largestRectangleArea(input))
+	}
+	return maxArea
+}
