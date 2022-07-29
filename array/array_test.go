@@ -332,7 +332,7 @@ func TestCanJump(t *testing.T) {
 	assert.Equal(expected, canJump(input))
 }
 
-func TestMerge(t *testing.T) {
+func TestMergeIntervals(t *testing.T) {
 	assert := assert.New(t)
 	input := [][]int{
 		{1, 10},
@@ -343,7 +343,7 @@ func TestMerge(t *testing.T) {
 	expected := [][]int{
 		{1, 10},
 	}
-	assert.Equal(expected, merge(input))
+	assert.Equal(expected, mergeIntervals(input))
 }
 
 func TestInsert(t *testing.T) {
@@ -528,4 +528,15 @@ func TestMaximalRectangle(t *testing.T) {
 	}
 	expected := 6
 	assert.Equal(expected, maximalRectangle(input))
+}
+
+func TestMerge(t *testing.T) {
+	assert := assert.New(t)
+	nums1 := []int{1, 2, 4, 5, 6, 0}
+	m := 5
+	nums2 := []int{3}
+	n := 1
+	expected := []int{1, 2, 3, 4, 5, 6}
+	merge(nums1, m, nums2, n)
+	assert.Equal(expected, nums1)
 }

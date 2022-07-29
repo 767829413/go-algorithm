@@ -1080,7 +1080,7 @@ func canJump(nums []int) bool {
 }
 
 // Merge intervals
-func merge(intervals [][]int) [][]int {
+func mergeIntervals(intervals [][]int) [][]int {
 	box := [][]int{}
 	l := len(intervals)
 	if l == 1 {
@@ -1118,7 +1118,7 @@ func insert(intervals [][]int, newInterval []int) [][]int {
 	}
 	intervals = append(intervals, newInterval)
 	// 直接复用上一题的解答就ok了
-	return merge(intervals)
+	return mergeIntervals(intervals)
 }
 
 // Spiral matrix ii
@@ -1840,4 +1840,30 @@ func maximalRectangle(matrix [][]byte) int {
 		maxArea = max(maxArea, largestRectangleArea(input))
 	}
 	return maxArea
+}
+
+// Merge sorted array
+func merge(nums1 []int, m int, nums2 []int, n int) {
+	box := []int{}
+	i, j := 0, 0
+	for i < m && j < n {
+		if nums2[j] >= nums1[i] {
+			box = append(box, nums1[i])
+			i++
+		} else {
+			box = append(box, nums2[j])
+			j++
+		}
+	}
+	if i == m {
+		for ; j < n; j++ {
+			box = append(box, nums2[j])
+		}
+	}
+	if j == n {
+		for ; i < m; i++ {
+			box = append(box, nums1[i])
+		}
+	}
+	copy(nums1, box)
 }
