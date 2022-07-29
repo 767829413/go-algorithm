@@ -1867,3 +1867,35 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 	}
 	copy(nums1, box)
 }
+
+// Subsets ii
+func subsetsWithDup(nums []int) [][]int {
+	box := [][]int{}
+	l := len(nums)
+	if l == 0 {
+		return append(box, []int{})
+	}
+	if l == 1 {
+		return append(append(box, []int{}), nums)
+	}
+	var dfs func(start int, tmp []int)
+	dfs = func(start int, tmp []int) {
+		newTmp := make([]int, len(tmp))
+		copy(newTmp, tmp)
+		box = append(box, newTmp)
+		for i := start; i < l; i++ {
+			if i > start && nums[i] == nums[i-1] {
+				continue
+			}
+			tmp = append(tmp, nums[i])
+			// 易错点,同树枝上可以重复选择
+			// 同层不可以重复
+			dfs(i+1, tmp)
+			tmp = tmp[:len(tmp)-1]
+		}
+	}
+	// 排序,加速剪枝
+	sort.Ints(nums)
+	dfs(0, []int{})
+	return box
+}

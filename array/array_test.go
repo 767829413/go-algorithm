@@ -540,3 +540,17 @@ func TestMerge(t *testing.T) {
 	merge(nums1, m, nums2, n)
 	assert.Equal(expected, nums1)
 }
+
+func TestSubsetsWithDup(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{1, 2, 2}
+	expected := [][]int{
+		{},
+		{1},
+		{1, 2},
+		{1, 2, 2},
+		{2},
+		{2, 2},
+	}
+	assert.Equal(expected, subsetsWithDup(nums))
+}
