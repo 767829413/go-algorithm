@@ -554,3 +554,28 @@ func TestSubsetsWithDup(t *testing.T) {
 	}
 	assert.Equal(expected, subsetsWithDup(nums))
 }
+
+func TestBuildTree(t *testing.T) {
+	assert := assert.New(t)
+	preorder := []int{3, 9, 20, 15, 7}
+	inorder := []int{9, 3, 15, 20, 7}
+	expected := []int{3, 9, 20, 15, 7}
+	res := []int{}
+	var getVal func(t *TreeNode)
+	getVal = func(t *TreeNode) {
+		if t == nil {
+			return
+		}
+		res = append(res, t.Val)
+		if t.Left != nil {
+			getVal(t.Left)
+		}
+
+		if t.Right != nil {
+			getVal(t.Right)
+		}
+
+	}
+	getVal(buildTree(preorder, inorder))
+	assert.Equal(expected, res)
+}

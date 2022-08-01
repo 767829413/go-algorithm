@@ -1899,3 +1899,45 @@ func subsetsWithDup(nums []int) [][]int {
 	dfs(0, []int{})
 	return box
 }
+
+// Construct binary tree from preorder and inorder traversal
+func buildTree(preorder []int, inorder []int) *TreeNode {
+	pL := len(preorder)
+	iL := len(inorder)
+	if pL != iL {
+		panic("Illegal input")
+	}
+	m := make(map[int]int, iL)
+	for k, v := range inorder {
+		m[v] = k
+	}
+	var execBuildTree func(pl, pr, il, ir int) *TreeNode
+	execBuildTree = func(pl, pr, il, ir int) *TreeNode {
+		// 终止条件
+		if pl > pr || il > ir {
+			return nil
+		}
+		// fmt.Println(pl, pr, il, ir)
+		// fmt.Println(preorder[pl])
+		// fmt.Println(m[preorder[pl]])
+		// 先序遍历的顺序是根节点，左子树，右子树
+		// 中序遍历的顺序是左子树，根节点，右子树
+		// 前序首位就是当前层根节点
+		// 只需要根据先序遍历得到根节点，然后在中序遍历中找到根节点的位置，它的左边就是左子树的节点，右边就是右子树的节点
+		rootVal := preorder[pl]
+		rootInIndex := m[rootVal]
+		root := &TreeNode{
+			Val:   rootVal,
+			Left:  execBuildTree(pl+1, pl+rootInIndex-il, il, rootInIndex-1),
+			Right: execBuildTree(pl+rootInIndex-il+1, pr, rootInIndex+1, ir),
+		}
+		return root
+	}
+	return execBuildTree(0, pL-1, 0, iL-1)
+}
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
