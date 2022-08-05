@@ -1,7 +1,6 @@
 package applyleetcode
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -26,17 +25,18 @@ func TestLRUCache(t *testing.T) {
 	assert := assert.New(t)
 	cache := Constructor(2)
 	assert.Equal(-1, cache.Get(2))
-	fmt.Println(cache.data, cache.head.Next, cache.tail.Pre)
 	cache.Put(2, 6)
-	fmt.Println(cache.data, cache.head.Next, cache.tail.Pre)
 	assert.Equal(-1, cache.Get(1))
-	fmt.Println(cache.data, cache.head.Next, cache.tail.Pre)
 	cache.Put(1, 5)
-	fmt.Println(cache.data, cache.head.Next, cache.tail.Pre)
 	cache.Put(1, 2)
-	fmt.Println(cache.data, cache.head.Next, cache.tail.Pre)
 	assert.Equal(2, cache.Get(1))
-	fmt.Println(cache.data, cache.head, cache.tail)
 	assert.Equal(6, cache.Get(2))
-	fmt.Println(cache.data, cache.head, cache.tail)
+}
+
+func TestFindKthLargest(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{3, 2, 3, 1, 2, 4, 5, 5, 6}
+	k := 4
+	expected := 4
+	assert.Equal(expected, findKthLargest(input, k))
 }

@@ -49,3 +49,24 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return res
 }
+
+// Kth largest element in an array
+func findKthLargest(nums []int, k int) int {
+	l := len(nums)
+	if k > l || k < 0 {
+		return -1
+	}
+	// sort.Ints(nums)
+	// MergeSort(nums)
+	// QuickSort(nums)
+	// return nums[l-k]
+	// 堆排序
+	heapSize := len(nums)
+	buildMaxHeap(nums, heapSize)
+	for i := len(nums) - 1; i >= len(nums)-k+1; i-- {
+		nums[0], nums[i] = nums[i], nums[0]
+		heapSize--
+		maxHeapify(nums, 0, heapSize)
+	}
+	return nums[0]
+}
