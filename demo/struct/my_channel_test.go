@@ -1,4 +1,4 @@
-package think_fy
+package struct
 
 import (
 	"fmt"

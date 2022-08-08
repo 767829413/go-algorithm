@@ -1,27 +1,27 @@
-package think_fy
+package struct
 
 import (
 	"fmt"
 	"sync"
 )
 
-type Channel struct {
+type MyChannel struct {
 	mut   sync.Mutex
 	cond  *sync.Cond
-	queue *ArrayQueue
+	queue *MyArrayQueue
 }
 
-func NewChannel(n int) *Channel {
+func NewMyChannel(n int) *MyChannel {
 	if n < 1 {
 		panic("todo: support unbuffered channel")
 	}
-	c := new(Channel)
+	c := new(MyChannel)
 	c.cond = sync.NewCond(&c.mut)
-	c.queue = NewArrayQueue(n)
+	c.queue = NewMyArrayQueue(n)
 	return c
 }
 
-func (c *Channel) TryPush(v interface{}) bool {
+func (c *MyChannel) TryPush(v interface{}) bool {
 	c.mut.Lock()
 	defer c.mut.Unlock()
 	if c.queue.Full() {
@@ -34,7 +34,7 @@ func (c *Channel) TryPush(v interface{}) bool {
 	return true
 }
 
-func (c *Channel) TryPop() (interface{}, bool) {
+func (c *MyChannel) TryPop() (interface{}, bool) {
 	c.mut.Lock()
 	defer c.mut.Unlock()
 	if c.queue.Empty() {
@@ -46,7 +46,7 @@ func (c *Channel) TryPop() (interface{}, bool) {
 	return c.queue.DeQueue(), true
 }
 
-func (c *Channel) Push(v interface{}) {
+func (c *MyChannel) Push(v interface{}) {
 	c.mut.Lock()
 	defer c.mut.Unlock()
 	for c.queue.Full() {
@@ -58,7 +58,7 @@ func (c *Channel) Push(v interface{}) {
 	c.queue.EnQueue(v)
 }
 
-func (c *Channel) Pop() interface{} {
+func (c *MyChannel) Pop() interface{} {
 	c.mut.Lock()
 	defer c.mut.Unlock()
 	for c.queue.Empty() {
@@ -70,18 +70,18 @@ func (c *Channel) Pop() interface{} {
 	return c.queue.DeQueue()
 }
 
-type ArrayQueue struct {
+type MyArrayQueue struct {
 	data []interface{}
 	cap  int //容量
 	head int //头指针
 	tail int //尾指针
 }
 
-func NewArrayQueue(n int) *ArrayQueue {
+func NewMyArrayQueue(n int) *MyArrayQueue {
 	if n == 0 {
 		return nil
 	}
-	return &ArrayQueue{
+	return &MyArrayQueue{
 		data: make([]interface{}, n),
 		cap:  n,
 		head: 0,
@@ -89,15 +89,15 @@ func NewArrayQueue(n int) *ArrayQueue {
 	}
 }
 
-func (aq *ArrayQueue) Full() bool {
+func (aq *MyArrayQueue) Full() bool {
 	return aq.tail == aq.cap
 }
 
-func (aq *ArrayQueue) Empty() bool {
+func (aq *MyArrayQueue) Empty() bool {
 	return aq.head == aq.tail
 }
 
-func (aq *ArrayQueue) EnQueue(v interface{}) bool {
+func (aq *MyArrayQueue) EnQueue(v interface{}) bool {
 	if aq.tail == aq.cap {
 		return false
 	}
@@ -106,7 +106,7 @@ func (aq *ArrayQueue) EnQueue(v interface{}) bool {
 	return true
 }
 
-func (aq *ArrayQueue) DeQueue() interface{} {
+func (aq *MyArrayQueue) DeQueue() interface{} {
 	if aq.head == aq.tail {
 		return nil
 	}
@@ -115,7 +115,7 @@ func (aq *ArrayQueue) DeQueue() interface{} {
 	return v
 }
 
-func (aq *ArrayQueue) Print() (format string) {
+func (aq *MyArrayQueue) Print() (format string) {
 	if aq.head == aq.tail {
 		format = "empty"
 	} else {
