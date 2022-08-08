@@ -61,12 +61,63 @@ func findKthLargest(nums []int, k int) int {
 	// QuickSort(nums)
 	// return nums[l-k]
 	// 堆排序
-	heapSize := len(nums)
+	heapSize := l
+	// 构建大顶堆
 	buildMaxHeap(nums, heapSize)
 	for i := len(nums) - 1; i >= len(nums)-k+1; i-- {
+		// 这里是交换最大最小值,来进行一次自顶向下的全堆化
 		nums[0], nums[i] = nums[i], nums[0]
+		// 这是缩减堆的大小,逼近所期望的第k大值
 		heapSize--
+		// 进行对话,堆顶是最大值
 		maxHeapify(nums, 0, heapSize)
 	}
 	return nums[0]
+}
+
+// Reverse nodes in k group
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reverseKGroup(head *ListNode, k int) *ListNode {
+	// 设置哨兵,方便操作
+	sentinel := &ListNode{Val: 0, Next: head}
+	// 构建快慢指针节点,进行k对翻转
+	pre, end := sentinel, sentinel
+	// 链表翻转操作
+	reverse := func(start *ListNode) *ListNode {
+		var pre, cur *ListNode
+		pre, cur = nil, start
+		for cur != nil {
+			tmp := cur.Next
+			cur.Next = pre
+			pre, cur = cur, tmp
+		}
+		return pre
+	}
+	for end.Next != nil {
+		// 快指针节点进行k次向前
+		for i := 0; i < k && end != nil; i++ {
+			end = end.Next
+		}
+		// 如果快指针节点为nil,那么就是看无法被链表整除,剩下的不用翻转
+		if end == nil {
+			break
+		}
+		// 构建临时变量记录快,慢指针节点的下一位
+		start, next := pre.Next, end.Next
+		// 这里讲快指针节点下一位置空是为了方便翻转快慢指针之间的节点
+		end.Next = nil
+		// 执行翻转操作
+		pre.Next = reverse(start)
+		// 翻转后更新位置
+		start.Next, pre = next, start
+		end = pre
+	}
+
+	return sentinel.Next
 }

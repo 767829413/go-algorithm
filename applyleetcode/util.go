@@ -1,6 +1,5 @@
 package applyleetcode
 
-//
 func MergeSort(arr []int) {
 	execMerge := func(arr []int, i, mid, j int) {
 		tmpArr := make([]int, j-i+1)
@@ -79,21 +78,30 @@ func QuickSort(arr []int) {
 }
 
 func buildMaxHeap(a []int, heapSize int) {
+	// 配置堆高
 	for i := heapSize / 2; i >= 0; i-- {
+		// 自顶向下执行堆化
 		maxHeapify(a, i, heapSize)
 	}
 }
 
 func maxHeapify(a []int, i, heapSize int) {
+	// 初始化当前i的左右节点l ,r
 	l, r, largest := i*2+1, i*2+2, i
+	// 左节点是否大于当前节点值
 	if l < heapSize && a[l] > a[largest] {
 		largest = l
 	}
+	// 右节点是否大于当前节点值
 	if r < heapSize && a[r] > a[largest] {
 		largest = r
 	}
+	// 上述操作是为了保证数组堆化后左侧最大,右侧最小
+	// 如果左右节点有大于当前节点的就开始堆化
 	if largest != i {
+		// 交换当前节点与大于其节点的左或右的位置
 		a[i], a[largest] = a[largest], a[i]
+		// 然后就可以再次堆化
 		maxHeapify(a, largest, heapSize)
 	}
 }

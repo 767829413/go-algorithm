@@ -40,3 +40,11 @@ func TestFindKthLargest(t *testing.T) {
 	expected := 4
 	assert.Equal(expected, findKthLargest(input, k))
 }
+
+func TestReverseKGroup(t *testing.T) {
+	assert := assert.New(t)
+	head := []int{1, 2, 3, 4, 5}
+	k := 2
+	expected := []int{2, 1, 4, 3, 5}
+	assert.Equal(expected, reverseKGroup(NewListNode(head), k).GetValueArray())
+}
