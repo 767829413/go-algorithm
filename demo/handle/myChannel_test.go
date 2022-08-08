@@ -1,4 +1,4 @@
-package struct
+package handle
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 
 func TestNewChannel(t *testing.T) {
 	num := 100000
-	c := NewChannel(num)
+	c := NewMyChannel(num)
 	wg := sync.WaitGroup{}
 	for i := 0; i < num; i++ {
 		wg.Add(2)
