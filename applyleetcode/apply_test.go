@@ -48,3 +48,12 @@ func TestReverseKGroup(t *testing.T) {
 	expected := []int{2, 1, 4, 3, 5}
 	assert.Equal(expected, reverseKGroup(NewListNode(head), k).GetValueArray())
 }
+
+func TestThreeSum(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{0, 0, 0, 0}
+	expected := [][]int{
+		{0, 0, 0},
+	}
+	assert.Equal(expected, threeSum(nums))
+}
