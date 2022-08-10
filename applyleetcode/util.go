@@ -47,6 +47,10 @@ func MergeSort(arr []int) {
 		// 合并排序
 		execMerge(arr, i, mid, j)
 	}
+	// 已排序检查
+	if isSorted(arr) {
+		return
+	}
 	execSort(arr, 0, len(arr)-1)
 }
 
@@ -73,7 +77,11 @@ func QuickSort(arr []int) {
 		execQuick(arr, pos+1, j)
 
 	}
-	arr[0], arr[len(arr)-1] = arr[len(arr)-1], arr[0]
+
+	// 已排序检查
+	if isSorted(arr) {
+		return
+	}
 	execQuick(arr, 0, len(arr)-1)
 }
 
@@ -104,4 +112,15 @@ func maxHeapify(a []int, i, heapSize int) {
 		// 然后就可以再次堆化
 		maxHeapify(a, largest, heapSize)
 	}
+}
+
+// 已排序检查
+func isSorted(arr []int) bool {
+	for i := 1; i < len(arr); i++ {
+		if arr[i] < arr[i-1] {
+			return false
+		}
+	}
+	return true
+
 }

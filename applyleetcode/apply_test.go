@@ -57,3 +57,11 @@ func TestThreeSum(t *testing.T) {
 	}
 	assert.Equal(expected, threeSum(nums))
 }
+
+func TestSortArray(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{5, 2, 3, 1}
+	expected := []int{1, 2, 3, 5}
+	sortArray(nums)
+	assert.Equal(expected, nums)
+}
