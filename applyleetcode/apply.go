@@ -259,6 +259,35 @@ func sortArray(nums []int) []int {
 		}
 		mergeSort(nums)
 	}
-
 	return nums
+}
+
+// Maximum subarray
+func maxSubArray(nums []int) int {
+	l := len(nums)
+	if l == 1 {
+		return nums[0]
+	}
+	// 构建动态规划数组
+	dp := make([]int, l)
+	// 定义初解和最大值临时变量
+	dp[0] = nums[0]
+	m, max := math.MinInt, func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	m = max(dp[0], m)
+	for i := 1; i < l; i++ {
+		// fmt.Println(dp)
+		// 如果上一步是大于0,那就可以累加
+		if dp[i-1] > 0 {
+			dp[i] = nums[i] + dp[i-1]
+		} else {
+			dp[i] = nums[i]
+		}
+		m = max(dp[i], m)
+	}
+	return m
 }

@@ -65,3 +65,10 @@ func TestSortArray(t *testing.T) {
 	sortArray(nums)
 	assert.Equal(expected, nums)
 }
+
+func TestMaxSubArray(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
+	expected := 6
+	assert.Equal(expected, maxSubArray(input))
+}

@@ -311,7 +311,6 @@ func TestMaxSubArray(t *testing.T) {
 	input := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
 	expected := 6
 	assert.Equal(expected, maxSubArray(input))
-
 }
 
 func TestSpiralOrder(t *testing.T) {
