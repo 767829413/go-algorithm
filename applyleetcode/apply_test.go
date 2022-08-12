@@ -72,3 +72,11 @@ func TestMaxSubArray(t *testing.T) {
 	expected := 6
 	assert.Equal(expected, maxSubArray(input))
 }
+
+func TestMergeTwoLists(t *testing.T) {
+	assert := assert.New(t)
+	l1 := NewListNode([]int{1, 2, 4})
+	l2 := NewListNode([]int{1, 3, 4})
+	expected := []int{1, 1, 2, 3, 4, 4}
+	assert.Equal(expected, mergeTwoLists(l1, l2).GetValueArray())
+}

@@ -291,3 +291,37 @@ func maxSubArray(nums []int) int {
 	}
 	return m
 }
+
+// Merge two sorted lists
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+	// 哨兵节点
+	head := &ListNode{}
+	start := head
+	for list1 != nil && list2 != nil {
+		if list1.Val < list2.Val {
+			start.Next = list1
+			list1 = list1.Next
+		} else {
+			start.Next = list2
+			list2 = list2.Next
+		}
+		start = start.Next
+	}
+	t := list1
+	if list1 == nil {
+		t = list2
+	}
+	for t != nil {
+		start.Next = t
+		t = t.Next
+		start = start.Next
+	}
+	return head.Next
+}
