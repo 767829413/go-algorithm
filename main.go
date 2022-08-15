@@ -1,11 +1,13 @@
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
-	s := "sdfsdfdsf"
-	a := []byte(s)
-	fmt.Println(len(s), len(a))
+	var _ Test = (*ImplT1)(nil)
 }
+
+type Test interface {
+	A() string
+}
+
+type ImplT1 struct{}
+
+// func (i *ImplT1) A() string { return "" }

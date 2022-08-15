@@ -80,3 +80,11 @@ func TestMergeTwoLists(t *testing.T) {
 	expected := []int{1, 1, 2, 3, 4, 4}
 	assert.Equal(expected, mergeTwoLists(l1, l2).GetValueArray())
 }
+
+func TestTwoSum(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{2, 7, 11, 15}
+	target := 18
+	expected := []int{1, 2}
+	assert.Equal(expected, twoSum(nums, target))
+}

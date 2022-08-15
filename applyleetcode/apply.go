@@ -325,3 +325,15 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	}
 	return head.Next
 }
+
+func twoSum(nums []int, target int) []int {
+	m := make(map[int]int, len(nums))
+	for k := range nums {
+		tmp := target - nums[k]
+		if v, ok := m[tmp]; ok {
+			return []int{v, k}
+		}
+		m[nums[k]] = k
+	}
+	return []int{}
+}
