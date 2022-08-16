@@ -88,3 +88,15 @@ func TestTwoSum(t *testing.T) {
 	expected := []int{1, 2}
 	assert.Equal(expected, twoSum(nums, target))
 }
+
+func TestLevelOrder(t *testing.T) {
+	assert := assert.New(t)
+	root := []int{1, 2, 3, 4, -1, -1, 5}
+	expected := [][]int{
+		{1},
+		{2, 3},
+		{4, 5},
+	}
+	node := NewTreeNode(root)
+	assert.Equal(expected, levelOrder(node))
+}

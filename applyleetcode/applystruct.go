@@ -117,3 +117,26 @@ type InteractiveList struct {
 	Next *InteractiveList
 	Pre  *InteractiveList
 }
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func NewTreeNode(arr []int) *TreeNode {
+	l := len(arr)
+	var execBuild func(start int, arr []int) *TreeNode
+	execBuild = func(start int, arr []int) *TreeNode {
+		if start >= l || arr[start] == -1 {
+			return nil
+		}
+		node := &TreeNode{
+			Val:   arr[start],
+			Left:  execBuild(start*2+1, arr),
+			Right: execBuild(start*2+2, arr),
+		}
+		return node
+	}
+	return execBuild(0, arr)
+}

@@ -326,6 +326,7 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	return head.Next
 }
 
+// 2sum
 func twoSum(nums []int, target int) []int {
 	m := make(map[int]int, len(nums))
 	for k := range nums {
@@ -336,4 +337,49 @@ func twoSum(nums []int, target int) []int {
 		m[nums[k]] = k
 	}
 	return []int{}
+}
+
+// Binary tree level order traversal
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func levelOrder(root *TreeNode) [][]int {
+	res := [][]int{}
+	if root == nil {
+		return res
+	}
+	// 使用BFS进行解答
+	// 构造队列queue,用来调整层级数据
+	bfs := func(queue []*TreeNode) {
+		for len(queue) > 0 {
+			level := []int{}
+			// 记录操作前队列的长度,方便划分层级
+			l := len(queue)
+			// 遍历原队列长度
+			for i := 0; i < l; i++ {
+				// 拿出头节点
+				node := queue[0]
+				// 出队
+				queue = queue[1:]
+				level = append(level, node.Val)
+				if node.Left != nil {
+					// 入队
+					queue = append(queue, node.Left)
+				}
+				if node.Right != nil {
+					// 入队
+					queue = append(queue, node.Right)
+				}
+			}
+			// 遍历结束就是需要的结果
+			res = append(res, level)
+		}
+	}
+	bfs([]*TreeNode{root})
+	return res
 }
