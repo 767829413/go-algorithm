@@ -100,3 +100,10 @@ func TestLevelOrder(t *testing.T) {
 	node := NewTreeNode(root)
 	assert.Equal(expected, levelOrder(node))
 }
+
+func TestMaxProfit(t *testing.T) {
+	assert := assert.New(t)
+	input := []int{7, 1, 5, 3, 6, 4}
+	expected := 5
+	assert.Equal(expected, maxProfit(input))
+}

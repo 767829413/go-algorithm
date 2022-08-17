@@ -383,3 +383,37 @@ func levelOrder(root *TreeNode) [][]int {
 	bfs([]*TreeNode{root})
 	return res
 }
+
+// Best time to buy and sell stock
+func maxProfit(prices []int) int {
+	l, maxP, k, max := len(prices), 0, 1, func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	if l <= 1 {
+		return 0
+	}
+	dp := make([][]int, k+1)
+	for index := range dp {
+		dp[index] = make([]int, l)
+	}
+
+	// 答案来源: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/39608/a-clean-dp-solution-which-generalizes-to-k-transactions
+	// j 表示 prices[j]的价格
+	// f[k, j] 代表在价格[j]之前的最大利润（注意：不是以价格[j]结束），最多使用k个交易
+	// f[k, j] = max(f[k, j-1], prices[j] - prices[jj] + f[k-1, jj]) {0 <= jj <= j-1}
+	//         = max(f[k, j-1], prices[j] + max(f[k-1, jj] - prices[jj]))
+	// f[0, j] = 0; 0次交易就是0利润
+	// f[k, 0] = 0; 如果价格保持不变,不管交易多少次收益都是0
+	for i := 1; i <= k; i++ {
+		tmaxp := dp[i-1][0] - prices[0]
+		for j := 1; j < l; j++ {
+			dp[i][j] = max(dp[i][j-1], prices[j]+tmaxp)
+			tmaxp = max(tmaxp, dp[i-1][j]-prices[j])
+			maxP = max(maxP, dp[i][j])
+		}
+	}
+	return maxP
+}
