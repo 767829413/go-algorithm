@@ -392,7 +392,7 @@ func maxProfit(prices []int) int {
 		}
 		return b
 	}
-	if l <= 1 {
+	if l <= 2 {
 		return 0
 	}
 	dp := make([][]int, k+1)
@@ -416,4 +416,67 @@ func maxProfit(prices []int) int {
 		}
 	}
 	return maxP
+}
+
+func maxProfit2(prices []int) int {
+	l := len(prices)
+	if l < 2 {
+		return 0
+	}
+	// 构建结果存储
+	// dp[i][0] 表示第i天不持有股票
+	// dp[i][1] 表示第i天持有股票
+	// 状态转移方程
+	// dp[i][0] = max(dp[i-1][0],dp[i-1][1]+prices[i])
+	// dp[i][1] = max(dp[i-1][1],-prices[i])
+	dp, max := make([][]int, l), func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	for k := range dp {
+		dp[k] = make([]int, 2)
+	}
+	// 构建初解
+	dp[0][0] = 0
+	dp[0][1] = -prices[0]
+
+	//遍历价格数组
+	for i := 1; i < l; i++ {
+		// 第i天不持有的最大收益应该是第i-1天不持有的最大收益和第i-1天持有股票,第i天卖出的最大收益之中的最大值
+		dp[i][0] = max(dp[i-1][0], dp[i-1][1]+prices[i])
+		// 第i天持有的最大收益应该是第i-1天持有的最大收益和第i-1天没有持有股票,第i天买入股票的最大收益之中的最大值
+		dp[i][1] = max(dp[i-1][1], -prices[i])
+	}
+	// 结果肯定是卖出的收益
+	return dp[l-1][0]
+
+}
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func hasCycle(head *ListNode) bool {
+	if head == nil || head.Next == nil {
+		return false
+	}
+	// 通过快慢指针,两个指针只要相遇,必有环
+	// 注意: 快指针的快是每次走的快
+	slow, fast := head, head.Next
+	for fast != nil {
+		if slow == fast {
+			return true
+		}
+		if fast.Next == nil {
+			return false
+		}
+		fast = fast.Next.Next
+		slow = slow.Next
+	}
+	return false
 }
