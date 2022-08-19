@@ -116,3 +116,15 @@ func TestHasCycle(t *testing.T) {
 	expected := true
 	assert.Equal(expected, hasCycle(head))
 }
+
+func TestNumIslands(t *testing.T) {
+	assert := assert.New(t)
+	grid := [][]byte{
+		{'1', '1', '1', '1', '0'},
+		{'1', '1', '0', '1', '0'},
+		{'1', '1', '0', '0', '0'},
+		{'0', '0', '0', '0', '0'},
+	}
+	expected := 1
+	assert.Equal(expected, numIslands(grid))
+}
