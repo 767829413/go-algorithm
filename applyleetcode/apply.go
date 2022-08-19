@@ -486,8 +486,8 @@ func hasCycle(head *ListNode) bool {
 func numIslands(grid [][]byte) int {
 	n, m, res := len(grid), len(grid[0]), 0
 	// 定义深度优先函数
-	var bfs func(grid [][]byte, i, j int) int
-	bfs = func(grid [][]byte, i, j int) int {
+	var dfs func(grid [][]byte, i, j int) int
+	dfs = func(grid [][]byte, i, j int) int {
 		// 判断是不是越界或海水
 		// 0 海水
 		// 1 陆地
@@ -499,12 +499,12 @@ func numIslands(grid [][]byte) int {
 			// 标记已经遍历过了
 			grid[i][j] = '2'
 		}
-		return 1 + bfs(grid, i+1, j) + bfs(grid, i-1, j) + bfs(grid, i, j+1) + bfs(grid, i, j-1)
+		return 1 + dfs(grid, i+1, j) + dfs(grid, i-1, j) + dfs(grid, i, j+1) + dfs(grid, i, j-1)
 
 	}
 	for i := 0; i < n; i++ {
 		for j := 0; j < m; j++ {
-			num := bfs(grid, i, j)
+			num := dfs(grid, i, j)
 			if num != 0 {
 				res++
 			}
