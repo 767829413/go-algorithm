@@ -128,3 +128,11 @@ func TestNumIslands(t *testing.T) {
 	expected := 1
 	assert.Equal(expected, numIslands(grid))
 }
+
+func TestSearch(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{5, 1, 2, 3, 4}
+	target := 1
+	expected := 1
+	assert.Equal(expected, search(nums, target))
+}
