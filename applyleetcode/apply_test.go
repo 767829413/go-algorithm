@@ -136,3 +136,15 @@ func TestSearch(t *testing.T) {
 	expected := 1
 	assert.Equal(expected, search(nums, target))
 }
+
+func TestZigzagLevelOrder(t *testing.T) {
+	assert := assert.New(t)
+	root := []int{1, 2, 3, 4, -1, -1, 5}
+	expected := [][]int{
+		{1},
+		{3, 2},
+		{4, 5},
+	}
+	node := NewTreeNode(root)
+	assert.Equal(expected, zigzagLevelOrder(node))
+}

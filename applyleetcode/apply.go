@@ -557,3 +557,56 @@ func search(nums []int, target int) int {
 	}
 	return -1
 }
+
+// Binary tree zigzag level order traversal
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func zigzagLevelOrder(root *TreeNode) [][]int {
+	if root == nil {
+		return [][]int{}
+	}
+	// 使用广度优先算法按层遍历
+	// 根据遍历的层数奇偶来取值
+	bfs := func(queue []*TreeNode) [][]int {
+		var node *TreeNode
+		res := [][]int{}
+		start := 0
+		// 使用队列来遍历节点数据
+		for len(queue) > 0 {
+			l := len(queue)
+			tmpVal := []int{}
+			// 取值
+			if start%2 != 0 {
+				for i := 0; i < l; i++ {
+					tmpVal = append(tmpVal, queue[i].Val)
+				}
+			} else {
+				for i := l - 1; i >= 0; i-- {
+					tmpVal = append(tmpVal, queue[i].Val)
+				}
+			}
+
+			// 处理下一次循环的队列
+			for i := 0; i < l; i++ {
+				node = queue[0]
+				queue = queue[1:]
+				if node.Right != nil {
+					queue = append(queue, node.Right)
+				}
+				if node.Left != nil {
+					queue = append(queue, node.Left)
+				}
+			}
+			res = append(res, tmpVal)
+			start++
+		}
+		return res
+	}
+	return bfs([]*TreeNode{root})
+}
