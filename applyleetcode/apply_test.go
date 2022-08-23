@@ -148,3 +148,16 @@ func TestZigzagLevelOrder(t *testing.T) {
 	node := NewTreeNode(root)
 	assert.Equal(expected, zigzagLevelOrder(node))
 }
+
+func TestGetIntersectionNode(t *testing.T) {
+	assert := assert.New(t)
+	headA := NewListNode([]int{1, 9, 1})
+	headB := NewListNode([]int{3})
+	var expected *ListNode
+	Intersection := NewListNode([]int{2, 4})
+	headA.Next.Next = Intersection
+	headB.Next = Intersection
+	expected = Intersection
+	assert.Equal(expected, getIntersectionNode(headA, headB))
+	// assert.Equal(expected, getIntersectionNode(headA, headB))
+}

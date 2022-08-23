@@ -610,3 +610,47 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 	}
 	return bfs([]*TreeNode{root})
 }
+
+// Ontersection of two linked lists
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func getIntersectionNode(headA, headB *ListNode) *ListNode {
+	// 使用hash表来记录 O(m+n) O(m)
+	/*
+		hashAuxiliary := func(headA, headB *ListNode) *ListNode {
+			m := make(map[*ListNode]interface{})
+			for headA != nil {
+				m[headA] = nil
+				headA = headA.Next
+			}
+			for headB != nil {
+				if _, ok := m[headB]; ok {
+					return headB
+				}
+				headB = headB.Next
+			}
+			return nil
+		}
+	*/
+	// 采用跑圈原理,两个指针a b,a先跑A链再跑B链, b先跑B链再跑A链,如果二者能相遇,那就是重合的第一个节点相遇
+	// a跑完 A+B链 或 b跑完B+A链则表示无重合
+	a, b, flaga, flagb := headA, headB, false, false
+	for a != b {
+		a = a.Next
+		if a == nil && !flaga {
+			flaga = true
+			a = headB
+		}
+		b = b.Next
+		if b == nil && !flagb {
+			flagb = true
+			b = headA
+		}
+	}
+	return a
+}
