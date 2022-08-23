@@ -451,7 +451,6 @@ func maxProfit2(prices []int) int {
 	}
 	// 结果肯定是卖出的收益
 	return dp[l-1][0]
-
 }
 
 // Linked list cycle

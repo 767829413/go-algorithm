@@ -152,9 +152,9 @@ func TestZigzagLevelOrder(t *testing.T) {
 func TestGetIntersectionNode(t *testing.T) {
 	assert := assert.New(t)
 	headA := NewListNode([]int{1, 9, 1})
-	headB := NewListNode([]int{3})
+	headB := NewListNode([]int{3, 5})
 	var expected *ListNode
-	Intersection := NewListNode([]int{2, 4})
+	Intersection := NewListNode([]int{2, 4, 6})
 	headA.Next.Next = Intersection
 	headB.Next = Intersection
 	expected = Intersection
