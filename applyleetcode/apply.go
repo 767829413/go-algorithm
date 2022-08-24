@@ -653,3 +653,23 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 	}
 	return a
 }
+
+// Valid parentheses
+func isValid(s string) bool {
+	if s == "" {
+		return false
+	}
+	sArr, stack, record := []byte(s), []byte{}, map[byte]byte{
+		// 构建正确的括号映射组
+		40: 41, 91: 93, 123: 125,
+	}
+	for k := range sArr {
+		// 栈里的数据作为前驱进行比较
+		if len(stack) > 0 && record[stack[len(stack)-1]] == sArr[k] {
+			stack = stack[:len(stack)-1]
+			continue
+		}
+		stack = append(stack, sArr[k])
+	}
+	return len(stack) == 0
+}

@@ -161,3 +161,10 @@ func TestGetIntersectionNode(t *testing.T) {
 	assert.Equal(expected, getIntersectionNode(headA, headB))
 	// assert.Equal(expected, getIntersectionNode(headA, headB))
 }
+
+func TestIsValid(t *testing.T) {
+	assert := assert.New(t)
+	s := "()"
+	expected := true
+	assert.Equal(expected, isValid(s))
+}
