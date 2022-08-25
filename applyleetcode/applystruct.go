@@ -5,21 +5,23 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func NewListNode(Values []int) *ListNode {
+func NewListNode(Values []int) (*ListNode, map[int]*ListNode) {
 	l := len(Values)
 	if l == 0 {
 		panic("Wrong input")
 	}
+	m := make(map[int]*ListNode, len(Values))
 	var recurrence func(start int) *ListNode
 	recurrence = func(start int) *ListNode {
 		if start == l {
 			return nil
 		}
 		node := &ListNode{Val: Values[start]}
+		m[start] = node
 		node.Next = recurrence(start + 1)
 		return node
 	}
-	return recurrence(0)
+	return recurrence(0), m
 }
 
 func (ln *ListNode) GetValueArray() []int {
@@ -124,8 +126,8 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func NewTreeNode(arr []int) *TreeNode {
-	l := len(arr)
+func NewTreeNode(arr []int) (*TreeNode, map[int]*TreeNode) {
+	l, m := len(arr), make(map[int]*TreeNode, len(arr))
 	var execBuild func(start int, arr []int) *TreeNode
 	execBuild = func(start int, arr []int) *TreeNode {
 		if start >= l || arr[start] == -1 {
@@ -136,7 +138,8 @@ func NewTreeNode(arr []int) *TreeNode {
 			Left:  execBuild(start*2+1, arr),
 			Right: execBuild(start*2+2, arr),
 		}
+		m[start] = node
 		return node
 	}
-	return execBuild(0, arr)
+	return execBuild(0, arr), m
 }

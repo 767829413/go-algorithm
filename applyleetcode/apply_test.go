@@ -8,9 +8,9 @@ import (
 
 func TestReverseList(t *testing.T) {
 	assert := assert.New(t)
-	head := []int{1, 2, 3, 4, 5}
+	head, _ := NewListNode([]int{1, 2, 3, 4, 5})
 	expected := []int{5, 4, 3, 2, 1}
-	assert.Equal(expected, reverseList(NewListNode(head)).GetValueArray())
+	assert.Equal(expected, reverseList(head).GetValueArray())
 }
 
 func TestLengthOfLongestSubstring(t *testing.T) {
@@ -43,10 +43,10 @@ func TestFindKthLargest(t *testing.T) {
 
 func TestReverseKGroup(t *testing.T) {
 	assert := assert.New(t)
-	head := []int{1, 2, 3, 4, 5}
+	head, _ := NewListNode([]int{1, 2, 3, 4, 5})
 	k := 2
 	expected := []int{2, 1, 4, 3, 5}
-	assert.Equal(expected, reverseKGroup(NewListNode(head), k).GetValueArray())
+	assert.Equal(expected, reverseKGroup(head, k).GetValueArray())
 }
 
 func TestThreeSum(t *testing.T) {
@@ -75,8 +75,8 @@ func TestMaxSubArray(t *testing.T) {
 
 func TestMergeTwoLists(t *testing.T) {
 	assert := assert.New(t)
-	l1 := NewListNode([]int{1, 2, 4})
-	l2 := NewListNode([]int{1, 3, 4})
+	l1, _ := NewListNode([]int{1, 2, 4})
+	l2, _ := NewListNode([]int{1, 3, 4})
 	expected := []int{1, 1, 2, 3, 4, 4}
 	assert.Equal(expected, mergeTwoLists(l1, l2).GetValueArray())
 }
@@ -97,7 +97,7 @@ func TestLevelOrder(t *testing.T) {
 		{2, 3},
 		{4, 5},
 	}
-	node := NewTreeNode(root)
+	node, _ := NewTreeNode(root)
 	assert.Equal(expected, levelOrder(node))
 }
 
@@ -111,7 +111,7 @@ func TestMaxProfit(t *testing.T) {
 
 func TestHasCycle(t *testing.T) {
 	assert := assert.New(t)
-	head := NewListNode([]int{3, 2, 0, -4})
+	head, _ := NewListNode([]int{3, 2, 0, -4})
 	head.Next.Next.Next.Next = head.Next
 	expected := true
 	assert.Equal(expected, hasCycle(head))
@@ -145,18 +145,18 @@ func TestZigzagLevelOrder(t *testing.T) {
 		{3, 2},
 		{4, 5},
 	}
-	node := NewTreeNode(root)
+	node, _ := NewTreeNode(root)
 	assert.Equal(expected, zigzagLevelOrder(node))
 }
 
 func TestGetIntersectionNode(t *testing.T) {
 	assert := assert.New(t)
-	headA := NewListNode([]int{1, 9, 1})
-	headB := NewListNode([]int{3, 5})
+	headA, mA := NewListNode([]int{1, 9, 1})
+	headB, mB := NewListNode([]int{3, 5})
 	var expected *ListNode
-	Intersection := NewListNode([]int{2, 4, 6})
-	headA.Next.Next = Intersection
-	headB.Next = Intersection
+	Intersection, _ := NewListNode([]int{2, 4, 6})
+	mA[2].Next = Intersection
+	mB[1].Next = Intersection
 	expected = Intersection
 	assert.Equal(expected, getIntersectionNode(headA, headB))
 	// assert.Equal(expected, getIntersectionNode(headA, headB))
@@ -167,4 +167,11 @@ func TestIsValid(t *testing.T) {
 	s := "()"
 	expected := true
 	assert.Equal(expected, isValid(s))
+}
+
+func TestLowestCommonAncestor(t *testing.T) {
+	assert := assert.New(t)
+	root, m := NewTreeNode([]int{3, 5, 1, 6, 2, 0, 8, -1, -1, 7, 4})
+	expected := m[1]
+	assert.Equal(expected, lowestCommonAncestor(root, m[1], m[10]))
 }

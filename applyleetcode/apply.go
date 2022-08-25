@@ -673,3 +673,42 @@ func isValid(s string) bool {
 	}
 	return len(stack) == 0
 }
+
+// Lowest common ancestor of a binary tree
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+	// 使用深度优先进行递归操作
+	// 因为 p q 节点本身也可以是最近公共祖先
+	// 从root开始中序遍历(遍历顺序无要求),可以分为以下几种情况
+	// 1. 如果左右返回nil,表示该root下,p,q没有公共祖先
+	// 2. 左右均不空,那root本身就是最近公共祖先
+	// 3. 左不为空,右为空,左为最近公共祖先,左为空,右不为空,右为最近公共祖先
+	var dfs func(node *TreeNode) *TreeNode
+	dfs = func(node *TreeNode) *TreeNode {
+		if node == p || node == q || node == nil {
+			return node
+		}
+		left := dfs(node.Left)
+		right := dfs(node.Right)
+
+		switch true {
+		case left == right && right == nil:
+			return nil
+		case left == nil && right != nil:
+			return right
+		case left != nil && right == nil:
+			return left
+		case left != nil && right != nil:
+			return node
+		}
+		return nil
+	}
+	return dfs(root)
+}
