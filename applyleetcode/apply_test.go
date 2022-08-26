@@ -175,3 +175,10 @@ func TestLowestCommonAncestor(t *testing.T) {
 	expected := m[1]
 	assert.Equal(expected, lowestCommonAncestor(root, m[1], m[10]))
 }
+
+func TestLongestPalindrome(t *testing.T) {
+	assert := assert.New(t)
+	s := "babad"
+	expected := "bab"
+	assert.Equal(expected, longestPalindrome(s))
+}
