@@ -182,3 +182,14 @@ func TestLongestPalindrome(t *testing.T) {
 	expected := "bab"
 	assert.Equal(expected, longestPalindrome(s))
 }
+
+func TestMerge(t *testing.T) {
+	assert := assert.New(t)
+	nums1 := []int{2, 0}
+	m := 1
+	nums2 := []int{1}
+	n := 1
+	expected := []int{1, 2}
+	merge(nums1, m, nums2, n)
+	assert.Equal(expected, nums1)
+}

@@ -748,3 +748,27 @@ func longestPalindrome(s string) string {
 
 	return s[res[0] : res[0]+res[1]]
 }
+
+// Merge sorted array
+func merge(nums1 []int, m int, nums2 []int, n int) {
+	// 因为都是有序数组,且 nums1 是放合并数组后的结果
+	// 可以从大到小进行比较,一次放在 nums1 右边
+	// 如果 nums1 有效长度遍历完,那就直接倒插入 nums2 剩余数值
+	// 如果 nums2 有效长度遍历完,那么 nums1 就是已经合并的结果,直接 返回
+	right, i, j := m+n-1, m-1, n-1
+	for ; i >= 0 && j >= 0; right-- {
+		if nums2[j] >= nums1[i] {
+			nums1[right] = nums2[j]
+			j--
+		} else {
+			nums1[i], nums1[right] = nums1[right], nums1[i]
+			i--
+		}
+	}
+	if i == -1 {
+		for s := j; s >= 0; s-- {
+			nums1[right] = nums2[s]
+			right--
+		}
+	}
+}
