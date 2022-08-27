@@ -733,7 +733,7 @@ func longestPalindrome(s string) string {
 		}
 		return [2]int{left + 1, right - left - 1}
 	}
-	// 遍历数组,这里跳过首尾
+	// 遍历数组
 	for k := range sArr {
 		odd := findFunc(sArr, k, k)
 		even := findFunc(sArr, k, k+1)
