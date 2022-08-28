@@ -772,3 +772,33 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 		}
 	}
 }
+
+// Permutations
+func permute(nums []int) [][]int {
+	box := [][]int{}
+	l := len(nums)
+	if l == 0 {
+		return box
+	}
+	var dfs func(depth int, used []bool, path []int)
+	dfs = func(depth int, used []bool, path []int) {
+		if depth == len(nums) {
+			newTmp := make([]int, len(path))
+			copy(newTmp, path)
+			box = append(box, newTmp)
+			return
+		}
+		for i := 0; i < len(nums); i++ {
+			if used[i] {
+				continue
+			}
+			path = append(path, nums[i])
+			used[i] = true
+			dfs(depth+1, used, path)
+			path = path[:len(path)-1]
+			used[i] = false
+		}
+	}
+	dfs(0, make([]bool, len(nums)), make([]int, 0, len(nums)))
+	return box
+}

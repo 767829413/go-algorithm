@@ -193,3 +193,17 @@ func TestMerge(t *testing.T) {
 	merge(nums1, m, nums2, n)
 	assert.Equal(expected, nums1)
 }
+
+func TestPermute(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{1, 2, 3}
+	expected := [][]int{
+		{1, 2, 3},
+		{1, 3, 2},
+		{2, 1, 3},
+		{2, 3, 1},
+		{3, 1, 2},
+		{3, 2, 1},
+	}
+	assert.Equal(expected, permute(nums))
+}
