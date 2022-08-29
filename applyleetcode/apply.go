@@ -802,3 +802,58 @@ func permute(nums []int) [][]int {
 	dfs(0, make([]bool, len(nums)), make([]int, 0, len(nums)))
 	return box
 }
+
+// Merge k sorted lists
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func mergeKLists(lists []*ListNode) *ListNode {
+	l := len(lists)
+	if l == 0 {
+		return nil
+	}
+	if l == 1 {
+		return lists[0]
+	}
+	// 合并两个有序数组
+	mergeTwoLists := func(list1 *ListNode, list2 *ListNode) *ListNode {
+		head := &ListNode{}
+		start := head
+		for list1 != nil && list2 != nil {
+			if list1.Val > list2.Val {
+				start.Next = list2
+				list2 = list2.Next
+			} else {
+				start.Next = list1
+				list1 = list1.Next
+			}
+			start = start.Next
+		}
+		if list1 != nil {
+			start.Next = list1
+		} else {
+			start.Next = list2
+		}
+		return head.Next
+	}
+
+	// 采用分治法
+	var merge func(lists []*ListNode, left, right int) *ListNode
+	merge = func(lists []*ListNode, left, right int) *ListNode {
+		// 递归结束条件就是左右相等 || 左边大于右边
+		if left == right {
+			return lists[left]
+		}
+		if left > right {
+			return nil
+		}
+		mid := (left + right) >> 1
+		return mergeTwoLists(merge(lists, left, mid), merge(lists, mid+1, right))
+	}
+
+	return merge(lists, 0, l-1)
+}

@@ -207,3 +207,13 @@ func TestPermute(t *testing.T) {
 	}
 	assert.Equal(expected, permute(nums))
 }
+
+func TestMergeKLists(t *testing.T) {
+	assert := assert.New(t)
+	list1, _ := NewListNode([]int{1, 4, 5})
+	list2, _ := NewListNode([]int{1, 3, 4})
+	list3, _ := NewListNode([]int{2, 6})
+	lists := []*ListNode{list1, list2, list3}
+	expected := []int{1, 1, 2, 3, 4, 4, 5, 6}
+	assert.Equal(expected, mergeKLists(lists).GetValueArray())
+}
