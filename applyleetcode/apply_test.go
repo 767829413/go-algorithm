@@ -217,3 +217,14 @@ func TestMergeKLists(t *testing.T) {
 	expected := []int{1, 1, 2, 3, 4, 4, 5, 6}
 	assert.Equal(expected, mergeKLists(lists).GetValueArray())
 }
+
+func TestSpiralOrder(t *testing.T) {
+	assert := assert.New(t)
+	matrix := [][]int{
+		{1, 2, 3, 4},
+		{5, 6, 7, 8},
+		{9, 10, 11, 12},
+	}
+	expected := []int{1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7}
+	assert.Equal(expected, spiralOrder(matrix))
+}

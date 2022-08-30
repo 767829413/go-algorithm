@@ -857,3 +857,45 @@ func mergeKLists(lists []*ListNode) *ListNode {
 
 	return merge(lists, 0, l-1)
 }
+
+// Spiral matrix
+func spiralOrder(matrix [][]int) []int {
+	n, m := len(matrix), len(matrix[0])
+	box := make([]int, 0, m*n)
+	left, right, top, bottom := 0, m-1, 0, n-1
+	for {
+		// 向右走
+		for walk := left; walk <= right; walk++ {
+			box = append(box, matrix[top][walk])
+		}
+		top++
+		if top > bottom {
+			break
+		}
+		// 向下走
+		for walk := top; walk <= bottom; walk++ {
+			box = append(box, matrix[walk][right])
+		}
+		right--
+		if left > right {
+			break
+		}
+		// 向左走
+		for walk := right; walk >= left; walk-- {
+			box = append(box, matrix[bottom][walk])
+		}
+		bottom--
+		if top > bottom {
+			break
+		}
+		// 向上走
+		for walk := bottom; walk >= top; walk-- {
+			box = append(box, matrix[walk][left])
+		}
+		left++
+		if left > right {
+			break
+		}
+	}
+	return box
+}
