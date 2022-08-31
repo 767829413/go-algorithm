@@ -228,3 +228,11 @@ func TestSpiralOrder(t *testing.T) {
 	expected := []int{1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7}
 	assert.Equal(expected, spiralOrder(matrix))
 }
+
+func TestReverseBetween(t *testing.T) {
+	assert := assert.New(t)
+	head, _ := NewListNode([]int{3, 5})
+	left, right := 1, 2
+	expected := []int{5, 3}
+	assert.Equal(expected, reverseBetween(head, left, right).GetValueArray())
+}

@@ -899,3 +899,54 @@ func spiralOrder(matrix [][]int) []int {
 	}
 	return box
 }
+
+// Reverse linked list ii
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reverseBetween(head *ListNode, left int, right int) *ListNode {
+	if left == right {
+		return head
+	}
+	var pre, start, end, next *ListNode
+	c, s := 1, head
+	for s != nil {
+		if c+1 == left {
+			pre, start = s, s.Next
+		}
+		if c == left {
+			start = s
+		}
+		if c == right {
+			end, next = s, s.Next
+		}
+		s = s.Next
+		c++
+	}
+	if start == nil || end == nil {
+		return head
+	}
+	end.Next = nil
+	reverseList := func(s *ListNode) *ListNode {
+		var pre *ListNode
+		pre, cur := nil, s
+		for cur != nil {
+			tmp := cur.Next
+			cur.Next = pre
+			cur, pre = tmp, cur
+		}
+		return pre
+	}
+	if pre != nil {
+		pre.Next = reverseList(start)
+	} else {
+		reverseList(start)
+		head = end
+	}
+	start.Next = next
+	return head
+}
