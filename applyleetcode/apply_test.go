@@ -236,3 +236,12 @@ func TestReverseBetween(t *testing.T) {
 	expected := []int{5, 3}
 	assert.Equal(expected, reverseBetween(head, left, right).GetValueArray())
 }
+
+func TestDetectCycle(t *testing.T) {
+	assert := assert.New(t)
+	head, m := NewListNode([]int{3, 2, 0, -4})
+	pos := 1
+	m[3].Next = m[pos]
+	expected := m[pos]
+	assert.Equal(expected, detectCycle(head))
+}

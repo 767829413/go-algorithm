@@ -950,3 +950,42 @@ func reverseBetween(head *ListNode, left int, right int) *ListNode {
 	start.Next = next
 	return head
 }
+
+// Linked list cycle ii
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func detectCycle(head *ListNode) *ListNode {
+	if head == nil {
+		return nil
+	}
+	s, f := head, head
+	// 定义环形链表环入口之前的节点数 a,环节点数 b
+	// 找两个指针重合位置,此时
+	// f(快指针,走两步)走了的节点数设为 x ,s(慢指针,走一步)走了的节点数设为 y
+	// f比s多走一倍的节点数 x = 2y,因为环状链表, x = y + n*b (f比s多走了n圈环才能相遇的)
+	// y = nb, x = 2*nb,重合时 s 走了 n 个环长, f 走了 2n 个环长
+	// 从链表头走到环形入口的节点数是: a + n*b (环形入口后都是环,所以绕 n 都能回入口)
+	// 此时 s,f 相遇,那么 f 再走 a 个节点则能到达入口
+	// 利用一个新指针 h ,从链表头开始走 a 个节点则: h 与 f 相遇则为入口节点
+	for {
+		// 标识无环
+		if f == nil || f.Next == nil {
+			return nil
+		}
+		f = f.Next.Next
+		s = s.Next
+		if f == s {
+			break
+		}
+	}
+	f = head
+	for s != f {
+		f, s = f.Next, s.Next
+	}
+	return f
+}
