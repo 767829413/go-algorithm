@@ -245,3 +245,10 @@ func TestDetectCycle(t *testing.T) {
 	expected := m[pos]
 	assert.Equal(expected, detectCycle(head))
 }
+
+func TestAddStrings(t *testing.T) {
+	assert := assert.New(t)
+	num1, num2 := "9", "1"
+	expected := "10"
+	assert.Equal(expected, addStrings(num1, num2))
+}

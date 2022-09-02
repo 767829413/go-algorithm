@@ -3,6 +3,7 @@ package applyleetcode
 import (
 	"math"
 	"sort"
+	"strconv"
 )
 
 // Reverse linked list
@@ -988,4 +989,29 @@ func detectCycle(head *ListNode) *ListNode {
 		f, s = f.Next, s.Next
 	}
 	return f
+}
+
+// Add strings
+func addStrings(num1 string, num2 string) string {
+	res, i, j, up := "", len(num1)-1, len(num2)-1, 0
+	// 利用两个字符串数字从后相加
+	// 利用十进制进位来处理 十进制数 xyz, z / 10 标识是否进位 z % 10 标识当前位置 z 的值
+	for i >= 0 || j >= 0 {
+		var n1, n2 = 0, 0
+		if i >= 0 {
+			n1, _ = strconv.Atoi(string(num1[i]))
+		}
+		if j >= 0 {
+			n2, _ = strconv.Atoi(string(num2[j]))
+		}
+		tmp := n1 + n2 + up
+		up = tmp / 10
+		res = strconv.Itoa(tmp%10) + res
+		i--
+		j--
+	}
+	if up != 0 {
+		res = "1" + res
+	}
+	return res
 }
