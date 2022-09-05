@@ -1015,3 +1015,36 @@ func addStrings(num1 string, num2 string) string {
 	}
 	return res
 }
+
+// Longest increasing subsequence
+func lengthOfLIS(nums []int) int {
+	l := len(nums)
+	if l < 2 {
+		return l
+	}
+	// 构建初始dp数组,基础值为1
+	dp := make([]int, l)
+	for k := range dp {
+		dp[k] = 1
+	}
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	res := math.MinInt
+	// 位置i的dp[i]最大值是 j表示[0,i)的值
+	// 1. nums[i] > nums[j] 则i是所在位置j的严格后序,此时对应dp[j]++
+	// 2. nums[i] <= nums[j] 不满足条件则跳出
+	// dp[i] = max(dp[i],dp[j] + 1) j => [0,j)
+	for i := 0; i < l; i++ {
+		for j := 0; j < i; j++ {
+			if nums[i] > nums[j] {
+				dp[i] = max(dp[i], dp[j]+1)
+			}
+		}
+		res = max(dp[i], res)
+	}
+	return res
+}

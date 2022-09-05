@@ -252,3 +252,10 @@ func TestAddStrings(t *testing.T) {
 	expected := "10"
 	assert.Equal(expected, addStrings(num1, num2))
 }
+
+func TestLengthOfLIS(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{}
+	expected := 0
+	assert.Equal(expected, lengthOfLIS(nums))
+}
