@@ -259,3 +259,10 @@ func TestLengthOfLIS(t *testing.T) {
 	expected := 0
 	assert.Equal(expected, lengthOfLIS(nums))
 }
+
+func TestTrap(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
+	expected := 6
+	assert.Equal(expected, trap(nums))
+}

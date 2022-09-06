@@ -1048,3 +1048,36 @@ func lengthOfLIS(nums []int) int {
 	}
 	return res
 }
+
+// Trapping rain water
+func trap(height []int) int {
+	l := len(height)
+	if l < 3 {
+		return 0
+	}
+	// 接水我们以当前位置是否能积水为参考标准
+	// 当前位置高为h,左边最高设为lm,右边最高设为rm
+	// 只有当前位置高度h小于min(lm,rm)的时候才能有积水等于 min(lm,rm) - h
+	// 建立左右指针 left right,首先通过比较 height[left] height[right]的高度确定接水的短板
+	// 较短的一边指针位置与对应边界进行比较可以得出是否接住雨水
+	left, right, lm, rm, sum := 0, len(height)-1, 0, 0, 0
+	for left < right {
+		// 接的雨水依赖右边
+		if height[left] > height[right] {
+			if rm > height[right] {
+				sum += rm - height[right]
+			} else {
+				rm = height[right]
+			}
+			right--
+		} else {
+			if lm > height[left] {
+				sum += lm - height[left]
+			} else {
+				lm = height[left]
+			}
+			left++
+		}
+	}
+	return sum
+}
