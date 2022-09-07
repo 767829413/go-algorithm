@@ -1081,3 +1081,38 @@ func trap(height []int) int {
 	}
 	return sum
 }
+
+// Binary tree maximum path sum
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func maxPathSum(root *TreeNode) int {
+	var dfs func(node *TreeNode) int
+	sum := math.MinInt
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	dfs = func(node *TreeNode) int {
+		if node == nil {
+			return 0
+		}
+		left := dfs(node.Left)
+		right := dfs(node.Right)
+		// 当前节点具有的最大路径和(包括子树)
+		tmpNum := left + right + node.Val
+		// 与已知节点的路径和比较,选取最大
+		sum = max(tmpNum, sum)
+		// 输出的最大路径和,从当前根节点下来,只能走左或走右,不能走向左边后又走向右边
+		return max(max(left, right)+node.Val, 0)
+	}
+	dfs(root)
+	return sum
+}

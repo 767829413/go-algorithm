@@ -266,3 +266,10 @@ func TestTrap(t *testing.T) {
 	expected := 6
 	assert.Equal(expected, trap(nums))
 }
+
+func TestMaxPathSum(t *testing.T) {
+	assert := assert.New(t)
+	root, _ := NewTreeNode([]int{-10, 9, 20, -1, -1, 15, 7})
+	expected := 42
+	assert.Equal(expected, maxPathSum(root))
+}
