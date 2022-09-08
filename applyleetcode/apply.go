@@ -1116,3 +1116,34 @@ func maxPathSum(root *TreeNode) int {
 	dfs(root)
 	return sum
 }
+
+// Reorder list
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reorderList(head *ListNode) {
+	// 1, 2, 3, 4, 5
+	// 1, 5, 2, 4, 3
+	// 构建一个数组存储链表节点
+	s := []*ListNode{}
+	for node := head; node != nil; node = node.Next {
+		s = append(s, node)
+	}
+	// 拿首尾节点的index
+	l, r := 0, len(s)-1
+	for l < r {
+		s[l].Next = s[r]
+		l++
+		// 偶数的时候会提前结束
+		if l == r {
+			break
+		}
+		s[r].Next = s[l]
+		r--
+	}
+	s[l].Next = nil
+}

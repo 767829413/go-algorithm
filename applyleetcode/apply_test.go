@@ -273,3 +273,11 @@ func TestMaxPathSum(t *testing.T) {
 	expected := 42
 	assert.Equal(expected, maxPathSum(root))
 }
+
+func TestReorderList(t *testing.T) {
+	assert := assert.New(t)
+	head, _ := NewListNode([]int{1, 2, 3, 4, 5})
+	expected := []int{1, 5, 2, 4, 3}
+	reorderList(head)
+	assert.Equal(expected, head.GetValueArray())
+}
