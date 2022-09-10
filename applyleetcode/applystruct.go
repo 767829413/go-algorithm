@@ -133,11 +133,10 @@ func NewTreeNode(arr []int) (*TreeNode, map[int]*TreeNode) {
 		if start >= l || arr[start] == -1 {
 			return nil
 		}
-		node := &TreeNode{
-			Val:   arr[start],
-			Left:  execBuild(start*2+1, arr),
-			Right: execBuild(start*2+2, arr),
-		}
+		node := &TreeNode{}
+		node.Val = arr[start]
+		node.Left = execBuild(start*2+1, arr)
+		node.Right = execBuild(start*2+2, arr)
 		m[start] = node
 		return node
 	}

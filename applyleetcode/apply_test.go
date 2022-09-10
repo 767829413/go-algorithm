@@ -281,3 +281,10 @@ func TestReorderList(t *testing.T) {
 	reorderList(head)
 	assert.Equal(expected, head.GetValueArray())
 }
+
+func TestInorderTraversal(t *testing.T) {
+	assert := assert.New(t)
+	root, _ := NewTreeNode([]int{1, -1, 2, -1, -1, 3})
+	expected := []int{1, 3, 2}
+	assert.Equal(expected, inorderTraversal(root))
+}

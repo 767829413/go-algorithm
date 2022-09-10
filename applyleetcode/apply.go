@@ -1147,3 +1147,29 @@ func reorderList(head *ListNode) {
 	}
 	s[l].Next = nil
 }
+
+// Binary tree inorder traversal
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func inorderTraversal(root *TreeNode) []int {
+	var (
+		ergodic func(node *TreeNode)
+		res     []int
+	)
+	ergodic = func(node *TreeNode) {
+		if node == nil {
+			return
+		}
+		ergodic(node.Left)
+		res = append(res, node.Val)
+		ergodic(node.Right)
+	}
+	ergodic(root)
+	return res
+}
