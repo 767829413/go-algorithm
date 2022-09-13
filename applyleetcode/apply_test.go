@@ -129,12 +129,12 @@ func TestNumIslands(t *testing.T) {
 	assert.Equal(expected, numIslands(grid))
 }
 
-func TestSearch(t *testing.T) {
+func TestSearchRotatedArray(t *testing.T) {
 	assert := assert.New(t)
 	nums := []int{5, 1, 2, 3, 4}
 	target := 1
 	expected := 1
-	assert.Equal(expected, search(nums, target))
+	assert.Equal(expected, searchRotatedArray(nums, target))
 }
 
 func TestZigzagLevelOrder(t *testing.T) {
@@ -287,4 +287,12 @@ func TestInorderTraversal(t *testing.T) {
 	root, _ := NewTreeNode([]int{1, -1, 2, -1, -1, 3})
 	expected := []int{1, 3, 2}
 	assert.Equal(expected, inorderTraversal(root))
+}
+
+func TestSearch(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{-1, 0, 3, 5, 9, 12}
+	target := 9
+	expected := 4
+	assert.Equal(expected, search(nums, target))
 }

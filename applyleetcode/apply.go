@@ -514,7 +514,7 @@ func numIslands(grid [][]byte) int {
 }
 
 // Search in rotated sorted array
-func search(nums []int, target int) int {
+func searchRotatedArray(nums []int, target int) int {
 	l := len(nums)
 	if l < 1 {
 		return -1
@@ -1172,4 +1172,20 @@ func inorderTraversal(root *TreeNode) []int {
 	}
 	ergodic(root)
 	return res
+}
+
+// Binary search
+func search(nums []int, target int) int {
+	low, hig := 0, len(nums)-1
+	for low <= hig {
+		mid := (low + hig) >> 1
+		if target > nums[mid] {
+			low = mid + 1
+		} else if target < nums[mid] {
+			hig = mid - 1
+		} else {
+			return mid
+		}
+	}
+	return -1
 }
