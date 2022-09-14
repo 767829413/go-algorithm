@@ -23,7 +23,7 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 
 func TestLRUCache(t *testing.T) {
 	assert := assert.New(t)
-	cache := Constructor(2)
+	cache := ConstructorLRUCache(2)
 	assert.Equal(-1, cache.Get(2))
 	cache.Put(2, 6)
 	assert.Equal(-1, cache.Get(1))
@@ -295,4 +295,15 @@ func TestSearch(t *testing.T) {
 	target := 9
 	expected := 4
 	assert.Equal(expected, search(nums, target))
+}
+
+func TestMyQueue(t *testing.T) {
+	assert := assert.New(t)
+	
+	obj := Constructor();
+	obj.Push(10);
+	obj.Push(11);
+	assert.Equal(10, obj.Pop())
+	assert.Equal(11, obj.Peek())
+	assert.Equal(false, obj.Empty())
 }

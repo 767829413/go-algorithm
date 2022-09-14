@@ -1,5 +1,7 @@
 package applyleetcode
 
+import "sync"
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -42,7 +44,7 @@ type LRUCache struct {
 	tail     *InteractiveList // 哨兵节点
 }
 
-func Constructor(capacity int) LRUCache {
+func ConstructorLRUCache(capacity int) LRUCache {
 	if capacity == 0 {
 		panic("Wrong input")
 	}
@@ -141,4 +143,45 @@ func NewTreeNode(arr []int) (*TreeNode, map[int]*TreeNode) {
 		return node
 	}
 	return execBuild(0, arr), m
+}
+
+type MyQueue struct {
+	rwm  sync.RWMutex
+	Data []int
+}
+
+func Constructor() MyQueue {
+	return MyQueue{Data: []int{}}
+}
+
+func (this *MyQueue) Push(x int) {
+	defer this.rwm.Unlock()
+	this.rwm.Lock()
+	this.Data = append(this.Data, x)
+}
+
+func (this *MyQueue) Pop() int {
+	defer this.rwm.Unlock()
+	this.rwm.Lock()
+	if len(this.Data) == 0 {
+		return -1
+	}
+	x := this.Data[0]
+	this.Data = this.Data[1:]
+	return x
+}
+
+func (this *MyQueue) Peek() int {
+	defer this.rwm.RUnlock()
+	this.rwm.RLock()
+	if len(this.Data) == 0 {
+		return -1
+	}
+	return this.Data[0]
+}
+
+func (this *MyQueue) Empty() bool {
+	defer this.rwm.RUnlock()
+	this.rwm.RLock()
+	return len(this.Data) == 0
 }
