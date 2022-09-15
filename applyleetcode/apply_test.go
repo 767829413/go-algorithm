@@ -310,7 +310,7 @@ func TestMyQueue(t *testing.T) {
 
 func TestRightSideView(t *testing.T) {
 	assert := assert.New(t)
-	root, _ := NewTreeNode([]int{1,math.MinInt, 2,})
+	root, _ := NewTreeNode([]int{1, math.MinInt, 2})
 	expected := []int{1, 2}
 	assert.Equal(expected, rightSideView(root))
 }
