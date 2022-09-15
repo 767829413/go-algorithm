@@ -1,6 +1,9 @@
 package applyleetcode
 
-import "sync"
+import (
+	"math"
+	"sync"
+)
 
 type ListNode struct {
 	Val  int
@@ -132,7 +135,7 @@ func NewTreeNode(arr []int) (*TreeNode, map[int]*TreeNode) {
 	l, m := len(arr), make(map[int]*TreeNode, len(arr))
 	var execBuild func(start int, arr []int) *TreeNode
 	execBuild = func(start int, arr []int) *TreeNode {
-		if start >= l || arr[start] == -1 {
+		if start >= l || arr[start] == math.MinInt {
 			return nil
 		}
 		node := &TreeNode{}

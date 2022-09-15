@@ -1,6 +1,7 @@
 package applyleetcode
 
 import (
+	"math"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -91,7 +92,7 @@ func TestTwoSum(t *testing.T) {
 
 func TestLevelOrder(t *testing.T) {
 	assert := assert.New(t)
-	root := []int{1, 2, 3, 4, -1, -1, 5}
+	root := []int{1, 2, 3, 4, math.MinInt, math.MinInt, 5}
 	expected := [][]int{
 		{1},
 		{2, 3},
@@ -139,7 +140,7 @@ func TestSearchRotatedArray(t *testing.T) {
 
 func TestZigzagLevelOrder(t *testing.T) {
 	assert := assert.New(t)
-	root := []int{1, 2, 3, 4, -1, -1, 5}
+	root := []int{1, 2, 3, 4, math.MinInt, math.MinInt, 5}
 	expected := [][]int{
 		{1},
 		{3, 2},
@@ -171,7 +172,7 @@ func TestIsValid(t *testing.T) {
 
 func TestLowestCommonAncestor(t *testing.T) {
 	assert := assert.New(t)
-	root, m := NewTreeNode([]int{3, 5, 1, 6, 2, 0, 8, -1, -1, 7, 4})
+	root, m := NewTreeNode([]int{3, 5, 1, 6, 2, 0, 8, math.MinInt, math.MinInt, 7, 4})
 	expected := m[1]
 	assert.Equal(expected, lowestCommonAncestor(root, m[1], m[10]))
 }
@@ -269,7 +270,7 @@ func TestTrap(t *testing.T) {
 
 func TestMaxPathSum(t *testing.T) {
 	assert := assert.New(t)
-	root, _ := NewTreeNode([]int{-10, 9, 20, -1, -1, 15, 7})
+	root, _ := NewTreeNode([]int{-10, 9, 20, math.MinInt, math.MinInt, 15, 7})
 	expected := 42
 	assert.Equal(expected, maxPathSum(root))
 }
@@ -284,7 +285,7 @@ func TestReorderList(t *testing.T) {
 
 func TestInorderTraversal(t *testing.T) {
 	assert := assert.New(t)
-	root, _ := NewTreeNode([]int{1, -1, 2, -1, -1, 3})
+	root, _ := NewTreeNode([]int{1, math.MinInt, 2, math.MinInt, math.MinInt, 3})
 	expected := []int{1, 3, 2}
 	assert.Equal(expected, inorderTraversal(root))
 }
@@ -299,11 +300,17 @@ func TestSearch(t *testing.T) {
 
 func TestMyQueue(t *testing.T) {
 	assert := assert.New(t)
-	
-	obj := Constructor();
-	obj.Push(10);
-	obj.Push(11);
+	obj := Constructor()
+	obj.Push(10)
+	obj.Push(11)
 	assert.Equal(10, obj.Pop())
 	assert.Equal(11, obj.Peek())
 	assert.Equal(false, obj.Empty())
+}
+
+func TestRightSideView(t *testing.T) {
+	assert := assert.New(t)
+	root, _ := NewTreeNode([]int{1,math.MinInt, 2,})
+	expected := []int{1, 2}
+	assert.Equal(expected, rightSideView(root))
 }
