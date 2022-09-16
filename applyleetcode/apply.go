@@ -1204,16 +1204,16 @@ func rightSideView(root *TreeNode) []int {
 		return []int{}
 	}
 	var (
-		res []int
+		res   []int
 		queue = []*TreeNode{root}
 	)
 	for len(queue) != 0 {
 		l := len(queue)
-		for i:=0;i<l;i++{
+		for i := 0; i < l; i++ {
 			node := queue[0]
 			queue = queue[1:]
 			if i == l-1 {
-				res = append(res,node.Val )
+				res = append(res, node.Val)
 			}
 			if node.Left != nil {
 				queue = append(queue, node.Left)
@@ -1224,4 +1224,58 @@ func rightSideView(root *TreeNode) []int {
 		}
 	}
 	return res
+}
+
+// Median of two sorted arrays
+func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+	s1, l1, s2, l2 := 0, len(nums1), 0, len(nums2)
+	l := l1 + l2
+	if l == 0 {
+		return 0
+	}
+	minLeft, minLeftV, minRight, minRightV, s, min := 0, -1, 0, -1, 0, l>>1
+	if l%2 == 0 {
+		minRight, minLeft = min, min-1
+	} else {
+		minRight, minLeft = min, min
+	}
+
+	for ; s1 < l1 && s2 < l2; s++ {
+		val := 0
+		if nums1[s1] < nums2[s2] {
+			val = nums1[s1]
+			s1++
+		} else {
+			val = nums2[s2]
+			s2++
+		}
+		if s == minLeft {
+			minLeftV = val
+		}
+		if s == minRight {
+			minRightV = val
+		}
+	}
+	if minLeftV == -1 || minRightV == -1 {
+		var (
+			i, j int
+			num  []int
+		)
+		if s1 == l1 {
+			i, j, num = s2, l2, nums2
+		} else {
+			i, j, num = s1, l1, nums1
+		}
+		for k := i; k < j; k++ {
+			if s == minLeft {
+				minLeftV = num[k]
+			}
+			if s == minRight {
+				minRightV = num[k]
+			}
+			s++
+		}
+	}
+
+	return float64(minLeftV+minRightV) / 2
 }

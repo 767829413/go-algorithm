@@ -314,3 +314,11 @@ func TestRightSideView(t *testing.T) {
 	expected := []int{1, 2}
 	assert.Equal(expected, rightSideView(root))
 }
+
+func TestFindMedianSortedArrays(t *testing.T) {
+	assert := assert.New(t)
+	nums1 := []int{1, 2}
+	nums2 := []int{3, 4}
+	expected := 2.5
+	assert.Equal(expected, findMedianSortedArrays(nums1, nums2))
+}
