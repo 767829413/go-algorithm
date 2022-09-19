@@ -184,14 +184,14 @@ func TestLongestPalindrome(t *testing.T) {
 	assert.Equal(expected, longestPalindrome(s))
 }
 
-func TestMerge(t *testing.T) {
+func TestMergeSortedArray(t *testing.T) {
 	assert := assert.New(t)
 	nums1 := []int{2, 0}
 	m := 1
 	nums2 := []int{1}
 	n := 1
 	expected := []int{1, 2}
-	merge(nums1, m, nums2, n)
+	mergeSortedArray(nums1, m, nums2, n)
 	assert.Equal(expected, nums1)
 }
 
@@ -321,4 +321,22 @@ func TestFindMedianSortedArrays(t *testing.T) {
 	nums2 := []int{3, 4}
 	expected := 2.5
 	assert.Equal(expected, findMedianSortedArrays(nums1, nums2))
+}
+
+func TestMerge(t *testing.T) {
+	assert := assert.New(t)
+	intervals := [][]int{
+		{2, 3},
+		{2, 2},
+		{3, 3},
+		{1, 3},
+		{5, 7},
+		{2, 2},
+		{4, 6},
+	}
+	expected := [][]int{
+		{1, 3},
+		{4, 7},
+	}
+	assert.Equal(expected, merge(intervals))
 }

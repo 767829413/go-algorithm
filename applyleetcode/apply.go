@@ -751,7 +751,7 @@ func longestPalindrome(s string) string {
 }
 
 // Merge sorted array
-func merge(nums1 []int, m int, nums2 []int, n int) {
+func mergeSortedArray(nums1 []int, m int, nums2 []int, n int) {
 	// 因为都是有序数组,且 nums1 是放合并数组后的结果
 	// 可以从大到小进行比较,一次放在 nums1 右边
 	// 如果 nums1 有效长度遍历完,那就直接倒插入 nums2 剩余数值
@@ -1278,4 +1278,33 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	}
 
 	return float64(minLeftV+minRightV) / 2
+}
+
+// Merge intervals
+func merge(intervals [][]int) [][]int {
+	l := len(intervals)
+	if l <= 1 {
+		return intervals
+	}
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+	res, slow, quick := [][]int{intervals[0]}, 0, 1
+	for quick < l {
+		if res[slow][0] <= intervals[quick][0] && intervals[quick][0] <= res[slow][1] {
+			var v []int
+			if intervals[quick][1] > res[slow][1] {
+				v = []int{res[slow][0], intervals[quick][1]}
+			} else {
+				v = []int{res[slow][0], res[slow][1]}
+			}
+			res[slow] = v
+			quick++
+		} else {
+			res = append(res, intervals[quick])
+			slow++
+			quick++
+		}
+	}
+	return res
 }
