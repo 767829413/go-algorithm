@@ -1290,7 +1290,7 @@ func merge(intervals [][]int) [][]int {
 		return intervals[i][0] < intervals[j][0]
 	})
 	res, slow, quick := [][]int{intervals[0]}, 0, 1
-	for quick < l {
+	for ; quick < l; quick++ {
 		if res[slow][0] <= intervals[quick][0] && intervals[quick][0] <= res[slow][1] {
 			var v []int
 			if intervals[quick][1] > res[slow][1] {
@@ -1299,12 +1299,39 @@ func merge(intervals [][]int) [][]int {
 				v = []int{res[slow][0], res[slow][1]}
 			}
 			res[slow] = v
-			quick++
 		} else {
 			res = append(res, intervals[quick])
 			slow++
-			quick++
 		}
 	}
 	return res
+}
+
+// Remove nth node from end of list
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func removeNthFromEnd(head *ListNode, n int) *ListNode {
+	m := make([]*ListNode, 0, 500)
+	for s := head; s != nil; s = s.Next {
+		m = append(m, s)
+	}
+	l := len(m)
+	index := l - n
+	if l < 2 {
+		return nil
+	}
+	switch index {
+	case l-1:
+		m[index-1].Next = nil
+	case 0:
+		head = head.Next
+	default:
+		m[index-1].Next = m[index].Next
+	}
+	return head
 }

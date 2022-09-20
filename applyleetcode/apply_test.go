@@ -340,3 +340,11 @@ func TestMerge(t *testing.T) {
 	}
 	assert.Equal(expected, merge(intervals))
 }
+
+func TestRemoveNthFromEnd(t *testing.T) {
+	assert := assert.New(t)
+	head, _ := NewListNode([]int{1, 2, 3, 4, 5})
+	n := 2
+	expected := []int{1, 2, 3, 5}
+	assert.Equal(expected, removeNthFromEnd(head, n).GetValueArray())
+}
