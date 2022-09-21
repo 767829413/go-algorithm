@@ -348,3 +348,10 @@ func TestRemoveNthFromEnd(t *testing.T) {
 	expected := []int{1, 2, 3, 5}
 	assert.Equal(expected, removeNthFromEnd(head, n).GetValueArray())
 }
+
+func TestClimbStairs(t *testing.T) {
+	assert := assert.New(t)
+	n := 1000
+	expected := 9079565065540428013
+	assert.Equal(expected, climbStairs(n))
+}

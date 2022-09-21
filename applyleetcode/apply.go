@@ -1326,7 +1326,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		return nil
 	}
 	switch index {
-	case l-1:
+	case l - 1:
 		m[index-1].Next = nil
 	case 0:
 		head = head.Next
@@ -1334,4 +1334,19 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		m[index-1].Next = m[index].Next
 	}
 	return head
+}
+
+// Climbing stairs
+func climbStairs(n int) int {
+	if n < 3 {
+		s :=[3]int{}
+		s[0], s[1], s[2] = 0, 1, 2
+		return s[n]
+	}
+	dp := make([]int, n+1)
+	dp[0], dp[1], dp[2] = 0, 1, 2
+	for i := 3; i <= n; i++ {
+		dp[i] = dp[i-1]+dp[i-2]
+	}
+	return dp[n]
 }
