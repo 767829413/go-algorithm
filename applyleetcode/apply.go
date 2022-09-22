@@ -1339,14 +1339,45 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 // Climbing stairs
 func climbStairs(n int) int {
 	if n < 3 {
-		s :=[3]int{}
+		s := [3]int{}
 		s[0], s[1], s[2] = 0, 1, 2
 		return s[n]
 	}
 	dp := make([]int, n+1)
 	dp[0], dp[1], dp[2] = 0, 1, 2
 	for i := 3; i <= n; i++ {
-		dp[i] = dp[i-1]+dp[i-2]
+		dp[i] = dp[i-1] + dp[i-2]
 	}
 	return dp[n]
+}
+
+// Sort list
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func sortList(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	var normalFunc = func(head *ListNode) *ListNode {
+		m := []*ListNode{}
+		for i := head; i != nil; i = i.Next {
+			m = append(m, i)
+		}
+		sort.Slice(m, func(i, j int) bool {
+			return m[i].Val < m[j].Val
+		})
+		l := len(m) - 1
+		for i := 0; i < l; i++ {
+			m[i].Next = m[i+1]
+
+		}
+		m[l].Next = nil
+		return m[0]
+	}
+	return normalFunc(head)
 }

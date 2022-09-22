@@ -355,3 +355,10 @@ func TestClimbStairs(t *testing.T) {
 	expected := 9079565065540428013
 	assert.Equal(expected, climbStairs(n))
 }
+
+func TestSortList(t *testing.T) {
+	assert := assert.New(t)
+	head, _ := NewListNode([]int{4, 2, 1, 3})
+	expected := []int{1, 2, 3, 4}
+	assert.Equal(expected, sortList(head).GetValueArray())
+}
