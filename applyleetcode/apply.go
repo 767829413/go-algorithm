@@ -1381,3 +1381,38 @@ func sortList(head *ListNode) *ListNode {
 	}
 	return normalFunc(head)
 }
+
+// Remove duplicates from sorted list ii
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func deleteDuplicates(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	dumy := &ListNode{Next: head}
+	pre, cur, next := dumy, dumy.Next, dumy.Next.Next
+	for next != nil {
+		if cur.Val == next.Val {
+			if next.Next == nil || next.Next.Val != cur.Val {
+				pre.Next = next.Next
+				if pre.Next != nil {
+					cur = pre.Next
+					next = pre.Next.Next
+					continue
+				} else {
+					break
+				}
+			}
+			next = next.Next
+			continue
+		} else {
+			pre, cur, next = cur, next, next.Next
+		}
+	}
+	return dumy.Next
+}

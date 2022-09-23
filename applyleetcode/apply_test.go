@@ -362,3 +362,10 @@ func TestSortList(t *testing.T) {
 	expected := []int{1, 2, 3, 4}
 	assert.Equal(expected, sortList(head).GetValueArray())
 }
+
+func TestDeleteDuplicates(t *testing.T) {
+	assert := assert.New(t)
+	head, _ := NewListNode([]int{1, 2, 3, 3, 4, 4, 5})
+	expected := []int{1, 2, 5}
+	assert.Equal(expected, deleteDuplicates(head).GetValueArray())
+}
