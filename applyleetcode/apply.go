@@ -1416,3 +1416,33 @@ func deleteDuplicates(head *ListNode) *ListNode {
 	}
 	return dumy.Next
 }
+
+// Sqrtx
+// 牛顿迭代或者二分查找
+func mySqrt(x int) int {
+	if false {
+		s := 1.0
+		target := float64(x)
+		for {
+			tmp := (s + target/s) / 2.0
+			if math.Abs(tmp-s) <= 0.1 {
+				s = tmp
+				break
+			}
+			s = tmp
+		}
+		return int(math.Floor(s))
+	} else {
+		ans, low, high := 0, 0, x
+		for low <= high {
+			mid := low + (high-low)/2
+			if mid*mid <= x {
+				ans = mid
+				low = mid + 1
+			} else {
+				high = mid - 1
+			}
+		}
+		return ans
+	}
+}

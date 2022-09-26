@@ -369,3 +369,10 @@ func TestDeleteDuplicates(t *testing.T) {
 	expected := []int{1, 2, 5}
 	assert.Equal(expected, deleteDuplicates(head).GetValueArray())
 }
+
+func TestMySqrt(t *testing.T) {
+	assert := assert.New(t)
+	x := 8
+	expected := 2
+	assert.Equal(expected, mySqrt(x))
+}
