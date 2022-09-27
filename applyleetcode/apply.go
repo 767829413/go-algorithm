@@ -1446,3 +1446,34 @@ func mySqrt(x int) int {
 		return ans
 	}
 }
+
+// Next permutation
+func nextPermutation(nums []int) {
+	l := len(nums)
+	if l < 2 {
+		return
+	}
+	// 构建从后向前的快慢指针
+	s, q, index := l-1, l-2, l-1
+	// 向前遍历,寻找第一个相邻可交换的位置,跳出循环时[s,l)必然降序
+	for q >= 0 && nums[q] >= nums[s] {
+		s--
+		q--
+	}
+
+	// 表示整个序列非升序,尝试在[s,l)之间找到一个比nums[q]小的数
+	// 经过下面操作,此时[s,l)任然是降序
+	if q >= 0 {
+		for index >= s && nums[q] >= nums[index] {
+			index--
+		}
+		if nums[q] < nums[index] {
+			nums[q], nums[index] = nums[index], nums[q]
+		}
+	}
+
+	// 对[s,l)进行升序排列
+	for i, j := s, l-1; i < j; i, j = i+1, j-1 {
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+}

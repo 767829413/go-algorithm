@@ -376,3 +376,11 @@ func TestMySqrt(t *testing.T) {
 	expected := 2
 	assert.Equal(expected, mySqrt(x))
 }
+
+func TestNextPermutation(t *testing.T) {
+	assert := assert.New(t)
+	nums := []int{1, 2, 3}
+	expected := []int{1, 3, 2}
+	nextPermutation(nums)
+	assert.Equal(expected, nums)
+}
