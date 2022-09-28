@@ -384,3 +384,11 @@ func TestNextPermutation(t *testing.T) {
 	nextPermutation(nums)
 	assert.Equal(expected, nums)
 }
+
+func TestAddTwoNumbers(t *testing.T) {
+	assert := assert.New(t)
+	l1, _ := NewListNode([]int{9,9,9,9,9,9,9})
+	l2, _ := NewListNode([]int{9,9,9,9})
+	expected := []int{8,9,9,9,0,0,0,1}
+	assert.Equal(expected, addTwoNumbers(l1, l2).GetValueArray())
+}

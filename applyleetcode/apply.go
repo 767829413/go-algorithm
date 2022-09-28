@@ -1477,3 +1477,43 @@ func nextPermutation(nums []int) {
 		nums[i], nums[j] = nums[j], nums[i]
 	}
 }
+
+// Add two numbers
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	head, progression := &ListNode{}, 0
+	s := head
+	var s1, s2 *ListNode
+	setFunc := func(a, b, c int, s *ListNode) (*ListNode, int) {
+		tmp := a + b + c
+		c = tmp / 10
+		s.Next = &ListNode{Val: tmp % 10}
+		s = s.Next
+		return s, c
+	}
+	for s1, s2 = l1, l2; s1 != nil && s2 != nil; s1, s2 = s1.Next, s2.Next {
+		s, progression = setFunc(s1.Val, s2.Val, progression, s)
+	}
+
+	endFunc := func(end *ListNode) {
+		for ; end != nil; end = end.Next {
+			s, progression = setFunc(0, end.Val, progression, s)
+		}
+		if progression == 1 {
+			s.Next = &ListNode{Val: 1}
+		}
+	}
+
+	if s1 == nil {
+		endFunc(s2)
+	} else {
+		endFunc(s1)
+	}
+	return head.Next
+}
