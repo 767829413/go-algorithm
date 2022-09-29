@@ -1517,3 +1517,50 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 	return head.Next
 }
+
+// String to integer atoi
+func myAtoi(s string) int {
+	asBytes, res := []byte(s), 0
+	if len(asBytes) == 0 {
+		return res
+	}
+	index, l := 0, len(asBytes)
+	// 去掉前置空格
+	for index < l && asBytes[index] == ' ' {
+		index++
+	}
+	// 防止极端情况全空格
+	if index == l {
+		return res
+	}
+	// 判断是否有符号,首位有效
+	sign := 1
+	switch asBytes[index] {
+	case '+':
+		index++
+	case '-':
+		index++
+		sign = -1
+	}
+	// 开始循环后面得byte
+	for ; index < l; index++ {
+		currChar := asBytes[index]
+		// 非数字字符直接跳过
+		if currChar < '0' || currChar > '9' {
+			break
+		}
+		// 拿上一步的结果来判断是否溢出
+		last := res
+		// 十进制计算 123 => 0*10+1 => 1*10+2 => 12*10+3 => 123 
+		res = res*10 + int(currChar-'0')
+		// 判断是否溢出
+		if last != res/10 {
+			if sign == -1 {
+				return math.MinInt32
+			} else {
+				return math.MaxInt32
+			}
+		}
+	}
+	return res * sign
+}

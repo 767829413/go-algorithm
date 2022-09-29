@@ -387,8 +387,15 @@ func TestNextPermutation(t *testing.T) {
 
 func TestAddTwoNumbers(t *testing.T) {
 	assert := assert.New(t)
-	l1, _ := NewListNode([]int{9,9,9,9,9,9,9})
-	l2, _ := NewListNode([]int{9,9,9,9})
-	expected := []int{8,9,9,9,0,0,0,1}
+	l1, _ := NewListNode([]int{9, 9, 9, 9, 9, 9, 9})
+	l2, _ := NewListNode([]int{9, 9, 9, 9})
+	expected := []int{8, 9, 9, 9, 0, 0, 0, 1}
 	assert.Equal(expected, addTwoNumbers(l1, l2).GetValueArray())
+}
+
+func TestMyAtoi(t *testing.T) {
+	assert := assert.New(t)
+	s := "  -4193 with words"
+	expected := -4193
+	assert.Equal(expected, myAtoi(s))
 }

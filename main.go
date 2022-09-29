@@ -20,5 +20,5 @@ func testJson() {
 }
 
 func main() {
-	fmt.Println([]byte("()[]{}"))
+	fmt.Println('8'-'0')
 }
