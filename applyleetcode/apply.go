@@ -1520,9 +1520,9 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 // String to integer atoi
 func myAtoi(s string) int {
-	asBytes, res := []byte(s), 0
+	asBytes, res := []byte(s), int32(0)
 	if len(asBytes) == 0 {
-		return res
+		return int(res)
 	}
 	index, l := 0, len(asBytes)
 	// 去掉前置空格
@@ -1531,10 +1531,10 @@ func myAtoi(s string) int {
 	}
 	// 防止极端情况全空格
 	if index == l {
-		return res
+		return int(res)
 	}
 	// 判断是否有符号,首位有效
-	sign := 1
+	sign := int32(1)
 	switch asBytes[index] {
 	case '+':
 		index++
@@ -1551,8 +1551,8 @@ func myAtoi(s string) int {
 		}
 		// 拿上一步的结果来判断是否溢出
 		last := res
-		// 十进制计算 123 => 0*10+1 => 1*10+2 => 12*10+3 => 123 
-		res = res*10 + int(currChar-'0')
+		// 十进制计算 123 => 0*10+1 => 1*10+2 => 12*10+3 => 123
+		res = res*10 + int32(currChar-'0')
 		// 判断是否溢出
 		if last != res/10 {
 			if sign == -1 {
@@ -1562,5 +1562,5 @@ func myAtoi(s string) int {
 			}
 		}
 	}
-	return res * sign
+	return int(res * sign)
 }

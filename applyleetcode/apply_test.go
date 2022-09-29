@@ -395,7 +395,7 @@ func TestAddTwoNumbers(t *testing.T) {
 
 func TestMyAtoi(t *testing.T) {
 	assert := assert.New(t)
-	s := "  -4193 with words"
-	expected := -4193
+	s := "-91283472332"
+	expected := -2147483648
 	assert.Equal(expected, myAtoi(s))
 }
