@@ -1564,3 +1564,39 @@ func myAtoi(s string) int {
 	}
 	return int(res * sign)
 }
+
+// Longest common subsequence
+func longestCommonSubsequence(text1 string, text2 string) int {
+	l1, l2 := len(text1), len(text2)
+
+	if l1 == 0 || l2 == 0 {
+		return 0
+	}
+	// 动态规划求解,首先定义状态数组 dp[i][j]
+	// dp[i][j] 表示 text1[0,i-1] 与 text2[0,j-1] 之间的最长公共子序列数
+	// dp[0][0] 表示空字符串,所以要考虑增加空字符串的可能性
+	dp := make([][]int, l1+1)
+	for k := range dp {
+		dp[k] = make([]int, l2+1)
+	}
+	// 构建状态转移方程
+	// 如果 text1[i-1] == text2[j-1],则表示末尾相同,那么 dp[i][j] = dp[i-1][j-1] + 1
+	// 反之, dp[i][j] = max(dp[i][j-1], dp[i-1][j])
+	b1, b2, max := []byte(text1), []byte(text2), func(a, b int) int {
+		if a > b {
+			return a
+		} else {
+			return b
+		}
+	}
+	for i := 1; i <= l1; i++ {
+		for j := 1; j <= l2; j++ {
+			if b1[i-1] == b2[j-1] {
+				dp[i][j] = dp[i-1][j-1] + 1
+			} else {
+				dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+			}
+		}
+	}
+	return dp[l1][l2]
+}

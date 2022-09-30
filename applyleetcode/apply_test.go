@@ -399,3 +399,10 @@ func TestMyAtoi(t *testing.T) {
 	expected := -2147483648
 	assert.Equal(expected, myAtoi(s))
 }
+
+func TestLongestCommonSubsequence(t *testing.T) {
+	assert := assert.New(t)
+	text1, text2 := "ezupkr", "ubmrapg"
+	expected := 2
+	assert.Equal(expected, longestCommonSubsequence(text1, text2))
+}
